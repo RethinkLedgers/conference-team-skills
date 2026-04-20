@@ -1,0 +1,42 @@
+{
+  "name": "conference-team-skills",
+  "version": "1.0.0",
+  "description": "7 free Claude skills for conference organizing teams — one for every seat on your org chart. Built by Rethink AI LLC.",
+  "keywords": [
+    "claude",
+    "claude-code",
+    "ai",
+    "conference",
+    "events",
+    "skills",
+    "claude-skills",
+    "event-planning"
+  ],
+  "homepage": "https://github.com/RethinkLedgers/conference-team-skills",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RethinkLedgers/conference-team-skills.git"
+  },
+  "author": {
+    "name": "Rethink AI LLC",
+    "email": "bart@rethink-ai.com",
+    "url": "https://rethink-ai.com"
+  },
+  "license": "MIT",
+  "bin": {
+    "conference-team-skills": "./bin/cli.js"
+  },
+  "files": [
+    "bin/",
+    "general-chair/",
+    "program-content/",
+    "sponsorship/",
+    "marketing-comms/",
+    "venue-logistics/",
+    "finance-registration/",
+    "attendee-experience/",
+    ".claude-plugin/",
+    "LICENSE",
+    "README.md"
+  ]
+}
