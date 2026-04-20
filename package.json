@@ -36,6 +36,7 @@
     "finance-registration/",
     "attendee-experience/",
     ".claude-plugin/",
+    "setup/",
     "LICENSE",
     "README.md"
   ]
