@@ -72,6 +72,7 @@ Track every major decision and who made it.
 ## Connectors that accelerate this role
 - **Google Calendar** — block event milestones, committee meetings, and deadline reminders
 - **Gmail** — draft and send committee follow-up emails, stakeholder updates
+- **AgentMail** — create dedicated event inboxes for committee communications, automated follow-ups, and stakeholder notifications without using personal email
 - **Google Drive** — store and retrieve planning documents, meeting notes, decision logs, and templates
 - **ClickUp / Asana** — create and track milestones as tasks/projects, assign owners, monitor progress across all workstreams
 - **GitHub Issues** — log risks, decisions, and action items as issues with labels and assignees for lightweight tracking

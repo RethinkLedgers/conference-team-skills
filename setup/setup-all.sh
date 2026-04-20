@@ -12,6 +12,7 @@ echo ""
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 SCRIPTS=(
+  "setup-agentmail.sh"
   "setup-gmail.sh"
   "setup-google-calendar.sh"
   "setup-google-drive.sh"

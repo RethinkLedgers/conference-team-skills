@@ -83,6 +83,7 @@ Prepare the operations team for show day.
 - **Google Drive** — retrieve venue contracts, floor plans, vendor agreements, and store the run-of-show
 - **Google Calendar** — block load-in, rehearsal, setup, and show-day windows
 - **Gmail** — send venue RFPs, vendor briefings, caterer briefs, and ops team communications
+- **AgentMail** — create dedicated inboxes for vendor communications and RFP responses without exposing personal email
 - **ClickUp / Asana** — track vendor tasks, deliverables, and payment milestones
 - **GitHub Issues** — lightweight tracking for venue and vendor action items
 - **Canva** — generate visual floor-plan diagrams and signage designs

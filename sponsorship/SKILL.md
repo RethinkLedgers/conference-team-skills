@@ -80,6 +80,7 @@ Centralize all sponsor-facing communications.
 
 ## Connectors that accelerate this role
 - **Gmail** — send and track outreach sequences, asset collection, and sponsor briefings
+- **AgentMail** — create a dedicated sponsorship inbox for outreach sequences, automated follow-ups, and sponsor asset collection without using personal email
 - **Google Drive** — store sponsorship decks, contracts, and sponsor asset folders
 - **Twenty CRM** — full sponsor pipeline management: contacts, deals, pipeline stages, and renewal tracking
 - **GitHub Issues** — lightweight sponsor tracking with labels for tier and status

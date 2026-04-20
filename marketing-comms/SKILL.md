@@ -86,6 +86,7 @@ Build a research base to inform marketing decisions.
 
 ## Connectors that accelerate this role
 - **Gmail** — send email campaigns and media pitches directly
+- **AgentMail** — create dedicated campaign inboxes for email blasts, drip sequences, and media outreach with built-in tracking
 - **Google Drive** — retrieve brand assets, past templates, attendee lists, and store finalized graphics
 - **Google Calendar** — schedule campaign send dates, social publish windows, and ad flight dates
 - **Canva** — generate social graphics, speaker cards, infographics, event badges, and sponsor visuals

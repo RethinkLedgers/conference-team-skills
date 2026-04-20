@@ -100,6 +100,7 @@ Design the full attendee experience from arrival to departure.
 - **AI Ambassador** (MSG2AI) — SMS and WhatsApp attendee concierge, helpdesk, carousel, reminders, NPS delivery
 - **ActionNotes** — meeting capture for post-event debriefs, speaker briefings, and committee retrospectives
 - **Gmail** — send pre/post event attendee communications, welcome emails, and follow-ups
+- **AgentMail** — create dedicated inboxes for attendee support (e.g., help@yourevent), automated welcome sequences, and post-event survey delivery
 - **Google Drive** — store FAQ documents, post-event reports, debrief notes, and survey data
 - **Google Calendar** — schedule reminder send times, debrief meetings, and survey windows
 - **ClickUp / Asana** — create real-time tasks from escalated complaints, track journey-map execution

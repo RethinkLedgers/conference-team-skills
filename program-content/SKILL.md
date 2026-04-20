@@ -78,6 +78,7 @@ Plan the capture and distribution of session content.
 
 ## Connectors that accelerate this role
 - **Gmail** — send speaker outreach, confirmations, reviewer assignments, and collection reminders
+- **AgentMail** — create dedicated inboxes for speaker communications (e.g., speakers@yourevent) and automated submission confirmations
 - **Google Drive** — retrieve submitted decks and bios, create shared speaker folders, store review matrices
 - **Google Calendar** — schedule speaker briefing calls, tech checks, and submission deadlines
 - **ClickUp / Asana** — track speaker pipeline (outreach → confirmed → briefed → ready), submission review status, and deliverable collection

@@ -314,6 +314,7 @@ bash setup/setup-all.sh
 
 | Integration | Setup script | What it enables | Used by |
 |---|---|---|---|
+| AgentMail | `setup-agentmail.sh` | AI-native email inboxes for outreach, invoicing, notifications | All skills |
 | Gmail | `setup-gmail.sh` | Send outreach, confirmations, invoices | All skills |
 | Google Calendar | `setup-google-calendar.sh` | Event milestones, schedule calls | General Chair, Program, Venue, Finance |
 | Google Drive | `setup-google-drive.sh` | Documents, contracts, templates | All skills |

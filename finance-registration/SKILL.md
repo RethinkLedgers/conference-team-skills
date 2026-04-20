@@ -81,6 +81,7 @@ Turn registration data into actionable insights.
 ## Connectors that accelerate this role
 - **Google Drive** — store budgets, expense reports, invoices, and receipts
 - **Gmail** — send invoices, payment reminders, registration confirmations, W-9 requests, and attendee communications
+- **AgentMail** — create dedicated inboxes for invoicing (e.g., billing@yourevent) and automated payment reminders, registration confirmations, and dunning sequences
 - **Google Calendar** — set reminders for early-bird deadlines, payment due dates, and registration milestones
 - **Twenty CRM** — track sponsor invoices, payments, and financial pipeline alongside relationship data
 - **GitHub Issues** — track budget approvals, expense disputes, and compliance action items

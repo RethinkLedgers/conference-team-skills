@@ -8,6 +8,7 @@ Run any script from this directory to configure the integration for Claude Code.
 
 | Script | What it sets up | Used by skills |
 |---|---|---|
+| [`setup-agentmail.sh`](./setup-agentmail.sh) | AgentMail — AI-native email inboxes | All skills |
 | [`setup-gmail.sh`](./setup-gmail.sh) | Gmail connector | All skills |
 | [`setup-google-calendar.sh`](./setup-google-calendar.sh) | Google Calendar connector | General Chair, Program, Venue, Finance |
 | [`setup-google-drive.sh`](./setup-google-drive.sh) | Google Drive connector | All skills |
