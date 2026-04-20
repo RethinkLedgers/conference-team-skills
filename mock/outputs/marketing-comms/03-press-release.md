@@ -42,7 +42,7 @@ Now in its second year, FutureStack 2026 centers on the theme of **AI Infrastruc
 - **Five technical tracks** covering inference optimization, training infrastructure, data pipelines, MLOps, and GPU orchestration
 - **Hands-on workshops** led by the teams building widely-used AI infrastructure tools
 - **AI-powered networking matchmaker** connecting attendees based on shared interests and complementary expertise
-- **AI Ambassador concierge** providing real-time event assistance via SMS and WhatsApp, powered by msg2ai.xyz
+- **AI Ambassador concierge** providing real-time event assistance via SMS and WhatsApp, powered by ai-ambassador.xyz
 - **ActionNotes session capture** delivering AI-generated summaries, searchable transcripts, and full video recordings to all attendees within 48 hours of each session
 
 ---
@@ -76,7 +76,7 @@ FutureStack 2026 is supported by sponsors across the AI infrastructure ecosystem
 
 ### About FutureStack Events, LLC
 
-FutureStack Events, LLC produces practitioner-focused conferences for the AI and systems engineering community. Founded with the belief that infrastructure is the defining challenge of the AI era, FutureStack brings together engineers, researchers, and technical leaders to share hard-won knowledge about building systems that work at scale. FutureStack Events is a subsidiary of Rethink AI LLC. For more information, visit [futurestack.dev](https://futurestack.dev).
+FutureStack Events, LLC produces practitioner-focused conferences for the AI and systems engineering community. Founded with the belief that infrastructure is the defining challenge of the AI era, FutureStack brings together engineers, researchers, and technical leaders to share hard-won knowledge about building systems that work at scale. FutureStack Events is a subsidiary of MSG2AI. For more information, visit [futurestack.dev](https://futurestack.dev).
 
 ---
 

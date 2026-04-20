@@ -131,7 +131,7 @@ Ratings collected via post-session ActionNotes surveys (1-5 scale, sent within 2
 
 ## 5. AI Ambassador Analytics
 
-**Platform:** AI Ambassador via msg2ai.xyz
+**Platform:** AI Ambassador via ai-ambassador.xyz
 **Channels:** SMS and WhatsApp
 **Active Period:** October 15, 6:30 AM -- October 16, 10:00 PM
 
@@ -272,7 +272,7 @@ Based on survey data, AI Ambassador analytics, session ratings, on-site observat
 - **Response rate:** 532 / 783 = 68%
 - **NPS calculation:** Standard NPS methodology (% Promoters minus % Detractors)
 - **Session ratings:** Collected via ActionNotes post-session micro-surveys (3 questions, delivered within 2 hours of session end)
-- **AI Ambassador analytics:** Extracted from msg2ai.xyz admin dashboard, October 23, 2026
+- **AI Ambassador analytics:** Extracted from ai-ambassador.xyz admin dashboard, October 23, 2026
 - **Confidence note:** With 532 responses from 783 attendees, results carry a margin of error of +/- 2.1% at 95% confidence
 
 ---

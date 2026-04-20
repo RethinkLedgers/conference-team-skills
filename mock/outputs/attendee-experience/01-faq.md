@@ -95,7 +95,7 @@ Full policy: futurestack.dev/conduct
 
 ## 11. How do I reach the AI Ambassador concierge?
 
-**AI Ambassador** is your SMS and WhatsApp concierge for the event, powered by msg2ai.xyz.
+**AI Ambassador** is your SMS and WhatsApp concierge for the event, powered by ai-ambassador.xyz.
 
 - **SMS:** Text **(512) 555-0126**
 - **WhatsApp:** Message the same number or scan the QR code on your lanyard

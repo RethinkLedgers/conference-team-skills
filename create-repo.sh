@@ -14,7 +14,7 @@ set -e
 
 REPO_NAME="conference-team-skills"
 ORG="rethinkledgers"
-DESCRIPTION="7 free Claude skills — one for every seat on your conference org chart. Built by Rethink AI LLC."
+DESCRIPTION="7 free Claude skills — one for every seat on your conference org chart. Built by MSG2AI."
 SKILLS_DIR="$(dirname "$0")"
 
 echo "🚀 Creating GitHub repo: $ORG/$REPO_NAME"
@@ -23,7 +23,7 @@ echo "🚀 Creating GitHub repo: $ORG/$REPO_NAME"
 gh repo create "$ORG/$REPO_NAME" \
   --public \
   --description "$DESCRIPTION" \
-  --homepage "https://rethink-ai.com" \
+  --homepage "https://msg2ai.xyz" \
   --clone=false
 
 echo "✅ Repo created: https://github.com/$ORG/$REPO_NAME"
@@ -48,7 +48,7 @@ git commit -m "Initial commit: 7 conference team Claude skills
 - Finance & Registration (Budget, Registration, Invoicing, Expenses, Compliance)
 - Attendee Experience (AI Ambassador + ActionNotes powered)
 
-Built by Rethink AI LLC — https://rethink-ai.com"
+Built by MSG2AI — https://msg2ai.xyz"
 
 # Set remote and push
 git remote add origin "https://github.com/$ORG/$REPO_NAME.git"
