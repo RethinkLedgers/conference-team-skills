@@ -296,22 +296,42 @@ Then either:
 
 ## Connecting integrations (optional but recommended)
 
-These skills can send emails, check calendars, and access documents when you connect Claude to your tools. This works in both Claude Code and Claude.ai.
+These skills can send emails, check calendars, manage projects, and access documents when you connect Claude to your tools.
 
-### In Claude.ai
+### Quick setup (Claude Code)
 
-Go to **Settings** (bottom-left) → **Integrations** and connect:
+Run the setup script for any integration you want to connect:
 
-| Integration | What it enables | Used by |
-|---|---|---|
-| Gmail | Send outreach, confirmations, invoices | All skills |
-| Google Calendar | Create event milestones, schedule calls | General Chair, Program, Venue |
-| Google Drive | Access documents, contracts, templates | All skills |
-| Zoho CRM | Track sponsor pipeline and payments | Sponsorship, Finance |
+```bash
+# Set up a single integration
+bash setup/setup-gmail.sh
 
-### In Claude Code
+# Or set up everything at once (interactive — pick which ones you want)
+bash setup/setup-all.sh
+```
 
-Claude Code uses MCP (Model Context Protocol) servers for integrations. These are configured in your Claude Code settings. See the [Claude Code docs](https://docs.anthropic.com/en/docs/claude-code) for details on setting up MCP servers.
+### Available integrations
+
+| Integration | Setup script | What it enables | Used by |
+|---|---|---|---|
+| AgentMail | `setup-agentmail.sh` | AI-native email inboxes for outreach, invoicing, notifications | All skills |
+| Gmail | `setup-gmail.sh` | Send outreach, confirmations, invoices | All skills |
+| Google Calendar | `setup-google-calendar.sh` | Event milestones, schedule calls | General Chair, Program, Venue, Finance |
+| Google Drive | `setup-google-drive.sh` | Documents, contracts, templates | All skills |
+| Zoom | `setup-zoom.sh` | Meeting recordings, speaker briefings, tech checks | General Chair, Program, Venue, Attendee |
+| Canva | `setup-canva.sh` | Social graphics, decks, signage, infographics | Marketing, Sponsorship, Venue, Attendee |
+| Twenty CRM | `setup-twenty-crm.sh` | Contact/pipeline management, sponsor tracking | Sponsorship, Finance, Program, Venue, Attendee |
+| ClickUp | `setup-clickup.sh` | Project/task management, boards, checklists | All skills |
+| Asana | `setup-asana.sh` | Project/task management (alternative to ClickUp) | All skills |
+| GitHub Issues | `setup-github-issues.sh` | Lightweight issue tracking with labels | All skills |
+| Vercel | `setup-vercel.sh` | Event website deployment and management | Marketing |
+| Obsidian | `setup-obsidian.sh` | Knowledge base, notes, institutional memory | All skills |
+
+> **Note:** You don't need all integrations. Each skill works without any connectors — integrations just make them more powerful. Pick the ones your team already uses.
+
+### In Claude.ai (browser)
+
+Go to **Settings** (bottom-left) → **Integrations** and connect Gmail, Google Calendar, Google Drive, Zoom, Canva, or Vercel directly. These are automatically available in Claude Code when you're logged into the same account.
 
 ---
 
@@ -429,7 +449,19 @@ conference-team-skills/
 │   └── cli.js                 ← npx installer CLI
 ├── .claude-plugin/
 │   └── plugin.json            ← Claude Code plugin manifest
-├── create-repo.sh             ← Script used to create this repo (not needed for installation)
+├── setup/                     ← Integration setup scripts
+│   ├── setup-all.sh           ← Run all setups interactively
+│   ├── setup-gmail.sh
+│   ├── setup-google-calendar.sh
+│   ├── setup-google-drive.sh
+│   ├── setup-zoom.sh
+│   ├── setup-canva.sh
+│   ├── setup-twenty-crm.sh
+│   ├── setup-clickup.sh
+│   ├── setup-asana.sh
+│   ├── setup-github-issues.sh
+│   ├── setup-vercel.sh
+│   └── setup-obsidian.sh
 ├── general-chair/
 │   └── SKILL.md               ← General Chair skill
 ├── program-content/

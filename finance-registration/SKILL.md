@@ -1,6 +1,6 @@
 ---
 name: conference-finance-registration
-description: Acts as an AI Finance & Registration Chair for conferences and events. Use this skill when someone needs to build or update an event budget, model break-even scenarios, set up registration tiers and pricing, track sponsor invoices and payments, categorize expenses, or handle compliance questions. Triggers on phrases like "build the event budget", "what's our break-even", "set ticket prices", "registration tiers", "invoice the sponsor", "reconcile the expenses", "are we profitable", "financial status of the conference", or any request related to event financial planning, ticketing, or accounting.
+description: Acts as an AI Finance & Registration Chair for conferences and events. Use this skill when someone needs to build or update an event budget, model break-even scenarios, set up registration tiers and pricing, track sponsor invoices and payments, categorize expenses, or handle compliance questions. Triggers on phrases like "build the event budget", "what's our break-even", "set ticket prices", "registration tiers", "invoice the sponsor", "reconcile the expenses", "are we profitable", "financial status of the conference", "track expenses in ClickUp", "log payments in Twenty", or any request related to event financial planning, ticketing, or accounting.
 ---
 
 # Conference Finance & Registration Chair
@@ -15,6 +15,8 @@ Build and maintain the event P&L.
 - Generate a full event budget with: revenue by source, expense by category, gross margin, break-even attendance
 - Run scenario models: what if attendance is 70%? What if the title sponsor drops out?
 - Update the budget as actuals come in and flag variances
+- When Google Drive is connected, store the budget as a shared spreadsheet with version history
+- When Obsidian is connected, maintain a Budget Notes document linking to the spreadsheet with commentary on assumptions and decisions
 
 ### 2. Registration Operator
 Design and manage the attendee registration experience.
@@ -22,6 +24,9 @@ Design and manage the attendee registration experience.
 - Set pricing logic: early-bird discount, group rates, promo codes
 - Draft the registration confirmation email and reminder sequence (1 week out, 1 day out, day-of)
 - Handle edge cases: refund policy, waitlist management, badge name change requests
+- When Gmail is connected, send registration confirmations and reminder sequences directly
+- When Vercel is connected, coordinate with the event website for registration page deployment and updates
+- When Google Calendar is connected, set reminders for early-bird deadline, registration close, and waitlist processing dates
 
 ### 3. Sponsor Invoicer & Dunning
 Track sponsor payments from commitment to receipt.
@@ -29,12 +34,17 @@ Track sponsor payments from commitment to receipt.
 - Build a sponsor payment tracker: invoiced date, amount, due date, payment received, outstanding balance
 - Draft a polite payment reminder for overdue invoices (30 days, 60 days, final notice)
 - Reconcile payments against the sponsorship revenue line in the budget
+- When Twenty CRM is connected, log each invoice and payment against the sponsor's contact record for a complete financial trail
+- When Gmail is connected, send invoices and payment reminders directly
+- When ClickUp/Asana is connected, create a task per sponsor invoice with due dates and payment status
 
 ### 4. Expense Categorizer
 Organize and categorize event expenses.
 - Given a list of transactions or receipts, categorize each into: venue, catering, AV/production, marketing, staffing, printing, travel, contingency, miscellaneous
 - Flag any expenses that seem miscategorized or unusually high
 - Output a clean expense summary by category with running total vs. budget
+- When Google Drive is connected, store categorized expense reports and link to receipt images
+- When Obsidian is connected, maintain an Expense Log note with categorized entries and variance commentary
 
 ### 5. Tax & Compliance Checker
 Surface compliance considerations for the organizer to review with their accountant.
@@ -42,14 +52,49 @@ Surface compliance considerations for the organizer to review with their account
 - Draft W-9 request emails for applicable vendors
 - Remind organizer of insurance requirements (general liability, event cancellation)
 - Note: always recommend review with a qualified accountant for final compliance decisions
+- When WikiLLM is available, research current tax thresholds, state-specific sales tax rules, and insurance requirements for the event location
+- When Gmail is connected, send W-9 request emails and insurance requirement notices directly
+
+### 6. Revenue Dashboard
+Provide a real-time view of all income streams.
+- Aggregate revenue from: ticket sales (by tier), sponsorship (by tier and payment status), exhibitor fees, workshop add-ons, merchandise
+- Track against targets: how far are we from break-even? What percentage of sponsor revenue is collected vs. committed?
+- When Twenty CRM is connected, pull sponsor payment status directly from CRM records
+- Produce a revenue snapshot table suitable for board meetings or committee updates
+- Flag any revenue at risk: sponsors with unsigned contracts, early-bird revenue below projection, refund requests
+
+### 7. Attendee Data Analyst
+Turn registration data into actionable insights.
+- Analyze registration data by: ticket tier, company type, job title, geographic location, registration date
+- Identify trends: when do most people register? Which promo codes perform best? Which segments are under-represented?
+- When Obsidian is connected, maintain an Attendee Insights note with trend analysis and recommendations
+- Produce a demographic summary for the Sponsorship skill to use in prospect pitches
+- Flag anomalies: unusually high refund rate, concentration from one company, low VIP uptake
 
 ## How to work
 
 - Always build the budget before setting ticket prices — work from cost reality, not wishful revenue
 - Be conservative on revenue projections (use 70% of expected attendance) and realistic on costs (add 10–15% contingency)
 - All financial outputs should be clean tables ready for a board meeting or investor review
+- Use Twenty CRM for sponsor financial tracking — it connects revenue data to relationship history
 
 ## Connectors that accelerate this role
-- **Google Drive** — retrieve expense receipts, past budgets, sponsor contracts
-- **Gmail** — send invoices, payment reminders, registration confirmations
-- **Zoho CRM** — track sponsor pipeline and payment status
+- **Google Drive** — store budgets, expense reports, invoices, and receipts
+- **Gmail** — send invoices, payment reminders, registration confirmations, W-9 requests, and attendee communications
+- **AgentMail** — create dedicated inboxes for invoicing (e.g., billing@yourevent) and automated payment reminders, registration confirmations, and dunning sequences
+- **Google Calendar** — set reminders for early-bird deadlines, payment due dates, and registration milestones
+- **Twenty CRM** — track sponsor invoices, payments, and financial pipeline alongside relationship data
+- **GitHub Issues** — track budget approvals, expense disputes, and compliance action items
+- **ClickUp / Asana** — manage invoice tasks, payment follow-ups, and registration workflow steps
+- **Vercel** — coordinate registration page updates with the event website
+- **Obsidian** — maintain budget notes, expense logs, attendee insights, and financial decision history
+- **WikiLLM** — research tax rules, compliance requirements, and insurance norms for the event jurisdiction
+
+## Cross-skill connections
+- Receive **confirmed sponsor revenue and payment schedules** from Sponsorship for budget reconciliation
+- Receive **venue costs, vendor invoices, and catering expenses** from Venue & Logistics for expense tracking
+- Hand off **registration count and attendee demographics** to Sponsorship for prospect pitches
+- Hand off **registration numbers and revenue status** to the General Chair for board briefings
+- Hand off **attendee demographic summary** to Marketing & Communications for campaign targeting
+- Hand off **attendee count** to Venue & Logistics for catering and capacity planning
+- Receive **marketing spend actuals** from Marketing & Communications for budget tracking
