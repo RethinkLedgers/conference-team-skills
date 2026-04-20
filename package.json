@@ -1,7 +1,7 @@
 {
   "name": "conference-team-skills",
   "version": "1.0.0",
-  "description": "7 free Claude skills for conference organizing teams — one for every seat on your org chart. Built by Rethink AI LLC.",
+  "description": "7 free Claude skills for conference organizing teams — one for every seat on your org chart. Built by MSG2AI.",
   "keywords": [
     "claude",
     "claude-code",
@@ -18,9 +18,9 @@
     "url": "git+https://github.com/RethinkLedgers/conference-team-skills.git"
   },
   "author": {
-    "name": "Rethink AI LLC",
-    "email": "bart@rethink-ai.com",
-    "url": "https://rethink-ai.com"
+    "name": "MSG2AI",
+    "email": "bart@msg2ai.xyz",
+    "url": "https://msg2ai.xyz"
   },
   "license": "MIT",
   "bin": {

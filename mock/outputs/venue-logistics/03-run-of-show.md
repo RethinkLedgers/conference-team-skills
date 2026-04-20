@@ -105,7 +105,7 @@
 | **9:00 PM** | **Reception ends** | -- | All | Music off. Lights up. | -- |
 | 9:00 - 9:30 | Reception teardown | 30 min | Catering + cleaning crew | -- | Clear terrace / Hall 2 backup space |
 | 9:30 - 10:00 | Venue walkthrough and lockup | 30 min | Lisa Tran + Carlos Vega | -- | Confirm all rooms secure, AV equipment locked, no attendees remaining |
-| 9:45 PM | AI Ambassador sends Day 1 closing message | -- | Automated | -- | Pre-scheduled via msg2ai.xyz |
+| 9:45 PM | AI Ambassador sends Day 1 closing message | -- | Automated | -- | Pre-scheduled via ai-ambassador.xyz |
 | **10:00 PM** | **Venue secured. Overnight security on-site.** | -- | Lone Star Security | -- | 1 guard on overnight patrol. |
 
 ---

@@ -35,7 +35,7 @@ function printBanner() {
   console.log("");
   console.log("  Conference Team Skills for Claude");
   console.log("  7 skills — one for every seat on your conference org chart");
-  console.log("  Built by Rethink AI LLC — https://rethink-ai.com");
+  console.log("  Built by MSG2AI — https://msg2ai.xyz");
   console.log("");
 }
 

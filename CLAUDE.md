@@ -25,7 +25,7 @@ The `.claude-plugin/plugin.json` manifest points `"skills": "./"` at the repo ro
 
 - Skill names use the pattern `conference-<role>` (e.g., `conference-general-chair`).
 - Every skill references Claude connectors (Gmail, Google Calendar, Google Drive, Zoho CRM) but none depend on them — they're optional accelerators.
-- The `attendee-experience` skill is unique: it references two external products (AI Ambassador at msg2ai.xyz, ActionNotes) that are not part of this repo.
+- The `attendee-experience` skill is unique: it references two external products (AI Ambassador at ai-ambassador.xyz, ActionNotes) that are not part of this repo.
 - `package.json` `files` array controls what ships to npm — every skill folder and `.claude-plugin/` must be listed there.
 
 ## When editing skills

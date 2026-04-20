@@ -97,7 +97,7 @@ Design the full attendee experience from arrival to departure.
 - Use Obsidian to build institutional knowledge — every event should make the next one better
 
 ## Connectors that power this role
-- **AI Ambassador** (MSG2AI) — SMS and WhatsApp attendee concierge, helpdesk, carousel, reminders, NPS delivery
+- **AI Ambassador** (ai-ambassador.xyz) — SMS and WhatsApp attendee concierge, helpdesk, carousel, reminders, NPS delivery
 - **ActionNotes** — meeting capture for post-event debriefs, speaker briefings, and committee retrospectives
 - **Gmail** — send pre/post event attendee communications, welcome emails, and follow-ups
 - **AgentMail** — create dedicated inboxes for attendee support (e.g., help@yourevent), automated welcome sequences, and post-event survey delivery

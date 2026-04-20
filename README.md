@@ -2,7 +2,7 @@
 
 **7 free Claude skills — one for every seat on your conference org chart.**
 
-Built by [Rethink AI LLC](https://rethink-ai.com) · Powered by Claude · AI Ambassador for attendees · ActionNotes for sessions
+Built by [MSG2AI](https://msg2ai.xyz) · Powered by Claude · AI Ambassador for attendees · ActionNotes for sessions
 
 ---
 
@@ -432,7 +432,7 @@ git config --global core.longpaths true
 
 This skill is different from the others. It runs on two live tools:
 
-**[AI Ambassador](https://msg2ai.xyz)** — SMS and WhatsApp attendee concierge. No app download. 30-second response time. 126 languages. Handles the entire attendee-facing operation on show day: helpdesk, wayfinder, networking matchmaker, session reminders, sponsor messaging, post-event NPS.
+**[AI Ambassador](https://ai-ambassador.xyz)** — SMS and WhatsApp attendee concierge. No app download. 30-second response time. 126 languages. Handles the entire attendee-facing operation on show day: helpdesk, wayfinder, networking matchmaker, session reminders, sponsor messaging, post-event NPS.
 
 **ActionNotes** — AI-powered session and meeting capture. Turns attendee sessions and post-event debriefs into structured notes, action items, and next-year improvement plans automatically.
 
@@ -480,13 +480,14 @@ conference-team-skills/
 
 ---
 
-## About Rethink AI LLC
+## About MSG2AI
 
 Building AI infrastructure for events, hospitality, and B2B operations.
 
-- [msg2ai.xyz](https://msg2ai.xyz) — AI Ambassador (SMS/WhatsApp event concierge)
-- [rethink-ai.com](https://rethink-ai.com) — Rethink AI LLC
-- Contact: bart@rethink-ai.com
+- [msg2ai.xyz](https://msg2ai.xyz) — MSG2AI
+- [AI Ambassador](https://ai-ambassador.xyz) — SMS/WhatsApp event concierge (no app download, 126 languages, 30-second responses)
+- [ActionNotes](https://msg2ai.xyz) — AI-powered session capture and meeting notes
+- Contact: bart@msg2ai.xyz
 
 ---
 
