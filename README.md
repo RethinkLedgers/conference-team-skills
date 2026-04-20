@@ -28,34 +28,383 @@ Install one skill or all seven. Each is self-contained.
 
 ---
 
-## How to install
+## Prerequisites
 
-### Option A — Claude Code (recommended)
+Before installing, you need **one** of the following depending on which method you choose:
+
+| Method | What you need | Best for |
+|---|---|---|
+| npx (Option 1) | Node.js 18+ | Quickest install — one command |
+| Plugin (Option 2) | Git + Claude Code | Namespaced, managed via `/plugin` |
+| Git clone (Option 3) | Git + Claude Code CLI | Developers, full control |
+| Desktop / IDE (Option 4) | Git + Claude Code desktop or extension | Visual workflow users |
+| Claude.ai Co-Work (Option 5) | A Claude.ai account (Pro, Team, or Enterprise) | Non-technical users, no install |
+| ZIP download (Option 6) | A web browser | Anyone, no tools needed |
+
+### Installing Git (required for Options 2, 3, and 4)
+
+Git is the tool that downloads this repository to your computer.
+
+<details>
+<summary><strong>Mac</strong></summary>
+
+Open **Terminal** (search for "Terminal" in Spotlight with `Cmd + Space`):
+
 ```bash
-# Clone into your Claude skills directory
-git clone https://github.com/rethinkledgers/conference-team-skills ~/.claude/skills/conference-team-skills
+# Option A — Install via Xcode Command Line Tools (easiest)
+xcode-select --install
+
+# Option B — Install via Homebrew (if you have Homebrew)
+brew install git
 ```
 
-Each skill folder is immediately available to Claude Code as a skill.
+Verify it worked:
 
-### Option B — Claude.ai Projects
-1. Open a Claude Project for your event
-2. Copy the contents of any `SKILL.md` file into the project instructions
-3. Claude will act as that role for every conversation in the project
+```bash
+git --version
+```
 
-### Option C — Download the zip
-Download `conference-team-skills.zip` from the [Releases](../../releases) page and extract to your skills directory.
+You should see something like `git version 2.x.x`.
+
+</details>
+
+<details>
+<summary><strong>Windows</strong></summary>
+
+1. Download Git from [git-scm.com/download/win](https://git-scm.com/download/win)
+2. Run the installer — accept all default settings
+3. Open **Git Bash** (installed with Git) or **PowerShell**
+
+Verify it worked:
+
+```bash
+git --version
+```
+
+You should see something like `git version 2.x.x`.
+
+</details>
+
+<details>
+<summary><strong>Linux</strong></summary>
+
+Open your terminal:
+
+```bash
+# Ubuntu / Debian
+sudo apt update && sudo apt install git -y
+
+# Fedora
+sudo dnf install git -y
+
+# Arch
+sudo pacman -S git
+```
+
+Verify it worked:
+
+```bash
+git --version
+```
+
+</details>
 
 ---
 
-## Connectors these skills use
+## Installation
 
-Each skill references Claude connectors where relevant. Connect these in Claude.ai under **Settings → Integrations**:
+### Option 1 — One command with npx (easiest)
 
-- **Gmail** — send outreach, confirmations, invoices directly from the conversation
-- **Google Calendar** — block event milestones, schedule calls
-- **Google Drive** — retrieve documents, contracts, templates
-- **Zoho CRM** — track sponsor pipeline and payments (Sponsorship + Finance skills)
+> Works on Mac, Windows, and Linux. Requires Node.js 18+ ([download here](https://nodejs.org)).
+
+```bash
+npx conference-team-skills install
+```
+
+That's it. The installer clones the skills into `~/.claude/skills/conference-team-skills/` and they're immediately available in Claude Code.
+
+**Other npx commands:**
+
+```bash
+npx conference-team-skills list        # See all 7 skills
+npx conference-team-skills update      # Update to the latest version
+npx conference-team-skills uninstall   # Remove the skills
+```
+
+---
+
+### Option 2 — Claude Code Plugin
+
+> Plugins are namespaced and can be managed with the `/plugin` command inside Claude Code.
+
+**Install from GitHub:**
+
+```bash
+claude --plugin-dir /path/to/conference-team-skills
+```
+
+Or clone the repo first, then load it:
+
+```bash
+git clone https://github.com/RethinkLedgers/conference-team-skills.git
+claude --plugin-dir ./conference-team-skills
+```
+
+Once loaded, skills are available as namespaced commands:
+
+```
+/conference-team-skills:general-chair
+/conference-team-skills:sponsorship
+/conference-team-skills:marketing-comms
+```
+
+(and so on for all 7 skills)
+
+---
+
+### Option 3 — Git clone (manual)
+
+> For developers who want full control. Skills are automatically available to Claude Code in every conversation.
+
+**Step 1: Install Claude Code** (if you don't have it yet)
+
+```bash
+npm install -g @anthropic-ai/claude-code
+```
+
+> Requires Node.js 18+. Download Node.js from [nodejs.org](https://nodejs.org) if you don't have it.
+
+**Step 2: Clone the skills into your Claude skills directory**
+
+<details>
+<summary><strong>Mac / Linux</strong></summary>
+
+```bash
+git clone https://github.com/RethinkLedgers/conference-team-skills.git ~/.claude/skills/conference-team-skills
+```
+
+</details>
+
+<details>
+<summary><strong>Windows (PowerShell)</strong></summary>
+
+```powershell
+git clone https://github.com/RethinkLedgers/conference-team-skills.git "$env:USERPROFILE\.claude\skills\conference-team-skills"
+```
+
+</details>
+
+<details>
+<summary><strong>Windows (Git Bash)</strong></summary>
+
+```bash
+git clone https://github.com/RethinkLedgers/conference-team-skills.git ~/.claude/skills/conference-team-skills
+```
+
+</details>
+
+**Step 3: Verify**
+
+```bash
+ls ~/.claude/skills/conference-team-skills/
+```
+
+You should see seven folders: `general-chair`, `program-content`, `sponsorship`, `marketing-comms`, `venue-logistics`, `finance-registration`, `attendee-experience`.
+
+**Step 4: Use a skill**
+
+Open Claude Code and type a natural prompt that matches a skill:
+
+```
+Plan the conference timeline — our event is September 15, 500 attendees
+```
+
+Claude Code will automatically pick up the `general-chair` skill. You can also invoke a skill directly:
+
+```
+/general-chair
+```
+
+---
+
+### Option 4 — Claude Code Desktop App or IDE Extension
+
+> Works in the Claude Code Mac/Windows desktop app and in VS Code / JetBrains IDE extensions.
+
+**Step 1: Clone the repo somewhere on your computer**
+
+<details>
+<summary><strong>Mac / Linux</strong></summary>
+
+```bash
+git clone https://github.com/RethinkLedgers/conference-team-skills.git ~/.claude/skills/conference-team-skills
+```
+
+</details>
+
+<details>
+<summary><strong>Windows (PowerShell)</strong></summary>
+
+```powershell
+git clone https://github.com/RethinkLedgers/conference-team-skills.git "$env:USERPROFILE\.claude\skills\conference-team-skills"
+```
+
+</details>
+
+**Step 2: Open Claude Code** in the desktop app or your IDE extension.
+
+The skills are automatically detected from `~/.claude/skills/`. No additional configuration needed.
+
+---
+
+### Option 5 — Claude.ai Projects (Co-Work / non-technical users)
+
+> No installation, no terminal, no Git. Works entirely in the browser.
+
+1. Go to [claude.ai](https://claude.ai) and sign in
+2. Click **Projects** in the left sidebar, then **Create Project**
+3. Name the project after your event (e.g., "TechSummit 2026 — Sponsorship")
+4. In the project, click the **pencil icon** next to "Project instructions" (or go to **Project Settings**)
+5. Open the skill file you want from this repository:
+   - [`general-chair/SKILL.md`](./general-chair/SKILL.md)
+   - [`program-content/SKILL.md`](./program-content/SKILL.md)
+   - [`sponsorship/SKILL.md`](./sponsorship/SKILL.md)
+   - [`marketing-comms/SKILL.md`](./marketing-comms/SKILL.md)
+   - [`venue-logistics/SKILL.md`](./venue-logistics/SKILL.md)
+   - [`finance-registration/SKILL.md`](./finance-registration/SKILL.md)
+   - [`attendee-experience/SKILL.md`](./attendee-experience/SKILL.md)
+6. Click on the file, then click **Raw** (top-right of the file view) to see the plain text
+7. **Copy everything** from the file and **paste** it into the project instructions box
+8. Click **Save**
+
+Every new conversation in that project will now use that skill. Create separate projects for different roles, or combine multiple skill files into one project.
+
+---
+
+### Option 6 — Download as ZIP (no Git required)
+
+1. Go to [github.com/RethinkLedgers/conference-team-skills](https://github.com/RethinkLedgers/conference-team-skills)
+2. Click the green **Code** button
+3. Click **Download ZIP**
+4. Extract the ZIP file
+
+Then either:
+- **For Claude Code**: Move the extracted folder to `~/.claude/skills/conference-team-skills`
+- **For Claude.ai**: Open any `SKILL.md` file in a text editor and paste its contents into your project instructions (see Option 5, steps 4–8)
+
+---
+
+## Connecting integrations (optional but recommended)
+
+These skills can send emails, check calendars, and access documents when you connect Claude to your tools. This works in both Claude Code and Claude.ai.
+
+### In Claude.ai
+
+Go to **Settings** (bottom-left) → **Integrations** and connect:
+
+| Integration | What it enables | Used by |
+|---|---|---|
+| Gmail | Send outreach, confirmations, invoices | All skills |
+| Google Calendar | Create event milestones, schedule calls | General Chair, Program, Venue |
+| Google Drive | Access documents, contracts, templates | All skills |
+| Zoho CRM | Track sponsor pipeline and payments | Sponsorship, Finance |
+
+### In Claude Code
+
+Claude Code uses MCP (Model Context Protocol) servers for integrations. These are configured in your Claude Code settings. See the [Claude Code docs](https://docs.anthropic.com/en/docs/claude-code) for details on setting up MCP servers.
+
+---
+
+## Updating the skills
+
+To get the latest version of the skills:
+
+<details>
+<summary><strong>If you installed with Git or npx (Options 1, 3, or 4)</strong></summary>
+
+```bash
+cd ~/.claude/skills/conference-team-skills
+git pull
+```
+
+On Windows PowerShell:
+
+```powershell
+cd "$env:USERPROFILE\.claude\skills\conference-team-skills"
+git pull
+```
+
+</details>
+
+<details>
+<summary><strong>If you downloaded the ZIP (Option 6)</strong></summary>
+
+Download the ZIP again from [the repository](https://github.com/RethinkLedgers/conference-team-skills) and replace the old folder.
+
+</details>
+
+<details>
+<summary><strong>If you pasted into Claude.ai (Option 5)</strong></summary>
+
+Visit the SKILL.md file on GitHub, copy the updated contents, and paste them into your project instructions again.
+
+</details>
+
+---
+
+## Troubleshooting
+
+<details>
+<summary><strong>"git: command not found"</strong></summary>
+
+Git is not installed. Follow the [Installing Git](#installing-git-required-for-options-2-3-and-4) instructions above for your operating system.
+
+</details>
+
+<details>
+<summary><strong>"npm: command not found" (when installing Claude Code CLI)</strong></summary>
+
+Node.js is not installed. Download it from [nodejs.org](https://nodejs.org) — choose the LTS version. After installing, close and reopen your terminal, then try again.
+
+</details>
+
+<details>
+<summary><strong>Skills not showing up in Claude Code</strong></summary>
+
+1. Make sure the files are in the right location:
+   ```bash
+   ls ~/.claude/skills/conference-team-skills/general-chair/SKILL.md
+   ```
+   If this shows "No such file or directory", the clone went to the wrong place. Re-run the `git clone` command from the installation steps.
+
+2. Make sure each skill folder contains a `SKILL.md` file with a `---` frontmatter block at the top containing `name:` and `description:` fields.
+
+3. Restart Claude Code after cloning.
+
+</details>
+
+<details>
+<summary><strong>Permission denied errors on Mac/Linux</strong></summary>
+
+If you get permission errors when cloning:
+
+```bash
+mkdir -p ~/.claude/skills
+git clone https://github.com/RethinkLedgers/conference-team-skills.git ~/.claude/skills/conference-team-skills
+```
+
+</details>
+
+<details>
+<summary><strong>Windows: path too long errors</strong></summary>
+
+Run this in an Administrator PowerShell and try again:
+
+```powershell
+git config --global core.longpaths true
+```
+
+</details>
 
 ---
 
@@ -66,6 +415,36 @@ This skill is different from the others. It runs on two live tools:
 **[AI Ambassador](https://msg2ai.xyz)** — SMS and WhatsApp attendee concierge. No app download. 30-second response time. 126 languages. Handles the entire attendee-facing operation on show day: helpdesk, wayfinder, networking matchmaker, session reminders, sponsor messaging, post-event NPS.
 
 **ActionNotes** — AI-powered session and meeting capture. Turns attendee sessions and post-event debriefs into structured notes, action items, and next-year improvement plans automatically.
+
+---
+
+## Repository structure
+
+```
+conference-team-skills/
+├── README.md                  ← You are here
+├── LICENSE                    ← MIT license
+├── package.json               ← npm package config (enables npx)
+├── bin/
+│   └── cli.js                 ← npx installer CLI
+├── .claude-plugin/
+│   └── plugin.json            ← Claude Code plugin manifest
+├── create-repo.sh             ← Script used to create this repo (not needed for installation)
+├── general-chair/
+│   └── SKILL.md               ← General Chair skill
+├── program-content/
+│   └── SKILL.md               ← Program & Content Chair skill
+├── sponsorship/
+│   └── SKILL.md               ← Sponsorship Lead skill
+├── marketing-comms/
+│   └── SKILL.md               ← Marketing & Communications skill
+├── venue-logistics/
+│   └── SKILL.md               ← Venue & Logistics skill
+├── finance-registration/
+│   └── SKILL.md               ← Finance & Registration skill
+└── attendee-experience/
+    └── SKILL.md               ← Attendee Experience skill
+```
 
 ---
 
