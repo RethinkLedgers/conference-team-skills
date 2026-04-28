@@ -102,21 +102,6 @@ If you already have an event website, you don't need to fill the Knowledge Base 
 
 To set up Firecrawl: `bash setup/setup-firecrawl.sh`
 
-### Export to hello.msg2ai.xyz (every skill contributes)
-
-Every skill knows how to produce its slice of a single event JSON file at `10-msg2ai-export/event.json`. When you ask any skill to "export the event JSON" (or ask the General Chair to "ship to hello.msg2ai.xyz"), they merge their slices into one file you can upload to **hello.msg2ai.xyz** to spin up the live attendee experience — helpdesk, AI Ambassador concierge, attendee app, and post-event capture.
-
-| Skill | Slice it owns |
-|---|---|
-| General Chair | `event` (top-level metadata) + `status` (master file owner) |
-| Program & Content | `tracks`, `sessions`, `speakers` |
-| Sponsorship | `sponsor_tiers`, `sponsors` |
-| Marketing & Comms | `marketing` (brand, tagline, social, press kit) |
-| Venue & Logistics | `venue` (rooms, wayfinding, vendors, catering) |
-| Finance & Registration | `tickets`, `currency`, `registration_url`, `invoicing` |
-| Attendee Experience | `attendee_experience` (helpdesk, FAQs, journey, AI Ambassador config) |
-| Vibe Coder | `web` (primary domain, registration URL, agenda/speakers/sponsors/press URLs, repo, Vercel project) |
-
 ---
 
 ## The 8 Skills
@@ -595,7 +580,6 @@ conference-team-skills/
 Building AI infrastructure for events, hospitality, and B2B operations.
 
 - **[msg2ai.xyz](https://msg2ai.xyz)** — MSG2AI, the parent company
-- **[hello.msg2ai.xyz](https://hello.msg2ai.xyz)** — upload destination for the event JSON; spins up the live attendee experience
 - **[AI Ambassador](https://ai-ambassador.xyz)** — SMS/WhatsApp event concierge (no app download, 126 languages, 30-second responses) · [contact](mailto:hello@ai-ambassador.xyz)
 - **[ActionNotes](https://actionnotes.ai)** — AI-powered session capture and meeting notes · [actionnotes.ai](https://actionnotes.ai)
 - **Contact MSG2AI:** [bart@msg2ai.xyz](mailto:bart@msg2ai.xyz)
