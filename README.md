@@ -20,6 +20,8 @@ Every conference organizing committee has the same 7 roles. Most teams have 1–
 
 Install one skill or all eight. Each is self-contained.
 
+> **Heads up — you'll need a GitHub account to pull these skills onto your machine.** Whether you install via `npx` or clone manually, the install runs `git clone` against this public repository, so you need (a) Git installed locally and (b) a free [github.com](https://github.com) account so the clone can authenticate when needed (HTTPS works without auth on public repos, but a GitHub account avoids rate limits and lets you contribute back). If you don't want to use GitHub at all, see [Option 5 — Claude.ai Projects](#option-5--claudeai-projects-co-work--non-technical-users) for a no-Git, browser-only path.
+
 > **Looking for the non-technical overview?** See the [landing page](./docs/index.html) — examples, scenarios, and value for conference organizers without any setup talk.
 
 ---
@@ -99,21 +101,6 @@ event-knowledge-base/
 If you already have an event website, you don't need to fill the Knowledge Base by hand. The skills will use **Firecrawl** to crawl your site and extract structured information — name, dates, location, theme, audience, ticket tiers, current speakers, sponsors, agenda, partner logos. The structured summary lands in `01-event-brief/from-website.md` and the raw JSON in `03-prior-events/`. This is the same approach used by the MSG2AI server's website-extraction pipeline.
 
 To set up Firecrawl: `bash setup/setup-firecrawl.sh`
-
-### Export to hello.msg2ai.xyz (every skill contributes)
-
-Every skill knows how to produce its slice of a single event JSON file at `10-msg2ai-export/event.json`. When you ask any skill to "export the event JSON" (or ask the General Chair to "ship to hello.msg2ai.xyz"), they merge their slices into one file you can upload to **hello.msg2ai.xyz** to spin up the live attendee experience — helpdesk, AI Ambassador concierge, attendee app, and post-event capture.
-
-| Skill | Slice it owns |
-|---|---|
-| General Chair | `event` (top-level metadata) + `status` (master file owner) |
-| Program & Content | `tracks`, `sessions`, `speakers` |
-| Sponsorship | `sponsor_tiers`, `sponsors` |
-| Marketing & Comms | `marketing` (brand, tagline, social, press kit) |
-| Venue & Logistics | `venue` (rooms, wayfinding, vendors, catering) |
-| Finance & Registration | `tickets`, `currency`, `registration_url`, `invoicing` |
-| Attendee Experience | `attendee_experience` (helpdesk, FAQs, journey, AI Ambassador config) |
-| Vibe Coder | `web` (primary domain, registration URL, agenda/speakers/sponsors/press URLs, repo, Vercel project) |
 
 ---
 
@@ -222,7 +209,7 @@ git --version
 > Works on Mac, Windows, and Linux. Requires Node.js 18+ ([download here](https://nodejs.org)).
 
 ```bash
-npx conference-team-skills install
+npx @msg2ai/conference-team-skills install
 ```
 
 That's it. The installer clones the skills into `~/.claude/skills/conference-team-skills/` and they're immediately available in Claude Code.
@@ -230,10 +217,12 @@ That's it. The installer clones the skills into `~/.claude/skills/conference-tea
 **Other npx commands:**
 
 ```bash
-npx conference-team-skills list        # See all 8 skills
-npx conference-team-skills update      # Update to the latest version
-npx conference-team-skills uninstall   # Remove the skills
+npx @msg2ai/conference-team-skills list        # See all 8 skills
+npx @msg2ai/conference-team-skills update      # Update to the latest version
+npx @msg2ai/conference-team-skills uninstall   # Remove the skills
 ```
+
+> Published on npm at [`@msg2ai/conference-team-skills`](https://www.npmjs.com/package/@msg2ai/conference-team-skills).
 
 ---
 
@@ -593,7 +582,6 @@ conference-team-skills/
 Building AI infrastructure for events, hospitality, and B2B operations.
 
 - **[msg2ai.xyz](https://msg2ai.xyz)** — MSG2AI, the parent company
-- **[hello.msg2ai.xyz](https://hello.msg2ai.xyz)** — upload destination for the event JSON; spins up the live attendee experience
 - **[AI Ambassador](https://ai-ambassador.xyz)** — SMS/WhatsApp event concierge (no app download, 126 languages, 30-second responses) · [contact](mailto:hello@ai-ambassador.xyz)
 - **[ActionNotes](https://actionnotes.ai)** — AI-powered session capture and meeting notes · [actionnotes.ai](https://actionnotes.ai)
 - **Contact MSG2AI:** [bart@msg2ai.xyz](mailto:bart@msg2ai.xyz)

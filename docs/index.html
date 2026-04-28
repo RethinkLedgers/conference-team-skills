@@ -65,8 +65,29 @@
     font-size: 20px;
     letter-spacing: -0.02em;
     text-decoration: none;
+    display: inline-flex; align-items: center; gap: 10px;
   }
   .brand .dot { color: var(--accent); }
+  .brand-logo {
+    width: 30px; height: 30px;
+    border-radius: 7px;
+    display: block;
+    flex-shrink: 0;
+  }
+  .version-badge {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    color: var(--accent);
+    background: var(--accent-soft);
+    border: 1px solid rgba(201,74,42,.25);
+    padding: 2px 7px;
+    border-radius: 999px;
+    vertical-align: middle;
+    margin-left: 4px;
+  }
   .topnav { display: flex; gap: 28px; font-size: 14px; }
   .topnav a { text-decoration: none; color: var(--ink-soft); }
   .topnav a:hover { color: var(--accent); }
@@ -176,7 +197,15 @@
     transition: border-color .15s, transform .15s;
   }
   .role:hover { border-color: var(--accent); }
+  .role-character {
+    width: 80px; height: 80px;
+    flex-shrink: 0;
+    display: block;
+    filter: drop-shadow(0 4px 6px rgba(20,17,15,.10));
+  }
+  .role-character svg { width: 100%; height: 100%; display: block; overflow: visible; }
   .role-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+  .role-head-text { flex: 1; display: flex; gap: 16px; align-items: flex-start; }
   .role-num {
     font-family: 'Fraunces', serif; font-size: 14px; color: var(--ink-mute);
     letter-spacing: 0.04em;
@@ -422,6 +451,26 @@
   .start ol li { margin-bottom: 8px; font-size: 15px; line-height: 1.5; }
   .start .btn { margin-top: auto; align-self: flex-start; }
 
+  /* ---------------- Product plugs (used in the FAQ answer) ---------------- */
+  .product-plugs { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 18px; }
+  @media (max-width: 700px) { .product-plugs { grid-template-columns: 1fr; } }
+  .product-plug {
+    display: flex; flex-direction: column; gap: 10px;
+    padding: 22px; border-radius: 12px;
+    background: var(--bg-card); border: 1px solid var(--line);
+    text-decoration: none; color: var(--ink);
+    transition: border-color .15s, transform .15s;
+  }
+  .product-plug:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .product-logo-bar { display: flex; align-items: center; gap: 12px; padding: 6px 0; min-height: 50px; }
+  .product-logo { display: block; height: 40px; width: auto; max-width: 100%; }
+  .product-logo-square { height: 44px; width: 44px; border-radius: 8px; flex-shrink: 0; }
+  .product-logo-wide { height: 32px; }
+  .product-plug strong { font-family: 'Fraunces', serif; font-size: 19px; font-weight: 600; color: var(--ink); letter-spacing: -0.01em; }
+  .product-tag { display: block; font-size: 11px; color: var(--accent); letter-spacing: 0.06em; text-transform: uppercase; font-weight: 700; }
+  .product-plug p { font-size: 14px; color: var(--ink-soft); line-height: 1.5; margin: 0; }
+  .product-link { font-size: 13px; font-weight: 600; color: var(--accent); margin-top: auto; }
+
   /* ---------------- FAQ ---------------- */
   .faq { display: flex; flex-direction: column; gap: 0; max-width: 800px; }
   .faq details {
@@ -438,6 +487,125 @@
   .faq summary::after { content: "+"; font-size: 24px; color: var(--accent); transition: transform .2s; }
   .faq details[open] summary::after { content: "−"; }
   .faq .answer { color: var(--ink-soft); font-size: 16px; line-height: 1.65; padding-top: 16px; }
+
+  /* ---------------- Copy-paste / Paste section ---------------- */
+  .paste-section { background: var(--bg); }
+  .paste-tabs {
+    display: flex; gap: 6px; flex-wrap: wrap;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 32px;
+  }
+  .paste-tab {
+    background: transparent;
+    border: none; border-bottom: 2px solid transparent;
+    padding: 12px 18px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; font-weight: 500;
+    color: var(--ink-soft);
+    cursor: pointer;
+    transition: color .15s, border-color .15s;
+    margin-bottom: -1px;
+  }
+  .paste-tab:hover { color: var(--ink); }
+  .paste-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+  .paste-panel { display: none; }
+  .paste-panel.active { display: block; }
+  .paste-grid {
+    display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px;
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: 36px;
+  }
+  @media (max-width: 800px) { .paste-grid { grid-template-columns: 1fr; gap: 24px; padding: 24px; } }
+  .paste-grid h4 { font-family: 'Fraunces', serif; font-weight: 500; font-size: 22px; margin-bottom: 12px; line-height: 1.2; }
+  .paste-grid p { font-size: 15px; color: var(--ink-soft); margin-bottom: 14px; }
+  .paste-steps { padding-left: 22px; margin: 14px 0; }
+  .paste-steps li { margin-bottom: 8px; font-size: 15px; line-height: 1.55; }
+  .paste-tip {
+    margin-top: 16px;
+    padding: 12px 14px;
+    background: var(--bg-tinted);
+    border-radius: 8px;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+  }
+  .paste-tip strong { color: var(--ink); }
+  .paste-code {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 13px; line-height: 1.5;
+    background: var(--ink); color: var(--bg);
+    padding: 10px 14px; border-radius: 8px;
+    overflow-x: auto;
+    white-space: pre;
+    margin: 8px 0 14px;
+  }
+  .paste-code-block { padding: 16px 18px; }
+  .paste-grid p code, .paste-tip code, .paste-grid li code {
+    background: rgba(20,17,15,.06);
+    padding: 1px 6px; border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace; font-size: 0.88em;
+    color: var(--ink);
+  }
+  .paste-snippet {
+    background: var(--bg-tinted);
+    border-radius: var(--radius);
+    padding: 20px;
+  }
+  .paste-snippet-head {
+    font-size: 11.5px; font-weight: 600;
+    color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .paste-link-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+  .paste-link-list a { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--ink); text-decoration: none; padding: 6px 8px; border-radius: 6px; background: var(--bg-card); border: 1px solid var(--line); display: block; }
+  .paste-link-list a:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ---------------- Contact form ---------------- */
+  .contact-section { background: var(--bg-tinted); border: none; }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  @media (max-width: 800px) { .contact-grid { grid-template-columns: 1fr; gap: 32px; } }
+  .contact-intro .section-title { max-width: 18ch; }
+  .contact-form {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .contact-form label { display: flex; flex-direction: column; gap: 6px; }
+  .contact-form label > span {
+    font-family: 'Inter', sans-serif;
+    font-size: 12.5px; font-weight: 500;
+    color: var(--ink-soft); letter-spacing: 0.02em;
+  }
+  .contact-form input, .contact-form textarea {
+    font-family: 'Inter', sans-serif; font-size: 15px;
+    padding: 12px 14px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--bg);
+    color: var(--ink);
+    resize: vertical;
+    transition: border-color .15s, box-shadow .15s;
+  }
+  .contact-form input:focus, .contact-form textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+  }
+  .contact-form .form-hint {
+    font-size: 12.5px;
+    color: var(--ink-mute);
+    margin: 4px 0 0;
+  }
+  .contact-form button[type="submit"] {
+    align-self: flex-start;
+    cursor: pointer;
+    border: none;
+    font-family: 'Inter', sans-serif;
+    margin-top: 4px;
+  }
 
   /* ---------------- CTA strip ---------------- */
   .cta-strip {
@@ -466,7 +634,18 @@
   .footer-grid ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
   .footer-grid a { text-decoration: none; color: var(--ink-soft); }
   .footer-grid a:hover { color: var(--accent); }
-  .footer-bottom { display: flex; justify-content: space-between; padding-top: 24px; border-top: 1px solid var(--line); font-size: 13px; }
+  .footer-legal { padding-top: 20px; border-top: 1px solid var(--line); margin-top: 16px; }
+  .footer-legal .legal-note {
+    font-size: 12.5px;
+    color: var(--ink-mute);
+    line-height: 1.6;
+    margin-bottom: 10px;
+    max-width: 90ch;
+  }
+  .footer-legal .legal-note strong { color: var(--ink); font-weight: 600; }
+  .footer-legal .legal-note a { color: var(--ink-soft); }
+  .footer-bottom { display: flex; justify-content: space-between; padding-top: 16px; border-top: 1px solid var(--line); margin-top: 16px; font-size: 13px; }
+  .footer-bottom a { color: var(--ink-soft); }
   @media (max-width: 600px) { .footer-bottom { flex-direction: column; gap: 8px; } }
 </style>
 </head>
@@ -475,13 +654,13 @@
 <!-- ============================ Top bar ============================ -->
 <header class="topbar">
   <div class="topbar-inner">
-    <a href="#" class="brand">msg2ai<span class="dot">.</span></a>
+    <a href="https://msg2ai.xyz" class="brand" target="_blank" rel="noopener noreferrer"><img src="./logos/msg2ai.jpg" alt="MSG2AI" class="brand-logo" /><span>msg2ai<span class="dot">.</span></span></a>
     <nav class="topnav">
       <a href="#team">Your AI team</a>
-      <a href="#day">A day in the life</a>
-      <a href="#scenarios">Examples</a>
-      <a href="#mock">See a real run</a>
-      <a href="#start">Get started</a>
+      <a href="#mock">Mock conference</a>
+      <a href="#paste">Copy-paste</a>
+      <a href="#start">Install</a>
+      <a href="#contact">Contact</a>
     </nav>
   </div>
 </header>
@@ -489,18 +668,18 @@
 <!-- ============================ Hero ============================ -->
 <section class="hero" style="border-top: none; padding-top: 90px;">
   <div class="wrap">
-    <div class="eyebrow"><span class="pulse"></span> Free · 8 AI teammates · No code required</div>
-    <h1 class="display">Run a 7-person conference team <em>with the team you actually have</em> — and a vibe coder for the website.</h1>
-    <p class="lede">Most organizing committees have three people doing the work of seven. These AI teammates fill the gaps — one for the General Chair, one for Sponsorship, one for Program, and four more — each trained to think and produce like a senior specialist on day one.</p>
+    <div class="eyebrow"><span class="pulse"></span> Free · 8 AI teammates · No code required <span class="version-badge">v1.0</span></div>
+    <h1 class="display">8 Claude Skills <em>for your conference team.</em></h1>
+    <p class="lede">The whole back office your committee can't afford to hire — one AI teammate per role, free. Conference Chair, Program Director, Head of Sponsorship, CMO, Head of Operations, CFO, Chief Experience Officer, and a Vibe Coder for the website.</p>
     <div class="hero-ctas">
       <a class="btn btn-primary" href="#start">Get the team <span class="arrow">→</span></a>
       <a class="btn btn-ghost" href="#scenarios">See real examples</a>
     </div>
     <div class="hero-meta">
-      <div class="item"><strong>7</strong>AI teammates, one per role</div>
-      <div class="item"><strong>30 sec</strong>to write your first board update</div>
+      <div class="item"><strong>8</strong>AI teammates, one per role</div>
+      <div class="item"><strong>1 hour</strong>to score 60 speaker submissions for the Program Chair</div>
       <div class="item"><strong>$0</strong>free, MIT licensed</div>
-      <div class="item"><strong>0 lines</strong>of code to install</div>
+      <div class="item"><strong>1 command</strong>to install — or copy-paste in your browser</div>
     </div>
   </div>
 </section>
@@ -510,10 +689,10 @@
   <div class="wrap">
     <div class="row">
       <div>
-        <p class="display">Every conference has the same seven roles. Most teams have two or three people trying to cover all of them.</p>
+        <p class="display">Every conference has the same eight roles. Most teams have two or three people trying to cover all of them.</p>
       </div>
       <div class="stats">
-        <div class="stat"><strong>7</strong><span>roles on every committee</span></div>
+        <div class="stat"><strong>8</strong><span>roles on every committee</span></div>
         <div class="stat"><strong>3</strong><span>people typically doing the work</span></div>
         <div class="stat"><strong>40%</strong><span>of organizer time spent on admin</span></div>
         <div class="stat"><strong>~12 mo</strong><span>planning runway, often half that</span></div>
@@ -538,10 +717,13 @@
       <!-- 01 Conference Chair -->
       <article class="role">
         <div class="role-head">
-          <div>
-            <span class="role-num">01</span>
-            <h3 class="display">Conference Chair</h3>
-            <p class="role-sub"><strong>Sara</strong> · your AI Event Director.</p>
+          <div class="role-head-text">
+            <span class="role-character"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M10 100 Q10 78 28 74 L72 74 Q90 78 90 100 Z" fill="#1a2b4a"/><path d="M40 74 L50 84 L60 74 L60 92 L40 92 Z" fill="#fbf7f2"/><rect x="44" y="64" width="12" height="12" fill="#f5d0c0"/><path d="M18 50 Q18 18 50 18 Q82 18 82 50 L80 66 Q70 60 50 60 Q30 60 20 66 Z" fill="#2a1810"/><ellipse cx="50" cy="44" rx="23" ry="26" fill="#f5d0c0"/><path d="M28 36 Q40 22 50 24 Q60 22 72 36 Q60 32 50 34 Q40 32 28 36 Z" fill="#2a1810"/><circle cx="40" cy="48" r="6.5" fill="rgba(255,255,255,0.35)" stroke="#14110f" stroke-width="1.5"/><circle cx="60" cy="48" r="6.5" fill="rgba(255,255,255,0.35)" stroke="#14110f" stroke-width="1.5"/><line x1="46.5" y1="48" x2="53.5" y2="48" stroke="#14110f" stroke-width="1.5"/><circle cx="40" cy="48" r="1.6" fill="#14110f"/><circle cx="60" cy="48" r="1.6" fill="#14110f"/><circle cx="32" cy="56" r="2.5" fill="#e89880" opacity="0.6"/><circle cx="68" cy="56" r="2.5" fill="#e89880" opacity="0.6"/><path d="M42 60 Q50 66 58 60" stroke="#14110f" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span>
+            <div>
+              <span class="role-num">01</span>
+              <h3 class="display">Conference Chair</h3>
+              <p class="role-sub"><strong>Sara</strong> · your AI Event Director.</p>
+            </div>
           </div>
           <span class="role-tag">Strategic lead</span>
         </div>
@@ -558,10 +740,13 @@
       <!-- 02 Program Director -->
       <article class="role">
         <div class="role-head">
-          <div>
-            <span class="role-num">02</span>
-            <h3 class="display">Program Director</h3>
-            <p class="role-sub"><strong>Marco</strong> · your AI agenda architect.</p>
+          <div class="role-head-text">
+            <span class="role-character"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M12 100 Q12 80 28 76 L72 76 Q88 80 88 100 Z" fill="#6b3a1c"/><rect x="44" y="66" width="12" height="12" fill="#e8b89a"/><g fill="#3c1810"><circle cx="28" cy="36" r="9"/><circle cx="20" cy="46" r="7"/><circle cx="50" cy="20" r="11"/><circle cx="35" cy="24" r="9"/><circle cx="65" cy="24" r="9"/><circle cx="72" cy="36" r="9"/><circle cx="80" cy="46" r="7"/></g><ellipse cx="50" cy="46" rx="22" ry="24" fill="#e8b89a"/><circle cx="41" cy="46" r="1.8" fill="#14110f"/><circle cx="59" cy="46" r="1.8" fill="#14110f"/><circle cx="33" cy="54" r="2.5" fill="#c94a2a" opacity="0.4"/><circle cx="67" cy="54" r="2.5" fill="#c94a2a" opacity="0.4"/><ellipse cx="50" cy="60" rx="6" ry="4" fill="#14110f"/><line x1="76" y1="92" x2="68" y2="74" stroke="#14110f" stroke-width="2.4" stroke-linecap="round"/><ellipse cx="66" cy="70" rx="6" ry="7" fill="#14110f"/><ellipse cx="66" cy="70" rx="3.2" ry="4" fill="#888"/></svg></span>
+            <div>
+              <span class="role-num">02</span>
+              <h3 class="display">Program Director</h3>
+              <p class="role-sub"><strong>Marco</strong> · your AI agenda architect.</p>
+            </div>
           </div>
           <span class="role-tag">Content</span>
         </div>
@@ -578,10 +763,13 @@
       <!-- 03 Head of Sponsorship -->
       <article class="role">
         <div class="role-head">
-          <div>
-            <span class="role-num">03</span>
-            <h3 class="display">Head of Sponsorship</h3>
-            <p class="role-sub"><strong>James</strong> · your AI partnerships exec.</p>
+          <div class="role-head-text">
+            <span class="role-character"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M10 100 Q10 78 28 74 L72 74 Q90 78 90 100 Z" fill="#14110f"/><path d="M38 74 L50 84 L62 74 L62 100 L38 100 Z" fill="#fbf7f2"/><path d="M48 84 L52 84 L54 92 L50 100 L46 92 Z" fill="#c94a2a"/><rect x="44" y="64" width="12" height="12" fill="#c89478"/><path d="M22 42 Q22 18 50 18 Q78 18 78 42 Q70 28 60 26 Q56 32 50 32 Q44 30 38 28 Q28 32 22 42 Z" fill="#14110f"/><ellipse cx="50" cy="46" rx="22" ry="24" fill="#c89478"/><line x1="36" y1="40" x2="44" y2="40" stroke="#14110f" stroke-width="1.6" stroke-linecap="round"/><line x1="56" y1="40" x2="64" y2="40" stroke="#14110f" stroke-width="1.6" stroke-linecap="round"/><circle cx="40" cy="46" r="1.8" fill="#14110f"/><circle cx="60" cy="46" r="1.8" fill="#14110f"/><path d="M42 58 Q50 63 60 56" stroke="#14110f" stroke-width="2" fill="none" stroke-linecap="round"/><circle cx="34" cy="86" r="5.5" fill="#c9a14a"/><text x="34" y="90" font-family="Fraunces, serif" font-size="8" fill="#14110f" text-anchor="middle" font-weight="700">$</text></svg></span>
+            <div>
+              <span class="role-num">03</span>
+              <h3 class="display">Head of Sponsorship</h3>
+              <p class="role-sub"><strong>James</strong> · your AI partnerships exec.</p>
+            </div>
           </div>
           <span class="role-tag">Revenue</span>
         </div>
@@ -598,10 +786,13 @@
       <!-- 04 CMO / Marketing & Comms -->
       <article class="role">
         <div class="role-head">
-          <div>
-            <span class="role-num">04</span>
-            <h3 class="display">CMO</h3>
-            <p class="role-sub"><strong>Priya</strong> · your AI Marketing &amp; Comms lead.</p>
+          <div class="role-head-text">
+            <span class="role-character"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M14 100 Q14 80 30 76 L70 76 Q86 80 86 100 Z" fill="#fbf7f2"/><line x1="14" y1="84" x2="86" y2="84" stroke="#1a2b4a" stroke-width="2"/><line x1="14" y1="92" x2="86" y2="92" stroke="#1a2b4a" stroke-width="2"/><rect x="44" y="66" width="12" height="12" fill="#f5d0c0"/><path d="M22 48 Q22 22 50 22 Q78 22 78 48 L78 60 Q70 56 50 56 Q30 56 22 60 Z" fill="#c94a2a"/><ellipse cx="50" cy="48" rx="22" ry="24" fill="#f5d0c0"/><ellipse cx="42" cy="22" rx="22" ry="8" fill="#1a2b4a"/><circle cx="58" cy="17" r="3" fill="#1a2b4a"/><path d="M30 32 Q40 28 50 30 Q60 28 70 34 Q60 32 50 34 Q40 32 30 32 Z" fill="#c94a2a"/><path d="M37 47 Q40 45 43 47" stroke="#14110f" stroke-width="1.8" fill="none" stroke-linecap="round"/><circle cx="60" cy="48" r="1.8" fill="#14110f"/><circle cx="33" cy="56" r="3" fill="#e8595d" opacity="0.5"/><circle cx="67" cy="56" r="3" fill="#e8595d" opacity="0.5"/><path d="M42 60 Q50 67 58 60" stroke="#14110f" stroke-width="2" fill="none" stroke-linecap="round"/><g transform="translate(80 80)"><circle r="5" fill="#ffd166"/><circle cx="-4" cy="3" r="2" fill="#ffd166"/><circle cx="3" cy="5" r="1.5" fill="#06aed5"/></g></svg></span>
+            <div>
+              <span class="role-num">04</span>
+              <h3 class="display">CMO</h3>
+              <p class="role-sub"><strong>Priya</strong> · your AI Marketing &amp; Comms lead.</p>
+            </div>
           </div>
           <span class="role-tag">Audience</span>
         </div>
@@ -618,10 +809,13 @@
       <!-- 05 Head of Operations -->
       <article class="role">
         <div class="role-head">
-          <div>
-            <span class="role-num">05</span>
-            <h3 class="display">Head of Operations</h3>
-            <p class="role-sub"><strong>Tom</strong> · your AI Venue &amp; Logistics coordinator.</p>
+          <div class="role-head-text">
+            <span class="role-character"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M10 100 Q10 78 28 74 L72 74 Q90 78 90 100 Z" fill="#ffd166"/><line x1="22" y1="86" x2="78" y2="86" stroke="#fbf7f2" stroke-width="2"/><line x1="22" y1="92" x2="78" y2="92" stroke="#fbf7f2" stroke-width="2"/><rect x="44" y="66" width="12" height="12" fill="#c89478"/><ellipse cx="50" cy="48" rx="22" ry="24" fill="#c89478"/><path d="M22 38 Q22 16 50 16 Q78 16 78 38 L78 42 L22 42 Z" fill="#ffd166"/><line x1="22" y1="42" x2="78" y2="42" stroke="#c94a2a" stroke-width="2"/><line x1="50" y1="16" x2="50" y2="38" stroke="#e89880" stroke-width="1" opacity="0.6"/><circle cx="40" cy="50" r="1.8" fill="#14110f"/><circle cx="60" cy="50" r="1.8" fill="#14110f"/><line x1="35" y1="45" x2="44" y2="46" stroke="#14110f" stroke-width="1.6" stroke-linecap="round"/><line x1="56" y1="46" x2="65" y2="45" stroke="#14110f" stroke-width="1.6" stroke-linecap="round"/><path d="M42 60 Q50 65 58 60" stroke="#14110f" stroke-width="2" fill="none" stroke-linecap="round"/><rect x="76" y="80" width="10" height="14" rx="2" fill="#14110f"/><line x1="81" y1="76" x2="81" y2="80" stroke="#14110f" stroke-width="2" stroke-linecap="round"/><circle cx="81" cy="76" r="1.5" fill="#c94a2a"/></svg></span>
+            <div>
+              <span class="role-num">05</span>
+              <h3 class="display">Head of Operations</h3>
+              <p class="role-sub"><strong>Tom</strong> · your AI Venue &amp; Logistics coordinator.</p>
+            </div>
           </div>
           <span class="role-tag">On-site</span>
         </div>
@@ -638,10 +832,13 @@
       <!-- 06 CFO / Finance & Registration -->
       <article class="role">
         <div class="role-head">
-          <div>
-            <span class="role-num">06</span>
-            <h3 class="display">CFO</h3>
-            <p class="role-sub"><strong>Amelia</strong> · your AI Finance &amp; Registration chair.</p>
+          <div class="role-head-text">
+            <span class="role-character"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M12 100 Q12 80 28 76 L72 76 Q88 80 88 100 Z" fill="#2d6a4f"/><path d="M40 76 L50 82 L60 76" stroke="#fbf7f2" stroke-width="2" fill="none"/><rect x="44" y="66" width="12" height="12" fill="#e8b89a"/><path d="M20 46 Q20 16 50 16 Q80 16 80 46 L78 60 Q66 56 50 56 Q34 56 22 60 Z" fill="#c9a14a"/><ellipse cx="50" cy="46" rx="22" ry="24" fill="#e8b89a"/><path d="M30 32 Q40 26 50 28 Q60 26 70 34 Q60 30 50 32 Q40 30 30 32 Z" fill="#c9a14a"/><circle cx="40" cy="46" r="8" fill="rgba(255,255,255,0.4)" stroke="#14110f" stroke-width="1.6"/><circle cx="60" cy="46" r="8" fill="rgba(255,255,255,0.4)" stroke="#14110f" stroke-width="1.6"/><line x1="48" y1="46" x2="52" y2="46" stroke="#14110f" stroke-width="1.6"/><circle cx="40" cy="46" r="1.6" fill="#14110f"/><circle cx="60" cy="46" r="1.6" fill="#14110f"/><path d="M44 60 Q50 63 56 60" stroke="#14110f" stroke-width="2" fill="none" stroke-linecap="round"/><rect x="70" y="78" width="16" height="18" rx="2" fill="#14110f"/><rect x="72" y="80" width="12" height="3" fill="#84a59d"/><g fill="#fbf7f2"><rect x="73" y="86" width="2.5" height="2.5"/><rect x="77.5" y="86" width="2.5" height="2.5"/><rect x="82" y="86" width="2.5" height="2.5"/><rect x="73" y="91" width="2.5" height="2.5"/><rect x="77.5" y="91" width="2.5" height="2.5"/><rect x="82" y="91" width="2.5" height="2.5"/></g></svg></span>
+            <div>
+              <span class="role-num">06</span>
+              <h3 class="display">CFO</h3>
+              <p class="role-sub"><strong>Amelia</strong> · your AI Finance &amp; Registration chair.</p>
+            </div>
           </div>
           <span class="role-tag">Money</span>
         </div>
@@ -658,16 +855,19 @@
       <!-- 07 Chief Experience Officer -->
       <article class="role">
         <div class="role-head">
-          <div>
-            <span class="role-num">07</span>
-            <h3 class="display">Chief Experience Officer</h3>
-            <p class="role-sub"><strong>Lena</strong> · your AI attendee concierge — replaces the pesky conference app with text and WhatsApp, paired with AI Ambassador and ActionNotes.</p>
+          <div class="role-head-text">
+            <span class="role-character"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M10 100 Q10 78 28 74 L72 74 Q90 78 90 100 Z" fill="#c94a2a"/><rect x="44" y="66" width="12" height="12" fill="#f5d0c0"/><path d="M16 50 Q16 18 50 18 Q84 18 84 50 L88 100 L72 100 L72 60 Q60 60 50 60 Q40 60 28 60 L28 100 L12 100 Z" fill="#2a1810"/><ellipse cx="50" cy="46" rx="22" ry="24" fill="#f5d0c0"/><path d="M28 32 Q40 22 50 24 Q60 22 72 32 Q66 28 56 30 Q50 28 44 30 Q34 28 28 32 Z" fill="#2a1810"/><path d="M26 32 Q50 14 74 32" stroke="#14110f" stroke-width="2" fill="none"/><ellipse cx="22" cy="42" rx="5" ry="6" fill="#14110f"/><ellipse cx="78" cy="42" rx="5" ry="6" fill="#14110f"/><path d="M22 47 Q14 60 38 64" stroke="#14110f" stroke-width="1.8" fill="none"/><ellipse cx="38" cy="64" rx="2" ry="3" fill="#14110f"/><path d="M37 46 Q40 44 43 46" stroke="#14110f" stroke-width="1.8" fill="none" stroke-linecap="round"/><path d="M57 46 Q60 44 63 46" stroke="#14110f" stroke-width="1.8" fill="none" stroke-linecap="round"/><circle cx="33" cy="55" r="3" fill="#e89880" opacity="0.6"/><circle cx="67" cy="55" r="3" fill="#e89880" opacity="0.6"/><path d="M40 58 Q50 67 60 58" stroke="#14110f" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span>
+            <div>
+              <span class="role-num">07</span>
+              <h3 class="display">Chief Experience Officer</h3>
+              <p class="role-sub"><strong>Lena</strong> · your AI attendee concierge — replaces the pesky conference app with text and WhatsApp, paired with AI Ambassador and ActionNotes.</p>
+            </div>
           </div>
           <span class="role-tag">On-site</span>
         </div>
         <ul class="role-list">
           <li>End-to-end attendee journey, arrival to exit</li>
-          <li>Text / WhatsApp helpdesk — no app, 126 languages, 30-second responses</li>
+          <li>Integration with AI Ambassador for Events — replaces the pesky conference app with SMS, WhatsApp, and RCS (coming soon)</li>
           <li>Session reminders and networking matches</li>
           <li>Captures sessions and debriefs via ActionNotes</li>
           <li>Generates the post-event NPS report</li>
@@ -678,10 +878,13 @@
       <!-- 08 Head of Web / Vibe Coder -->
       <article class="role">
         <div class="role-head">
-          <div>
-            <span class="role-num">08</span>
-            <h3 class="display">Head of Web</h3>
-            <p class="role-sub"><strong>Noor</strong> · your AI vibe coder — ships landing pages, full event sites, and sponsor microsites to production fast.</p>
+          <div class="role-head-text">
+            <span class="role-character"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M8 100 Q8 78 26 74 L74 74 Q92 78 92 100 Z" fill="#1a2b4a"/><line x1="44" y1="78" x2="42" y2="92" stroke="#fbf7f2" stroke-width="1.6" stroke-linecap="round"/><line x1="56" y1="78" x2="58" y2="92" stroke="#fbf7f2" stroke-width="1.6" stroke-linecap="round"/><path d="M14 50 Q14 14 50 14 Q86 14 86 50 Q88 56 86 60 L74 60 Q74 40 50 40 Q26 40 26 60 L14 60 Q12 56 14 50 Z" fill="#1a2b4a"/><ellipse cx="50" cy="48" rx="22" ry="24" fill="#8a5a3c"/><path d="M32 36 Q40 32 50 34 Q60 32 68 36 Q60 34 50 36 Q40 34 32 36 Z" fill="#14110f"/><path d="M26 38 Q50 22 74 38" stroke="#14110f" stroke-width="2.5" fill="none"/><ellipse cx="24" cy="44" rx="5" ry="7" fill="#14110f"/><ellipse cx="76" cy="44" rx="5" ry="7" fill="#14110f"/><ellipse cx="24" cy="44" rx="2" ry="3" fill="#c94a2a"/><ellipse cx="76" cy="44" rx="2" ry="3" fill="#c94a2a"/><line x1="37" y1="50" x2="43" y2="50" stroke="#14110f" stroke-width="2" stroke-linecap="round"/><line x1="57" y1="50" x2="63" y2="50" stroke="#14110f" stroke-width="2" stroke-linecap="round"/><path d="M44 60 Q50 64 56 60" stroke="#14110f" stroke-width="2" fill="none" stroke-linecap="round"/><rect x="68" y="86" width="20" height="12" rx="1" fill="#14110f"/><rect x="70" y="88" width="16" height="8" fill="#84a59d"/><text x="78" y="94" font-family="ui-monospace, monospace" font-size="6" fill="#14110f" text-anchor="middle">{ }</text></svg></span>
+            <div>
+              <span class="role-num">08</span>
+              <h3 class="display">Head of Web</h3>
+              <p class="role-sub"><strong>Noor</strong> · your AI vibe coder — ships landing pages, full event sites, and sponsor microsites to production fast.</p>
+            </div>
           </div>
           <span class="role-tag">Web</span>
         </div>
@@ -872,7 +1075,7 @@
         <div class="section-eyebrow">See a real run · FutureStack 2026</div>
         <h2 class="section-title">Here's what 8 skills produced for one fictional event.</h2>
       </div>
-      <p class="section-lede" style="margin-bottom: 0;">A complete mock conference — 800 attendees, 2 days, Austin Convention Center — with every artifact each skill actually generated. Browse the full set in the repo: <a href="https://github.com/msg2ai/conference-team-skills/tree/main/mock"><code>mock/</code></a>.</p>
+      <p class="section-lede" style="margin-bottom: 0;">A complete mock conference — 800 attendees, 2 days, Austin Convention Center — with every artifact each skill actually generated. Browse the full set in the repo: <a href="./mock.html"><code>mock/</code></a>.</p>
     </div>
 
     <div class="mock-meta">
@@ -900,56 +1103,56 @@
 
     <div class="mock-grid">
 
-      <a class="mock-card" href="https://github.com/msg2ai/conference-team-skills/tree/main/mock/outputs/general-chair">
+      <a class="mock-card" href="./mock.html#general-chair">
         <span class="mock-num">01</span>
         <h4>Conference Chair · Sara Chen</h4>
         <p class="mock-tag">Critical-path timeline · Risk register · Board briefing</p>
         <span class="mock-link">See 3 outputs →</span>
       </a>
 
-      <a class="mock-card" href="https://github.com/msg2ai/conference-team-skills/tree/main/mock/outputs/program-content">
+      <a class="mock-card" href="./mock.html#program-content">
         <span class="mock-num">02</span>
         <h4>Program Director · Marco Rivera</h4>
         <p class="mock-tag">2-day agenda · Speaker outreach · Pipeline tracker</p>
         <span class="mock-link">See 3 outputs →</span>
       </a>
 
-      <a class="mock-card" href="https://github.com/msg2ai/conference-team-skills/tree/main/mock/outputs/sponsorship">
+      <a class="mock-card" href="./mock.html#sponsorship">
         <span class="mock-num">03</span>
         <h4>Head of Sponsorship · James Patel</h4>
         <p class="mock-tag">3-email outreach sequence · Activation tracker · ROI report</p>
         <span class="mock-link">See 3 outputs →</span>
       </a>
 
-      <a class="mock-card" href="https://github.com/msg2ai/conference-team-skills/tree/main/mock/outputs/marketing-comms">
+      <a class="mock-card" href="./mock.html#marketing-comms">
         <span class="mock-num">04</span>
         <h4>CMO · Priya Kim</h4>
         <p class="mock-tag">12-week campaign calendar · 4 email drafts · Press release</p>
         <span class="mock-link">See 3 outputs →</span>
       </a>
 
-      <a class="mock-card" href="https://github.com/msg2ai/conference-team-skills/tree/main/mock/outputs/venue-logistics">
+      <a class="mock-card" href="./mock.html#venue-logistics">
         <span class="mock-num">05</span>
         <h4>Head of Operations · Tom Thompson</h4>
         <p class="mock-tag">Floor plan · Vendor tracker · Minute-by-minute run-of-show</p>
         <span class="mock-link">See 3 outputs →</span>
       </a>
 
-      <a class="mock-card" href="https://github.com/msg2ai/conference-team-skills/tree/main/mock/outputs/finance-registration">
+      <a class="mock-card" href="./mock.html#finance-registration">
         <span class="mock-num">06</span>
         <h4>CFO · Amelia Okafor</h4>
         <p class="mock-tag">Full P&amp;L with scenarios · 4 ticket tiers · Sponsor invoice</p>
         <span class="mock-link">See 3 outputs →</span>
       </a>
 
-      <a class="mock-card" href="https://github.com/msg2ai/conference-team-skills/tree/main/mock/outputs/attendee-experience">
+      <a class="mock-card" href="./mock.html#attendee-experience">
         <span class="mock-num">07</span>
         <h4>Chief Experience Officer · Lena Nguyen</h4>
         <p class="mock-tag">20-question FAQ · AI Ambassador config · Post-event NPS</p>
         <span class="mock-link">See 3 outputs →</span>
       </a>
 
-      <a class="mock-card mock-card-featured" href="https://github.com/msg2ai/conference-team-skills/tree/main/mock/outputs/vibe-coder">
+      <a class="mock-card mock-card-featured" href="./mock.html#vibe-coder">
         <span class="mock-num">08</span>
         <h4>Head of Web · Noor Khan</h4>
         <p class="mock-tag">Next.js scaffold · Vercel deploy log · Merged event JSON</p>
@@ -959,10 +1162,10 @@
     </div>
 
     <div class="mock-foot">
-      <a class="btn btn-ghost" href="https://github.com/msg2ai/conference-team-skills/tree/main/mock">
+      <a class="btn btn-ghost" href="./mock.html">
         Browse the full mock conference <span class="arrow">→</span>
       </a>
-      <a class="btn btn-primary" href="https://github.com/msg2ai/conference-team-skills/blob/main/mock/conference.md">
+      <a class="btn btn-primary" href="./mock.html#brief">
         Read the event brief <span class="arrow">→</span>
       </a>
     </div>
@@ -1079,9 +1282,158 @@
           <li>Install via the recommended path</li>
           <li>Run the connector setup scripts — pick what your team uses</li>
           <li>Add your event website (Vercel) and an attendee helpdesk (AI Ambassador)</li>
-          <li>You're now running an event with a 7-person AI back office.</li>
+          <li>You're now running an event with an 8-person AI back office.</li>
         </ol>
         <a class="btn btn-ghost" href="https://github.com/msg2ai/conference-team-skills#connecting-integrations-optional-but-recommended">Connector guide <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ Copy-paste into your editor ============================ -->
+<section id="paste" class="paste-section">
+  <div class="wrap">
+    <div class="section-eyebrow">No install? No problem.</div>
+    <h2 class="section-title">Copy-paste a skill straight into your editor.</h2>
+    <p class="section-lede">Each <code>SKILL.md</code> in this repo is just markdown. You can drop it into Claude.ai, Claude Code, Codex, or Cursor as-is — they'll all treat it as a system prompt for that role. Pick the tool you already use:</p>
+
+    <div class="paste-tabs" role="tablist">
+      <button class="paste-tab active" data-target="paste-claudeai">Claude.ai (browser)</button>
+      <button class="paste-tab" data-target="paste-claudecode">Claude Code</button>
+      <button class="paste-tab" data-target="paste-codex">Codex CLI</button>
+      <button class="paste-tab" data-target="paste-cursor">Cursor</button>
+    </div>
+
+    <!-- Claude.ai -->
+    <div class="paste-panel active" id="paste-claudeai">
+      <div class="paste-grid">
+        <div>
+          <h4>Claude.ai · the easiest path (no install, no terminal)</h4>
+          <p>Best if you're not technical. Works on any computer with a browser. Each skill becomes its own Project so you can switch personas by switching Projects.</p>
+          <ol class="paste-steps">
+            <li>Sign in at <a href="https://claude.ai">claude.ai</a> (Pro, Team, or Enterprise — Free tier works for short tests).</li>
+            <li>Click <strong>Projects</strong> in the left sidebar → <strong>Create Project</strong>. Name it after the role, e.g. <em>"FutureStack — Sponsorship"</em>.</li>
+            <li>Open the SKILL.md file you want from this repo (e.g. <a href="https://raw.githubusercontent.com/msg2ai/conference-team-skills/main/sponsorship/SKILL.md">sponsorship/SKILL.md</a>) and copy <strong>everything</strong>.</li>
+            <li>In the Project, click <strong>Set instructions</strong> (or the pencil icon next to "Project instructions") and paste it in.</li>
+            <li>Save. Every new chat in that Project is now your AI Sponsorship Lead.</li>
+          </ol>
+          <p class="paste-tip"><strong>Tip:</strong> Make 8 Projects, one per skill, and switch between them as your committee role changes during the day.</p>
+        </div>
+        <div class="paste-snippet">
+          <div class="paste-snippet-head">Raw SKILL.md links (click to copy)</div>
+          <ul class="paste-link-list">
+            <li><a href="https://raw.githubusercontent.com/msg2ai/conference-team-skills/main/general-chair/SKILL.md">general-chair/SKILL.md</a></li>
+            <li><a href="https://raw.githubusercontent.com/msg2ai/conference-team-skills/main/program-content/SKILL.md">program-content/SKILL.md</a></li>
+            <li><a href="https://raw.githubusercontent.com/msg2ai/conference-team-skills/main/sponsorship/SKILL.md">sponsorship/SKILL.md</a></li>
+            <li><a href="https://raw.githubusercontent.com/msg2ai/conference-team-skills/main/marketing-comms/SKILL.md">marketing-comms/SKILL.md</a></li>
+            <li><a href="https://raw.githubusercontent.com/msg2ai/conference-team-skills/main/venue-logistics/SKILL.md">venue-logistics/SKILL.md</a></li>
+            <li><a href="https://raw.githubusercontent.com/msg2ai/conference-team-skills/main/finance-registration/SKILL.md">finance-registration/SKILL.md</a></li>
+            <li><a href="https://raw.githubusercontent.com/msg2ai/conference-team-skills/main/attendee-experience/SKILL.md">attendee-experience/SKILL.md</a></li>
+            <li><a href="https://raw.githubusercontent.com/msg2ai/conference-team-skills/main/vibe-coder/SKILL.md">vibe-coder/SKILL.md</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Claude Code -->
+    <div class="paste-panel" id="paste-claudecode">
+      <div class="paste-grid">
+        <div>
+          <h4>Claude Code · automatic detection, zero copy-paste</h4>
+          <p>If you have <a href="https://claude.com/claude-code">Claude Code</a> installed, the skills are auto-loaded the moment you put them in <code>~/.claude/skills/</code>. One command does the whole install.</p>
+          <ol class="paste-steps">
+            <li>Make sure you have <a href="https://nodejs.org">Node.js 18+</a> and Git installed.</li>
+            <li>Run the npx installer in your terminal:</li>
+          </ol>
+          <pre class="paste-code">npx conference-team-skills install</pre>
+          <ol class="paste-steps" start="3">
+            <li>Open Claude Code and start asking — Claude picks the right skill based on your prompt.</li>
+            <li>(Optional) Run the integration setup wizard to connect Drive, Gmail, Vercel, etc.:</li>
+          </ol>
+          <pre class="paste-code">npx conference-team-skills setup</pre>
+          <p class="paste-tip"><strong>Manual install</strong> (if you prefer): <code>git clone https://github.com/msg2ai/conference-team-skills.git ~/.claude/skills/conference-team-skills</code></p>
+        </div>
+        <div class="paste-snippet">
+          <div class="paste-snippet-head">npx commands</div>
+          <pre class="paste-code paste-code-block">npx conference-team-skills install
+npx conference-team-skills list
+npx conference-team-skills setup
+npx conference-team-skills update
+npx conference-team-skills mock
+npx conference-team-skills uninstall</pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- Codex CLI -->
+    <div class="paste-panel" id="paste-codex">
+      <div class="paste-grid">
+        <div>
+          <h4>OpenAI Codex CLI · paste as system prompt</h4>
+          <p>Codex respects <code>AGENTS.md</code> and a system instruction file. Drop the SKILL.md in either spot.</p>
+          <ol class="paste-steps">
+            <li>From your event project root, clone the repo (or just download the SKILL.md you need):</li>
+          </ol>
+          <pre class="paste-code">git clone https://github.com/msg2ai/conference-team-skills.git ~/conference-team-skills</pre>
+          <ol class="paste-steps" start="2">
+            <li>Symlink (or copy) the SKILL.md into your repo as <code>AGENTS.md</code> so Codex picks it up automatically:</li>
+          </ol>
+          <pre class="paste-code">cp ~/conference-team-skills/sponsorship/SKILL.md ./AGENTS.md</pre>
+          <ol class="paste-steps" start="3">
+            <li>Start Codex from that directory — the skill becomes the active instruction set:</li>
+          </ol>
+          <pre class="paste-code">codex
+# now ask: "Find 30 prospective sponsors for our fintech conference"</pre>
+          <p class="paste-tip"><strong>Switching roles:</strong> swap <code>AGENTS.md</code> with a different SKILL.md when you change roles, or keep one project per skill.</p>
+        </div>
+        <div class="paste-snippet">
+          <div class="paste-snippet-head">Quick swap</div>
+          <pre class="paste-code paste-code-block"># Conference Chair
+cp ~/conference-team-skills/general-chair/SKILL.md AGENTS.md
+
+# Program Director
+cp ~/conference-team-skills/program-content/SKILL.md AGENTS.md
+
+# CMO
+cp ~/conference-team-skills/marketing-comms/SKILL.md AGENTS.md
+
+# Vibe Coder (web)
+cp ~/conference-team-skills/vibe-coder/SKILL.md AGENTS.md</pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cursor -->
+    <div class="paste-panel" id="paste-cursor">
+      <div class="paste-grid">
+        <div>
+          <h4>Cursor · paste as a Project Rule</h4>
+          <p>Cursor's <em>Rules for AI</em> (or <code>.cursor/rules/*.mdc</code>) are exactly the right place for a SKILL.md. Drop one rule per skill and toggle which one is active.</p>
+          <ol class="paste-steps">
+            <li>In your event project, create the Cursor rules folder:</li>
+          </ol>
+          <pre class="paste-code">mkdir -p .cursor/rules</pre>
+          <ol class="paste-steps" start="2">
+            <li>Save each SKILL.md as a separate <code>.mdc</code> rule (one for the role you want active right now, more if you'll switch):</li>
+          </ol>
+          <pre class="paste-code">curl -L -o .cursor/rules/sponsorship.mdc \
+  https://raw.githubusercontent.com/msg2ai/conference-team-skills/main/sponsorship/SKILL.md</pre>
+          <ol class="paste-steps" start="3">
+            <li>Open Cursor → <strong>Settings → Cursor Settings → Rules</strong> and confirm the rule is active. (Or paste the SKILL.md directly into Cursor's <em>Rules for AI</em> textarea if you don't want a file.)</li>
+            <li>Open the chat panel and ask the role-specific question. Cursor will use the SKILL.md as system context.</li>
+          </ol>
+          <p class="paste-tip"><strong>Pro tip:</strong> Combine the <code>vibe-coder</code> SKILL.md with your normal coding rules — Cursor stacks rules, so you keep your engineering style and add the conference-web-builder persona on top.</p>
+        </div>
+        <div class="paste-snippet">
+          <div class="paste-snippet-head">All 8 rules at once</div>
+          <pre class="paste-code paste-code-block">mkdir -p .cursor/rules
+BASE=https://raw.githubusercontent.com/msg2ai/conference-team-skills/main
+for s in general-chair program-content sponsorship \
+         marketing-comms venue-logistics finance-registration \
+         attendee-experience vibe-coder; do
+  curl -sL "$BASE/$s/SKILL.md" -o ".cursor/rules/$s.mdc"
+done</pre>
+        </div>
       </div>
     </div>
   </div>
@@ -1121,8 +1473,64 @@
       </details>
       <details>
         <summary>What's the catch?</summary>
-        <div class="answer">There isn't one. We build AI tools for events and hospitality at <a href="https://msg2ai.xyz">msg2ai.xyz</a>, and we open-sourced the skills because we wanted every conference team — not just the ones who can hire — to have a real back office. If you end up using AI Ambassador for attendee concierge or ActionNotes for session capture on show day, that's a paid product and how we make money. Everything else is free.</div>
+        <div class="answer">
+          <p>There isn't one. We build AI tools for events at <a href="https://msg2ai.xyz">msg2ai.xyz</a>, and we open-sourced the skills because we wanted every conference team — not just the ones who can hire — to have a real back office. The skills, the mock conference, the website, the npm installer — all free, MIT licensed.</p>
+          <p style="margin-top: 14px;">The way <a href="https://msg2ai.xyz">MSG2AI</a> makes money is by selling two paid products that the skills know how to call into on show day:</p>
+
+          <div class="product-plugs">
+            <a class="product-plug" href="https://ai-ambassador.xyz">
+              <div class="product-logo-bar">
+                <img src="./logos/ai-ambassador.png" alt="AI Ambassador for Events" class="product-logo product-logo-wide" />
+              </div>
+              <span class="product-tag">SMS · WhatsApp · RCS coming soon</span>
+              <p>Replaces the pesky conference app. Answers every attendee question by text in 126 languages, sends session reminders, runs networking matches, and ships the post-event NPS — all in 30-second responses, no download required.</p>
+              <span class="product-link">ai-ambassador.xyz →</span>
+            </a>
+
+            <a class="product-plug" href="https://actionnotes.ai">
+              <div class="product-logo-bar">
+                <img src="./logos/actionnotes.png" alt="ActionNotes" class="product-logo product-logo-square" />
+                <strong>ActionNotes</strong>
+              </div>
+              <span class="product-tag">AI session &amp; meeting capture</span>
+              <p>Turns every session, panel, and committee debrief into structured notes, clear decisions, and assigned action items — automatically. The post-event report basically writes itself, and next year's organizer thanks you.</p>
+              <span class="product-link">actionnotes.ai →</span>
+            </a>
+          </div>
+
+          <p style="margin-top: 14px; font-size: 14px; color: var(--ink-mute);">Both are optional — the eight skills work fine without them. They're just where the skills hand off when the event itself starts running.</p>
+        </div>
       </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ Contact form ============================ -->
+<section id="contact" class="contact-section">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="contact-intro">
+        <div class="section-eyebrow">Get in touch</div>
+        <h2 class="section-title">Question? Custom event? Want to chat?</h2>
+        <p class="section-lede">Tell us a bit about your conference and we'll write back. The form opens your default email client and pre-fills a message to <strong>info@msg2ai.xyz</strong> — nothing leaves your computer until you hit send.</p>
+        <p style="color: var(--ink-mute); font-size: 13.5px; margin-top: 16px;">Prefer to email directly? <a href="mailto:info@msg2ai.xyz">info@msg2ai.xyz</a></p>
+      </div>
+      <form id="contact-form" class="contact-form" novalidate>
+        <label>
+          <span>Your email</span>
+          <input type="email" name="from" required placeholder="you@yourconference.com" />
+        </label>
+        <label>
+          <span>Event name (optional)</span>
+          <input type="text" name="event" placeholder="FutureStack 2026" />
+        </label>
+        <label>
+          <span>What are you hoping to do?</span>
+          <textarea name="message" required rows="5" placeholder="A quick paragraph about your event, your committee, or what you'd like help with."></textarea>
+        </label>
+        <p class="form-hint">Hitting Send will open your email client with this message pre-filled to <strong>info@msg2ai.xyz</strong>.</p>
+        <button type="submit" class="btn btn-primary">Send to info@msg2ai.xyz <span class="arrow">→</span></button>
+      </form>
     </div>
   </div>
 </section>
@@ -1181,12 +1589,62 @@
         </ul>
       </div>
     </div>
+    <div class="footer-legal">
+      <p class="legal-note">
+        <strong>License.</strong> The Conference Team Skills are released under the <a href="https://github.com/msg2ai/conference-team-skills/blob/main/LICENSE">MIT license</a> — free to use, modify, and redistribute, including for commercial events. Attribution appreciated, not required.
+      </p>
+      <p class="legal-note">
+        <strong>No warranty.</strong> The skills are provided "as is", without warranty of any kind. MSG2AI is not responsible for outputs produced by Claude or for actions taken based on them. Always review AI-generated work before sending it, signing it, or publishing it.
+      </p>
+      <p class="legal-note">
+        <strong>Privacy.</strong> This landing page is static — we don't run analytics, cookies, or any server-side tracking. The contact form opens your local email client; nothing is sent anywhere until you press Send. Anything you do inside Claude is governed by Anthropic's privacy and terms — see <a href="https://www.anthropic.com/legal/privacy">Anthropic Privacy</a> and <a href="https://www.anthropic.com/legal/consumer-terms">Anthropic Terms</a>.
+      </p>
+    </div>
+
     <div class="footer-bottom">
-      <div>© 2026 MSG2AI. MIT licensed.</div>
+      <div>© 2026 MSG2AI · <a href="./privacy.html">Privacy</a> · <a href="./terms.html">Terms</a> · <a href="https://github.com/msg2ai/conference-team-skills/blob/main/LICENSE">MIT License</a> · v1.0</div>
       <div>For organizers, by organizers.</div>
     </div>
   </div>
 </footer>
+
+<script>
+  // Paste-section tabs (Claude.ai / Claude Code / Codex / Cursor)
+  document.querySelectorAll('.paste-tab').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.paste-tab').forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      var target = btn.dataset.target;
+      document.querySelectorAll('.paste-panel').forEach(function(p) {
+        p.classList.toggle('active', p.id === target);
+      });
+    });
+  });
+</script>
+<script>
+  // Contact form: opens user's email client with a pre-filled message to info@msg2ai.xyz.
+  // No server, no tracking — what you type stays on your machine until you hit Send.
+  document.getElementById('contact-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var f = e.target;
+    var fromEmail = (f.from.value || '').trim();
+    var eventName = (f.event && f.event.value || '').trim();
+    var msg = (f.message.value || '').trim();
+    if (!fromEmail || !msg) {
+      alert('Please add your email and a short message.');
+      return;
+    }
+    var subject = 'Conference Team Skills inquiry' + (eventName ? ' — ' + eventName : '');
+    var body =
+      msg +
+      '\n\n— ' +
+      '\nFrom: ' + fromEmail +
+      (eventName ? '\nEvent: ' + eventName : '') +
+      '\nSent from the Conference Team Skills landing page.';
+    var url = 'mailto:info@msg2ai.xyz?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    window.location.href = url;
+  });
+</script>
 
 </body>
 </html>
