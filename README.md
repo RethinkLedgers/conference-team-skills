@@ -4,6 +4,14 @@
 
 Built by [MSG2AI](https://msg2ai.xyz) · AI Ambassador for attendees · ActionNotes for sessions
 
+<p align="center">
+  <a href="./docs/campaign-visual.html">
+    <img src="./docs/campaign-visual.png" alt="The 8 Claude Skills for conference teams: Conference Chair, Program Director, Head of Sponsorship, CMO, Head of Operations, CFO, Chief Experience Officer, and Head of Web — each shown as a cartoon character with a real persona. Reply SKILLS to get them, free." width="720" />
+  </a>
+  <br/>
+  <em>The 8 AI teammates · <a href="./docs/campaign-visual.html">view the animated visual</a> · <a href="./docs/index.html">non-technical landing page</a></em>
+</p>
+
 ---
 
 ## What this is
