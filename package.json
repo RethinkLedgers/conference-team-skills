@@ -38,6 +38,9 @@
     "vibe-coder/",
     ".claude-plugin/",
     "setup/",
+    "mock/",
+    "docs/",
+    "CLAUDE.md",
     "LICENSE",
     "README.md"
   ]
