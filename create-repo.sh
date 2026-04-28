@@ -2,7 +2,7 @@
 # ============================================================
 # create-conference-skills-repo.sh
 # Run this from your terminal to create the GitHub repo
-# and push all 7 conference team skills.
+# and push all 8 conference team skills.
 #
 # Prerequisites:
 #   - GitHub CLI installed: https://cli.github.com
@@ -13,13 +13,13 @@
 set -e
 
 REPO_NAME="conference-team-skills"
-ORG="rethinkledgers"
-DESCRIPTION="7 free Claude skills — one for every seat on your conference org chart. Built by MSG2AI."
+ORG="msg2ai"
+DESCRIPTION="8 free Claude skills — one for every seat on your conference org chart, plus a Vibe Coder for the website. Built by MSG2AI."
 SKILLS_DIR="$(dirname "$0")"
 
 echo "🚀 Creating GitHub repo: $ORG/$REPO_NAME"
 
-# Create the repo under rethinkledgers org
+# Create the repo under msg2ai org
 gh repo create "$ORG/$REPO_NAME" \
   --public \
   --description "$DESCRIPTION" \
@@ -38,15 +38,19 @@ fi
 
 # Stage everything
 git add .
-git commit -m "Initial commit: 7 conference team Claude skills
+git commit -m "Initial commit: 8 conference team Claude skills
 
-- General Chair (Timeline, Committee, Risk, Briefings)
-- Program & Content Chair (Agenda, CFP, Speaker, Peer Review, Run-of-Show)
-- Sponsorship Lead (Prospects, Deck, Outreach, Contracts, Activation)
-- Marketing & Communications (Campaign, Copy, Personas, PR, Recap)
-- Venue & Logistics (RFPs, F&B, Floor Plan, Vendors, Run-of-Show)
-- Finance & Registration (Budget, Registration, Invoicing, Expenses, Compliance)
-- Attendee Experience (AI Ambassador + ActionNotes powered)
+- General Chair / Conference Chair (Timeline, Committee, Risk, Briefings)
+- Program Director (Agenda, CFP, Speaker, Peer Review, Run-of-Show)
+- Head of Sponsorship (Prospects, Deck, Outreach, Contracts, Activation)
+- CMO / Marketing & Comms (Campaign, Copy, Personas, PR, Recap)
+- Head of Operations / Venue & Logistics (RFPs, F&B, Floor Plan, Vendors, ROS)
+- CFO / Finance & Registration (Budget, Registration, Invoicing, Expenses)
+- Chief Experience Officer / Attendee Experience (AI Ambassador + ActionNotes)
+- Head of Web / Vibe Coder (Next.js + Vercel + GitHub web shipping)
+
+Each skill reads from a shared Knowledge Base (Drive / Dropbox / Notion),
+bootstraps via Firecrawl, and exports a slice of event.json for upload to hello.msg2ai.xyz.
 
 Built by MSG2AI — https://msg2ai.xyz"
 

@@ -12,16 +12,17 @@ echo ""
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 SCRIPTS=(
+  "setup-firecrawl.sh"
+  "setup-google-drive.sh"
   "setup-agentmail.sh"
   "setup-gmail.sh"
   "setup-google-calendar.sh"
-  "setup-google-drive.sh"
   "setup-zoom.sh"
   "setup-canva.sh"
   "setup-vercel.sh"
-  "setup-github-issues.sh"
   "setup-twenty-crm.sh"
   "setup-clickup.sh"
+  "setup-asana.sh"
   "setup-obsidian.sh"
 )
 

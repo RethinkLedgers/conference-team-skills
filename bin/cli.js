@@ -5,7 +5,7 @@ const path = require("path");
 const { execSync } = require("child_process");
 
 const REPO_URL =
-  "https://github.com/RethinkLedgers/conference-team-skills.git";
+  "https://github.com/msg2ai/conference-team-skills.git";
 const SKILL_FOLDERS = [
   "general-chair",
   "program-content",
@@ -14,6 +14,7 @@ const SKILL_FOLDERS = [
   "venue-logistics",
   "finance-registration",
   "attendee-experience",
+  "vibe-coder",
 ];
 
 // Determine the Claude skills directory based on platform
@@ -34,7 +35,7 @@ function getSkillsDir() {
 function printBanner() {
   console.log("");
   console.log("  Conference Team Skills for Claude");
-  console.log("  7 skills — one for every seat on your conference org chart");
+  console.log("  8 skills — one for every seat on your org chart, plus a Vibe Coder for the website");
   console.log("  Built by MSG2AI — https://msg2ai.xyz");
   console.log("");
 }
@@ -96,7 +97,7 @@ function install() {
   }
 
   console.log("");
-  console.log("Done! 7 conference team skills are now installed:");
+  console.log("Done! 8 conference team skills are now installed:");
   console.log("");
   for (const skill of SKILL_FOLDERS) {
     console.log("  - " + skill);
@@ -162,6 +163,7 @@ function list() {
   console.log("  venue-logistics        Venue & Logistics Coordinator");
   console.log("  finance-registration   Finance & Registration Chair");
   console.log("  attendee-experience    Attendee Experience Lead");
+  console.log("  vibe-coder             Vibe Coder (Next.js / Vercel / GitHub web builder)");
   console.log("");
 
   const skillsDir = getSkillsDir();

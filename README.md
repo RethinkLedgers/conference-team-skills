@@ -1,20 +1,123 @@
 # Conference Team Skills for Claude
 
-**7 free Claude skills — one for every seat on your conference org chart.**
+**8 free Claude skills — one for every seat on your conference org chart, plus a vibe coder to ship the website.**
 
-Built by [MSG2AI](https://msg2ai.xyz) · Powered by Claude · AI Ambassador for attendees · ActionNotes for sessions
+Built by [MSG2AI](https://msg2ai.xyz) · AI Ambassador for attendees · ActionNotes for sessions
+
+<p align="center">
+  <a href="./docs/campaign-visual.html">
+    <img src="./docs/campaign-visual.png" alt="The 8 Claude Skills for conference teams: Conference Chair, Program Director, Head of Sponsorship, CMO, Head of Operations, CFO, Chief Experience Officer, and Head of Web — each shown as a cartoon character with a real persona. Reply SKILLS to get them, free." width="720" />
+  </a>
+  <br/>
+  <em>The 8 AI teammates · <a href="./docs/campaign-visual.html">view the animated visual</a> · <a href="./docs/index.html">non-technical landing page</a></em>
+</p>
 
 ---
 
 ## What this is
 
-Every conference organizing committee has the same 7 roles. Most teams have 1–3 people trying to cover all of them. These Claude skills give each role its own AI counterpart — trained on what that role actually does, wired into the connectors you already use (Gmail, Google Calendar, Google Drive, Zoho CRM).
+Every conference organizing committee has the same 7 roles. Most teams have 1–3 people trying to cover all of them. These Claude skills give each role its own AI counterpart — trained on what that role actually does, wired into the connectors you already use (Gmail, Google Calendar, Google Drive, Zoho CRM). Plus an 8th skill — a **Vibe Coder** — that ships the event website to production with Next.js, Vercel, and GitHub.
 
-Install one skill or all seven. Each is self-contained.
+Install one skill or all eight. Each is self-contained.
+
+> **Looking for the non-technical overview?** See the [landing page](./docs/index.html) — examples, scenarios, and value for conference organizers without any setup talk.
 
 ---
 
-## The 7 Skills
+## New to Claude? Start here
+
+### What is Claude?
+
+Claude is an AI assistant made by Anthropic. You talk to it the way you'd brief a colleague — in plain English, with as much or as little context as you want — and it writes, plans, researches, and produces finished work back. There are two ways to use Claude with this repo:
+
+- **Claude.ai** — the browser app at [claude.ai](https://claude.ai). Sign in, open a project, paste a skill, start chatting. No installation.
+- **Claude Code** — Claude on your computer (terminal, desktop app, or IDE extension). Same conversation, but Claude can also read your files, send emails, update calendars, and use tools you connect.
+
+Either works for these skills. Claude.ai is the fastest way to try one. Claude Code is more powerful once you have recurring workflows and want Claude to act on real systems.
+
+### What are Claude Skills?
+
+A Claude skill is a prepared brief that turns Claude into a specialist for a specific job. Instead of re-explaining "I'm running a 1,000-person event, here's how I think about sponsorship" every time you start a chat, you load the **Sponsorship Lead** skill once and Claude already knows what to ask, what good output looks like, and which tools to use.
+
+Skills don't change Claude itself — they give Claude the context a strong onboarding doc would give a new hire on their first week.
+
+A skill is just a markdown file with two parts:
+1. **A description** with trigger phrases — Claude uses this to decide when to activate the skill.
+2. **The brief itself** — the role, capabilities, working style, and tools.
+
+That's it. No code, no build. Open any `SKILL.md` file in this repo and you can read exactly what Claude is being told.
+
+### How these skills can be used
+
+Each skill listens for the questions and requests that role would actually receive. You don't need to call them by name — just ask the question and the right skill activates.
+
+**Example prompts that "just work" once installed:**
+
+| When you say… | The skill that activates | What you get back |
+|---|---|---|
+| "Build a 9-month timeline for a 500-person summit on Sept 15" | General Chair | A milestone critical path with owners, deadlines, dependencies |
+| "Find 30 prospective sponsors for our fintech conference" | Sponsorship | A scored prospect list with fit, contact, and outreach angle |
+| "Write a Call for Speakers for the AI track" | Program & Content | Publish-ready CFP copy, submission categories, review rubric |
+| "Build the 12-week pre-event email campaign" | Marketing & Comms | A week-by-week calendar with subject lines, copy, segments |
+| "Compare these 3 venue proposals" | Venue & Logistics | A scored comparison table with risks and a recommendation |
+| "What's our break-even at $895 ticket price?" | Finance & Registration | A break-even model with attendance scenarios and sensitivity |
+| "Design the on-site attendee experience" | Attendee Experience | An end-to-end attendee journey, with AI Ambassador for live help |
+| "Spin up the event landing page and ship it to Vercel today" | Vibe Coder | A live preview URL, GitHub repo, and a polished Next.js site pulling from your KB |
+
+**Skills also work together.** When you ask the General Chair for a board update, it pulls the sponsor pipeline from Sponsorship, budget from Finance, and speaker confirms from Program — you don't coordinate, they share context.
+
+---
+
+## First step for every skill: a shared Knowledge Base
+
+Every skill is designed to read from — and write to — one **shared Knowledge Base** for your event. This is the very first thing to set up. It can live anywhere your team already keeps documents:
+
+- **Google Drive** folder (most common)
+- **Dropbox** folder
+- **OneDrive / SharePoint / Box** folder
+- **Notion** workspace
+- Local folder synced to any of the above
+
+The skills expect this canonical structure (the General Chair skill will create it for you if you don't have one):
+
+```
+event-knowledge-base/
+├── 01-event-brief/        ← theme, dates, audience, scale, goals
+├── 02-brand-and-voice/    ← logos, colors, tone, past decks
+├── 03-prior-events/       ← past agendas, sponsor lists, NPS reports
+├── 04-sponsors/           ← pipeline, contracts, deliverables
+├── 05-speakers/           ← bios, headshots, slides, briefings
+├── 06-venue-logistics/    ← venue contracts, vendors, run-of-show
+├── 07-finance-registration/  ← budget, invoices, registration data
+├── 08-attendees/          ← segments, registration exports, feedback
+├── 09-meeting-notes/      ← committee notes, decisions, action items
+└── 10-msg2ai-export/      ← generated JSON for hello.msg2ai.xyz
+```
+
+### Bootstrap from an existing website (Firecrawl)
+
+If you already have an event website, you don't need to fill the Knowledge Base by hand. The skills will use **Firecrawl** to crawl your site and extract structured information — name, dates, location, theme, audience, ticket tiers, current speakers, sponsors, agenda, partner logos. The structured summary lands in `01-event-brief/from-website.md` and the raw JSON in `03-prior-events/`. This is the same approach used by the MSG2AI server's website-extraction pipeline.
+
+To set up Firecrawl: `bash setup/setup-firecrawl.sh`
+
+### Export to hello.msg2ai.xyz (every skill contributes)
+
+Every skill knows how to produce its slice of a single event JSON file at `10-msg2ai-export/event.json`. When you ask any skill to "export the event JSON" (or ask the General Chair to "ship to hello.msg2ai.xyz"), they merge their slices into one file you can upload to **hello.msg2ai.xyz** to spin up the live attendee experience — helpdesk, AI Ambassador concierge, attendee app, and post-event capture.
+
+| Skill | Slice it owns |
+|---|---|
+| General Chair | `event` (top-level metadata) + `status` (master file owner) |
+| Program & Content | `tracks`, `sessions`, `speakers` |
+| Sponsorship | `sponsor_tiers`, `sponsors` |
+| Marketing & Comms | `marketing` (brand, tagline, social, press kit) |
+| Venue & Logistics | `venue` (rooms, wayfinding, vendors, catering) |
+| Finance & Registration | `tickets`, `currency`, `registration_url`, `invoicing` |
+| Attendee Experience | `attendee_experience` (helpdesk, FAQs, journey, AI Ambassador config) |
+| Vibe Coder | `web` (primary domain, registration URL, agenda/speakers/sponsors/press URLs, repo, Vercel project) |
+
+---
+
+## The 8 Skills
 
 | Skill | Role | Key Capabilities |
 |---|---|---|
@@ -25,6 +128,7 @@ Install one skill or all seven. Each is self-contained.
 | [`venue-logistics`](./venue-logistics/) | Venue & Logistics Coordinator | Venue RFPs, F&B, floor plans, vendor management, run-of-show |
 | [`finance-registration`](./finance-registration/) | Finance & Registration Chair | Budget modeling, registration tiers, sponsor invoicing, expense tracking |
 | [`attendee-experience`](./attendee-experience/) | Attendee Experience Lead | On-site helpdesk, networking, session reminders, NPS — powered by AI Ambassador + ActionNotes |
+| [`vibe-coder`](./vibe-coder/) | Vibe Coder / Web Builder | Landing pages, full event sites, sponsor microsites, registration pages — ships to Vercel via Next.js + GitHub |
 
 ---
 
@@ -126,7 +230,7 @@ That's it. The installer clones the skills into `~/.claude/skills/conference-tea
 **Other npx commands:**
 
 ```bash
-npx conference-team-skills list        # See all 7 skills
+npx conference-team-skills list        # See all 8 skills
 npx conference-team-skills update      # Update to the latest version
 npx conference-team-skills uninstall   # Remove the skills
 ```
@@ -146,7 +250,7 @@ claude --plugin-dir /path/to/conference-team-skills
 Or clone the repo first, then load it:
 
 ```bash
-git clone https://github.com/RethinkLedgers/conference-team-skills.git
+git clone https://github.com/msg2ai/conference-team-skills.git
 claude --plugin-dir ./conference-team-skills
 ```
 
@@ -158,7 +262,7 @@ Once loaded, skills are available as namespaced commands:
 /conference-team-skills:marketing-comms
 ```
 
-(and so on for all 7 skills)
+(and so on for all 8 skills)
 
 ---
 
@@ -180,7 +284,7 @@ npm install -g @anthropic-ai/claude-code
 <summary><strong>Mac / Linux</strong></summary>
 
 ```bash
-git clone https://github.com/RethinkLedgers/conference-team-skills.git ~/.claude/skills/conference-team-skills
+git clone https://github.com/msg2ai/conference-team-skills.git ~/.claude/skills/conference-team-skills
 ```
 
 </details>
@@ -189,7 +293,7 @@ git clone https://github.com/RethinkLedgers/conference-team-skills.git ~/.claude
 <summary><strong>Windows (PowerShell)</strong></summary>
 
 ```powershell
-git clone https://github.com/RethinkLedgers/conference-team-skills.git "$env:USERPROFILE\.claude\skills\conference-team-skills"
+git clone https://github.com/msg2ai/conference-team-skills.git "$env:USERPROFILE\.claude\skills\conference-team-skills"
 ```
 
 </details>
@@ -198,7 +302,7 @@ git clone https://github.com/RethinkLedgers/conference-team-skills.git "$env:USE
 <summary><strong>Windows (Git Bash)</strong></summary>
 
 ```bash
-git clone https://github.com/RethinkLedgers/conference-team-skills.git ~/.claude/skills/conference-team-skills
+git clone https://github.com/msg2ai/conference-team-skills.git ~/.claude/skills/conference-team-skills
 ```
 
 </details>
@@ -237,7 +341,7 @@ Claude Code will automatically pick up the `general-chair` skill. You can also i
 <summary><strong>Mac / Linux</strong></summary>
 
 ```bash
-git clone https://github.com/RethinkLedgers/conference-team-skills.git ~/.claude/skills/conference-team-skills
+git clone https://github.com/msg2ai/conference-team-skills.git ~/.claude/skills/conference-team-skills
 ```
 
 </details>
@@ -246,7 +350,7 @@ git clone https://github.com/RethinkLedgers/conference-team-skills.git ~/.claude
 <summary><strong>Windows (PowerShell)</strong></summary>
 
 ```powershell
-git clone https://github.com/RethinkLedgers/conference-team-skills.git "$env:USERPROFILE\.claude\skills\conference-team-skills"
+git clone https://github.com/msg2ai/conference-team-skills.git "$env:USERPROFILE\.claude\skills\conference-team-skills"
 ```
 
 </details>
@@ -283,7 +387,7 @@ Every new conversation in that project will now use that skill. Create separate 
 
 ### Option 6 — Download as ZIP (no Git required)
 
-1. Go to [github.com/RethinkLedgers/conference-team-skills](https://github.com/RethinkLedgers/conference-team-skills)
+1. Go to [github.com/msg2ai/conference-team-skills](https://github.com/msg2ai/conference-team-skills)
 2. Click the green **Code** button
 3. Click **Download ZIP**
 4. Extract the ZIP file
@@ -314,6 +418,9 @@ bash setup/setup-all.sh
 
 | Integration | Setup script | What it enables | Used by |
 |---|---|---|---|
+| **Shared Knowledge Base** | (Google Drive / Dropbox / OneDrive / Notion) | Single source of truth — every skill reads & writes here. **Set up first.** | All skills |
+| **Firecrawl** | `setup-firecrawl.sh` | Bootstrap the Knowledge Base from an existing event website; competitor & venue research | All skills |
+| **hello.msg2ai.xyz** | (no setup) | Upload destination for the exported event JSON; powers helpdesk, AI Ambassador, attendee app | All skills |
 | AgentMail | `setup-agentmail.sh` | AI-native email inboxes for outreach, invoicing, notifications | All skills |
 | Gmail | `setup-gmail.sh` | Send outreach, confirmations, invoices | All skills |
 | Google Calendar | `setup-google-calendar.sh` | Event milestones, schedule calls | General Chair, Program, Venue, Finance |
@@ -323,7 +430,6 @@ bash setup/setup-all.sh
 | Twenty CRM | `setup-twenty-crm.sh` | Contact/pipeline management, sponsor tracking | Sponsorship, Finance, Program, Venue, Attendee |
 | ClickUp | `setup-clickup.sh` | Project/task management, boards, checklists | All skills |
 | Asana | `setup-asana.sh` | Project/task management (alternative to ClickUp) | All skills |
-| GitHub Issues | `setup-github-issues.sh` | Lightweight issue tracking with labels | All skills |
 | Vercel | `setup-vercel.sh` | Event website deployment and management | Marketing |
 | Obsidian | `setup-obsidian.sh` | Knowledge base, notes, institutional memory | All skills |
 
@@ -359,7 +465,7 @@ git pull
 <details>
 <summary><strong>If you downloaded the ZIP (Option 6)</strong></summary>
 
-Download the ZIP again from [the repository](https://github.com/RethinkLedgers/conference-team-skills) and replace the old folder.
+Download the ZIP again from [the repository](https://github.com/msg2ai/conference-team-skills) and replace the old folder.
 
 </details>
 
@@ -410,7 +516,7 @@ If you get permission errors when cloning:
 
 ```bash
 mkdir -p ~/.claude/skills
-git clone https://github.com/RethinkLedgers/conference-team-skills.git ~/.claude/skills/conference-team-skills
+git clone https://github.com/msg2ai/conference-team-skills.git ~/.claude/skills/conference-team-skills
 ```
 
 </details>
@@ -459,7 +565,7 @@ conference-team-skills/
 │   ├── setup-twenty-crm.sh
 │   ├── setup-clickup.sh
 │   ├── setup-asana.sh
-│   ├── setup-github-issues.sh
+│   ├── setup-firecrawl.sh
 │   ├── setup-vercel.sh
 │   └── setup-obsidian.sh
 ├── general-chair/
@@ -474,20 +580,23 @@ conference-team-skills/
 │   └── SKILL.md               ← Venue & Logistics skill
 ├── finance-registration/
 │   └── SKILL.md               ← Finance & Registration skill
-└── attendee-experience/
-    └── SKILL.md               ← Attendee Experience skill
+├── attendee-experience/
+│   └── SKILL.md               ← Attendee Experience skill
+└── vibe-coder/
+    └── SKILL.md               ← Vibe Coder / Web Builder skill
 ```
 
 ---
 
-## About MSG2AI
+## About MSG2AI & related projects
 
 Building AI infrastructure for events, hospitality, and B2B operations.
 
-- [msg2ai.xyz](https://msg2ai.xyz) — MSG2AI
-- [AI Ambassador](https://ai-ambassador.xyz) — SMS/WhatsApp event concierge (no app download, 126 languages, 30-second responses)
-- [ActionNotes](https://msg2ai.xyz) — AI-powered session capture and meeting notes
-- Contact: bart@msg2ai.xyz
+- **[msg2ai.xyz](https://msg2ai.xyz)** — MSG2AI, the parent company
+- **[hello.msg2ai.xyz](https://hello.msg2ai.xyz)** — upload destination for the event JSON; spins up the live attendee experience
+- **[AI Ambassador](https://ai-ambassador.xyz)** — SMS/WhatsApp event concierge (no app download, 126 languages, 30-second responses) · [contact](mailto:hello@ai-ambassador.xyz)
+- **[ActionNotes](https://actionnotes.ai)** — AI-powered session capture and meeting notes · [actionnotes.ai](https://actionnotes.ai)
+- **Contact MSG2AI:** [bart@msg2ai.xyz](mailto:bart@msg2ai.xyz)
 
 ---
 

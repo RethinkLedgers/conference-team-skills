@@ -49,7 +49,7 @@ Now in its second year, FutureStack 2026 centers on the theme of **AI Infrastruc
 
 ### General Chair Statement
 
-**"FutureStack exists because we believe the people building AI infrastructure deserve a conference that respects their depth,"** said **Sarah Chen**, General Chair of FutureStack 2026. **"This is not a keynote-and-cocktails event. Every session is built for practitioners -- the engineers debugging distributed training at 2 AM, the platform teams building inference pipelines that actually hold up under load, the architects making build-versus-buy decisions that shape their organizations for years. We built FutureStack for them, and we are honored to bring this community together in Austin for the second year."**
+**"FutureStack exists because we believe the people building AI infrastructure deserve a conference that respects their depth,"** said **Sara Chen**, General Chair of FutureStack 2026. **"This is not a keynote-and-cocktails event. Every session is built for practitioners -- the engineers debugging distributed training at 2 AM, the platform teams building inference pipelines that actually hold up under load, the architects making build-versus-buy decisions that shape their organizations for years. We built FutureStack for them, and we are honored to bring this community together in Austin for the second year."**
 
 ---
 

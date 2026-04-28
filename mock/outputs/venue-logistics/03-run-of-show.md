@@ -22,7 +22,7 @@
 | Venue Operations (ACC) | Daniel Park | (512) 555-0155 | Ch 2 |
 | Catering Director (ACC) | Diana Morales | (512) 555-0198 | Ch 3 |
 | Security Lead (Lone Star) | Carlos Vega | (512) 555-0643 | Ch 2 |
-| General Chair | Sarah Chen | (512) 555-0101 | Ch 1 |
+| General Chair | Sara Chen | (512) 555-0101 | Ch 1 |
 | EMT / First Aid | On-site medic | (512) 555-0199 | Ch 2 |
 | Fire/Police/EMS | 911 | -- | -- |
 | Venue Emergency Line (ACC) | ACC Security Ops | (512) 555-0160 | Ch 2 |
@@ -55,10 +55,10 @@
 | 8:50 | 10-minute warning announcement | 1 min | Lisa Tran | PA + lobby screens flash | "The opening keynote begins in 10 minutes." |
 | 8:55 | Dr. Osei moves from green room to backstage | 5 min | Volunteer escort | -- | Escort via backstage corridor. Confirm water on podium. |
 | 8:58 | House lights dim to 50% | 2 min | Marcus Chen | CUE A1: House to 50%, background music fade out | Signal to audience to settle |
-| **9:00 AM** | **Opening remarks -- Sarah Chen, General Chair** | 10 min | Sarah Chen | CUE A2: House to 25%, stage lights up, IMAG live, recording start | Welcome, housekeeping (Wi-Fi, AI Ambassador, exits, Code of Conduct), introduce Dr. Osei |
+| **9:00 AM** | **Opening remarks -- Sara Chen, General Chair** | 10 min | Sara Chen | CUE A2: House to 25%, stage lights up, IMAG live, recording start | Welcome, housekeeping (Wi-Fi, AI Ambassador, exits, Code of Conduct), introduce Dr. Osei |
 | **9:10 AM** | **Opening Keynote: Dr. Amara Osei -- "Building the Foundations That Don't Break"** | 45 min | Dr. Amara Osei | CUE A3: Slides on main screen, IMAG on side screens, speaker cam tight | 45-min talk. No Q&A mid-talk. |
-| 9:55 AM | Keynote Q&A | 15 min | Sarah Chen (moderates) | CUE A4: Audience mic runners (2), IMAG on questioners | 3-4 questions. Timer visible to moderator. |
-| 10:10 AM | Keynote close and transition announcement | 5 min | Sarah Chen | CUE A5: House to 75%, hold slide "Break -- sessions resume 10:30" | Announce break, direct to coffee stations, preview breakout tracks |
+| 9:55 AM | Keynote Q&A | 15 min | Sara Chen (moderates) | CUE A4: Audience mic runners (2), IMAG on questioners | 3-4 questions. Timer visible to moderator. |
+| 10:10 AM | Keynote close and transition announcement | 5 min | Sara Chen | CUE A5: House to 75%, hold slide "Break -- sessions resume 10:30" | Announce break, direct to coffee stations, preview breakout tracks |
 | **10:15 AM** | **Morning break / coffee service** | 15 min | Diana Morales | Lobby screens: session guide for 10:30 block | Coffee Station 1 (expo hall), Coffee Station 2 (east corridor). Expo hall opens. |
 | 10:15 - 10:25 | Breakout room AV final check | 10 min | AV team | Rooms A/B/C: projectors, mics, timers set to 45 min | Speakers arrive at rooms by 10:20 |
 | **10:30 AM** | **Breakout Session Block 1 (3 concurrent)** | 45 min | Session speakers | CUE B1: Recording start in all breakout rooms | |
@@ -91,14 +91,14 @@
 | 4:30 PM | Session Block 4 ends | -- | -- | CUE B8: Recording stop | -- |
 | 4:30 - 4:45 | Transition to closing session | 15 min | -- | PA: "Day 1 closing session begins at 4:45 in Hall 1" | -- |
 | **4:45 PM** | **Day 1 Closing Session: Lightning Talks (6 x 5 min)** | 40 min | Lightning talk MC | CUE A8: Main stage, IMAG, recording. Timer visible (5:00 countdown per talk). | 6 speakers, strict 5-min limit. MC manages transitions. 10 min for transition between speakers. |
-| 5:25 PM | Day 1 closing remarks | 10 min | Sarah Chen | CUE A9: Slides -- evening schedule, Day 2 preview | Thank attendees, announce reception details, remind about feedback survey |
+| 5:25 PM | Day 1 closing remarks | 10 min | Sara Chen | CUE A9: Slides -- evening schedule, Day 2 preview | Thank attendees, announce reception details, remind about feedback survey |
 | **5:35 PM** | **Day 1 sessions end** | -- | -- | CUE A10: House lights full. Hold slide: "Reception 6:30 PM Rooftop Terrace" | -- |
 | 5:35 - 6:00 | Expo hall final hour | 25 min | Sponsors | -- | Last chance for booth visits. Sponsor teardown begins at 6:00 PM. |
 | 5:45 - 6:15 | AV breakout room power-down | 30 min | AV team | Shut down breakout room AV. Main stage remains live for reception. | Secure equipment overnight. |
 | 6:00 PM | Expo hall closes | -- | Sponsors + Volunteers | -- | Booths remain set up overnight (secured). |
 | 6:00 - 6:30 | Reception setup: rooftop terrace | 30 min | Diana Morales + Venue ops | Terrace lighting, background music system | Weather check at 5:00 PM. If rain: move to Hall 2 (backup). Decision by 5:30 PM. |
 | **6:30 PM** | **Opening Night Reception -- Rooftop Terrace** | 2.5 hrs | Diana Morales | Background music (live musician or DJ, pre-arranged) | Appetizers, open bar (beer, wine, cocktails, non-alcoholic). Badge required for entry. |
-| 6:30 - 6:45 | Brief welcome toast | 5 min | Sarah Chen | Handheld mic (wireless) | Informal. Thank sponsors by name. |
+| 6:30 - 6:45 | Brief welcome toast | 5 min | Sara Chen | Handheld mic (wireless) | Informal. Thank sponsors by name. |
 | 7:00 - 8:00 | Reception peak service | 60 min | Catering team | -- | Full appetizer rotation. Bar fully staffed. |
 | 8:00 PM | Last call for bar service | -- | Catering team | -- | Announce via PA on terrace |
 | 8:30 PM | Reception wind-down | 30 min | Diana Morales | Music volume reduced | Begin clearing appetizer stations |
@@ -113,7 +113,7 @@
 ## Buffer and Contingency Notes
 
 1. **Session overruns:** Each breakout block includes a 15-minute buffer between sessions. If a speaker runs over, the buffer absorbs it. Stage Manager has authority to cut Q&A to maintain schedule.
-2. **Keynote overrun:** Dr. Osei's keynote has a hard stop at 10:10 AM. Sarah Chen will signal at the 40-minute mark (5 min remaining in talk). Q&A can be shortened but not the break.
+2. **Keynote overrun:** Dr. Osei's keynote has a hard stop at 10:10 AM. Sara Chen will signal at the 40-minute mark (5 min remaining in talk). Q&A can be shortened but not the break.
 3. **Weather contingency (reception):** If the rooftop terrace is unusable due to weather, the reception moves to Hall 2. Decision made by 5:30 PM. Catering and AV are briefed on both setups.
 4. **Medical emergency protocol:** EMT stationed at registration desk. All staff trained on AED locations (registration desk, expo hall entrance, 2nd floor corridor). 911 call authority: any staff member.
 5. **Evacuation:** Follow ACC posted evacuation routes. Stage Manager announces via PA. Assembly point: Trinity Street sidewalk (east side of building). Headcount via badge scan data.
