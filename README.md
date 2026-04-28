@@ -20,6 +20,8 @@ Every conference organizing committee has the same 7 roles. Most teams have 1–
 
 Install one skill or all eight. Each is self-contained.
 
+> **Heads up — you'll need a GitHub account to pull these skills onto your machine.** Whether you install via `npx` or clone manually, the install runs `git clone` against this public repository, so you need (a) Git installed locally and (b) a free [github.com](https://github.com) account so the clone can authenticate when needed (HTTPS works without auth on public repos, but a GitHub account avoids rate limits and lets you contribute back). If you don't want to use GitHub at all, see [Option 5 — Claude.ai Projects](#option-5--claudeai-projects-co-work--non-technical-users) for a no-Git, browser-only path.
+
 > **Looking for the non-technical overview?** See the [landing page](./docs/index.html) — examples, scenarios, and value for conference organizers without any setup talk.
 
 ---
