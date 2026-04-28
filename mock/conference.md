@@ -17,19 +17,23 @@ This is a fictional conference used to demonstrate all 8 conference team skills 
 | VIP Price | $1,295 |
 | Student Price | $95 |
 | Target Audience | Engineering leaders, ML/AI practitioners, platform engineers, CTOs |
-| Website | futurestack2026.dev |
+| Website | https://futurestack2026.dev (deployed on Vercel) |
+| GitHub | msg2ai/futurestack2026-site |
+| Shared Knowledge Base | Google Drive — `FutureStack 2026/` (10-folder canonical structure) |
+| hello.msg2ai.xyz | uploaded — drives helpdesk, AI Ambassador, attendee app |
 
 ## Organizing Committee
 
-| Role | Name | Email |
-|---|---|---|
-| General Chair | Sarah Chen | sarah@futurestack2026.dev |
-| Program Chair | Marcus Rivera | marcus@futurestack2026.dev |
-| Sponsorship Lead | Priya Patel | priya@futurestack2026.dev |
-| Marketing Lead | Jordan Kim | jordan@futurestack2026.dev |
-| Venue & Logistics | Alex Thompson | alex@futurestack2026.dev |
-| Finance & Registration | Dana Okafor | dana@futurestack2026.dev |
-| Attendee Experience | Riley Nguyen | riley@futurestack2026.dev |
+| # | Role title | Skill | Person | Email |
+|---|---|---|---|---|
+| 01 | Conference Chair | `general-chair` | Sara Chen | sara@futurestack2026.dev |
+| 02 | Program Director | `program-content` | Marco Rivera | marco@futurestack2026.dev |
+| 03 | Head of Sponsorship | `sponsorship` | James Patel | james@futurestack2026.dev |
+| 04 | CMO | `marketing-comms` | Priya Kim | priya@futurestack2026.dev |
+| 05 | Head of Operations | `venue-logistics` | Tom Thompson | tom@futurestack2026.dev |
+| 06 | CFO | `finance-registration` | Amelia Okafor | amelia@futurestack2026.dev |
+| 07 | Chief Experience Officer | `attendee-experience` | Lena Nguyen | lena@futurestack2026.dev |
+| 08 | Head of Web (Vibe Coder) | `vibe-coder` | Noor Khan | noor@futurestack2026.dev |
 
 ## Budget Targets
 

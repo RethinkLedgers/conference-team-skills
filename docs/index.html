@@ -298,6 +298,78 @@
   }
   .bubble th { font-weight: 500; color: var(--accent); }
 
+  /* ---------------- Mock conference showcase ---------------- */
+  .mock-section { background: var(--bg-tinted); border: none; }
+  .mock-head {
+    display: grid; grid-template-columns: 1.3fr 1fr; gap: 80px; align-items: end;
+    margin-bottom: 48px;
+  }
+  @media (max-width: 800px) { .mock-head { grid-template-columns: 1fr; gap: 24px; } }
+  .mock-meta {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
+    margin-bottom: 36px;
+    padding: 24px;
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+  }
+  @media (max-width: 900px) { .mock-meta { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 540px) { .mock-meta { grid-template-columns: 1fr; } }
+  .mock-meta-item { display: flex; flex-direction: column; gap: 4px; padding-right: 12px; }
+  .mock-meta-item:not(:last-child) { border-right: 1px solid var(--line); }
+  @media (max-width: 900px) { .mock-meta-item { border-right: none !important; padding: 0; } }
+  .mock-meta-label {
+    font-size: 11px; font-weight: 600; color: var(--accent);
+    letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .mock-meta-item strong {
+    font-family: 'Fraunces', serif; font-weight: 500; font-size: 17px;
+    color: var(--ink); line-height: 1.2;
+  }
+  .mock-meta-sub { font-size: 12.5px; color: var(--ink-soft); line-height: 1.4; }
+  .mock-meta-sub code { font-size: 11.5px; background: rgba(20,17,15,.06); padding: 1px 5px; border-radius: 4px; }
+
+  .mock-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
+    margin-bottom: 36px;
+  }
+  @media (max-width: 900px) { .mock-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 540px) { .mock-grid { grid-template-columns: 1fr; } }
+  .mock-card {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 22px 20px;
+    text-decoration: none;
+    display: flex; flex-direction: column; gap: 8px;
+    transition: border-color .15s, transform .15s;
+    position: relative;
+  }
+  .mock-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+  .mock-card-featured {
+    background: var(--ink); color: var(--bg);
+    border-color: var(--ink);
+  }
+  .mock-card-featured h4, .mock-card-featured .mock-num { color: var(--bg); }
+  .mock-card-featured .mock-tag { color: rgba(255,255,255,.7); }
+  .mock-card-featured .mock-link { color: #f5b7a4; }
+  .mock-card-featured:hover { border-color: var(--accent-warm); }
+  .mock-num {
+    font-family: 'Fraunces', serif; font-size: 12px; color: var(--ink-mute);
+    letter-spacing: 0.05em;
+  }
+  .mock-card h4 {
+    font-family: 'Fraunces', serif; font-weight: 500; font-size: 17px;
+    line-height: 1.2; color: var(--ink);
+  }
+  .mock-tag { font-size: 12.5px; color: var(--ink-soft); line-height: 1.45; flex-grow: 1; }
+  .mock-link { font-size: 12px; font-weight: 600; color: var(--accent); margin-top: 8px; }
+
+  .mock-foot { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
   /* ---------------- Value strip ---------------- */
   .value { background: var(--bg-tinted); border: none; }
   .value-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; }
@@ -408,6 +480,7 @@
       <a href="#team">Your AI team</a>
       <a href="#day">A day in the life</a>
       <a href="#scenarios">Examples</a>
+      <a href="#mock">See a real run</a>
       <a href="#start">Get started</a>
     </nav>
   </div>
@@ -788,6 +861,111 @@
       </div>
     </div>
 
+  </div>
+</section>
+
+<!-- ============================ Mock conference showcase ============================ -->
+<section id="mock" class="mock-section">
+  <div class="wrap">
+    <div class="mock-head">
+      <div>
+        <div class="section-eyebrow">See a real run · FutureStack 2026</div>
+        <h2 class="section-title">Here's what 8 skills produced for one fictional event.</h2>
+      </div>
+      <p class="section-lede" style="margin-bottom: 0;">A complete mock conference — 800 attendees, 2 days, Austin Convention Center — with every artifact each skill actually generated. Browse the full set in the repo: <a href="https://github.com/msg2ai/conference-team-skills/tree/main/mock"><code>mock/</code></a>.</p>
+    </div>
+
+    <div class="mock-meta">
+      <div class="mock-meta-item">
+        <span class="mock-meta-label">Event</span>
+        <strong>FutureStack 2026</strong>
+        <span class="mock-meta-sub">Oct 15–16 · Austin · 800 attendees · 2 days · single-track</span>
+      </div>
+      <div class="mock-meta-item">
+        <span class="mock-meta-label">Knowledge Base</span>
+        <strong>Google Drive — 11 folders</strong>
+        <span class="mock-meta-sub">Bootstrapped via Firecrawl from <code>futurestack2025.dev</code></span>
+      </div>
+      <div class="mock-meta-item">
+        <span class="mock-meta-label">Live</span>
+        <strong>futurestack2026.dev</strong>
+        <span class="mock-meta-sub">Shipped to Vercel · Lighthouse 98/100/100/100</span>
+      </div>
+      <div class="mock-meta-item">
+        <span class="mock-meta-label">Concierge</span>
+        <strong>hello.msg2ai.xyz</strong>
+        <span class="mock-meta-sub">SMS + WhatsApp · 8 languages · AI Ambassador on</span>
+      </div>
+    </div>
+
+    <div class="mock-grid">
+
+      <a class="mock-card" href="https://github.com/msg2ai/conference-team-skills/tree/main/mock/outputs/general-chair">
+        <span class="mock-num">01</span>
+        <h4>Conference Chair · Sara Chen</h4>
+        <p class="mock-tag">Critical-path timeline · Risk register · Board briefing</p>
+        <span class="mock-link">See 3 outputs →</span>
+      </a>
+
+      <a class="mock-card" href="https://github.com/msg2ai/conference-team-skills/tree/main/mock/outputs/program-content">
+        <span class="mock-num">02</span>
+        <h4>Program Director · Marco Rivera</h4>
+        <p class="mock-tag">2-day agenda · Speaker outreach · Pipeline tracker</p>
+        <span class="mock-link">See 3 outputs →</span>
+      </a>
+
+      <a class="mock-card" href="https://github.com/msg2ai/conference-team-skills/tree/main/mock/outputs/sponsorship">
+        <span class="mock-num">03</span>
+        <h4>Head of Sponsorship · James Patel</h4>
+        <p class="mock-tag">3-email outreach sequence · Activation tracker · ROI report</p>
+        <span class="mock-link">See 3 outputs →</span>
+      </a>
+
+      <a class="mock-card" href="https://github.com/msg2ai/conference-team-skills/tree/main/mock/outputs/marketing-comms">
+        <span class="mock-num">04</span>
+        <h4>CMO · Priya Kim</h4>
+        <p class="mock-tag">12-week campaign calendar · 4 email drafts · Press release</p>
+        <span class="mock-link">See 3 outputs →</span>
+      </a>
+
+      <a class="mock-card" href="https://github.com/msg2ai/conference-team-skills/tree/main/mock/outputs/venue-logistics">
+        <span class="mock-num">05</span>
+        <h4>Head of Operations · Tom Thompson</h4>
+        <p class="mock-tag">Floor plan · Vendor tracker · Minute-by-minute run-of-show</p>
+        <span class="mock-link">See 3 outputs →</span>
+      </a>
+
+      <a class="mock-card" href="https://github.com/msg2ai/conference-team-skills/tree/main/mock/outputs/finance-registration">
+        <span class="mock-num">06</span>
+        <h4>CFO · Amelia Okafor</h4>
+        <p class="mock-tag">Full P&amp;L with scenarios · 4 ticket tiers · Sponsor invoice</p>
+        <span class="mock-link">See 3 outputs →</span>
+      </a>
+
+      <a class="mock-card" href="https://github.com/msg2ai/conference-team-skills/tree/main/mock/outputs/attendee-experience">
+        <span class="mock-num">07</span>
+        <h4>Chief Experience Officer · Lena Nguyen</h4>
+        <p class="mock-tag">20-question FAQ · AI Ambassador config · Post-event NPS</p>
+        <span class="mock-link">See 3 outputs →</span>
+      </a>
+
+      <a class="mock-card mock-card-featured" href="https://github.com/msg2ai/conference-team-skills/tree/main/mock/outputs/vibe-coder">
+        <span class="mock-num">08</span>
+        <h4>Head of Web · Noor Khan</h4>
+        <p class="mock-tag">Next.js scaffold · Vercel deploy log · Merged event JSON</p>
+        <span class="mock-link">See 3 outputs →</span>
+      </a>
+
+    </div>
+
+    <div class="mock-foot">
+      <a class="btn btn-ghost" href="https://github.com/msg2ai/conference-team-skills/tree/main/mock">
+        Browse the full mock conference <span class="arrow">→</span>
+      </a>
+      <a class="btn btn-primary" href="https://github.com/msg2ai/conference-team-skills/blob/main/mock/conference.md">
+        Read the event brief <span class="arrow">→</span>
+      </a>
+    </div>
   </div>
 </section>
 

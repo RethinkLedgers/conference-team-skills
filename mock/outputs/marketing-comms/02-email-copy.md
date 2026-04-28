@@ -162,7 +162,7 @@ We are already working on next year. If you want first access to early-bird pric
 It was an honor to host you. Now go build something extraordinary.
 
 With gratitude,
-**Sarah Chen**, General Chair
+**Sara Chen**, General Chair
 and the entire FutureStack Team
 
 P.S. Had a great experience? A quick post on LinkedIn or X tagging **#FutureStack2026** helps more than you know. We would love to amplify your takeaways.
