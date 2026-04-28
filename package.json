@@ -1,5 +1,8 @@
 {
-  "name": "conference-team-skills",
+  "name": "@msg2ai/conference-team-skills",
+  "publishConfig": {
+    "access": "public"
+  },
   "version": "1.0.0",
   "description": "8 free Claude skills for conference organizing teams — one for every seat on your org chart, plus a Vibe Coder for shipping the website. Built by MSG2AI.",
   "keywords": [

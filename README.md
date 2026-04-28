@@ -209,7 +209,7 @@ git --version
 > Works on Mac, Windows, and Linux. Requires Node.js 18+ ([download here](https://nodejs.org)).
 
 ```bash
-npx conference-team-skills install
+npx @msg2ai/conference-team-skills install
 ```
 
 That's it. The installer clones the skills into `~/.claude/skills/conference-team-skills/` and they're immediately available in Claude Code.
@@ -217,10 +217,12 @@ That's it. The installer clones the skills into `~/.claude/skills/conference-tea
 **Other npx commands:**
 
 ```bash
-npx conference-team-skills list        # See all 8 skills
-npx conference-team-skills update      # Update to the latest version
-npx conference-team-skills uninstall   # Remove the skills
+npx @msg2ai/conference-team-skills list        # See all 8 skills
+npx @msg2ai/conference-team-skills update      # Update to the latest version
+npx @msg2ai/conference-team-skills uninstall   # Remove the skills
 ```
+
+> Published on npm at [`@msg2ai/conference-team-skills`](https://www.npmjs.com/package/@msg2ai/conference-team-skills).
 
 ---
 
