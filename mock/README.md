@@ -1,6 +1,6 @@
 # Mock Conference — FutureStack 2026
 
-This directory contains a complete mock conference demonstrating all 7 skills working together.
+This directory contains a complete mock conference demonstrating all 8 skills working together.
 
 **FutureStack 2026** is a fictional 2-day AI infrastructure conference (Oct 15–16, Austin Convention Center, 800 attendees) used to showcase what each skill produces.
 

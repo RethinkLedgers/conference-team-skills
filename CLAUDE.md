@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this repo is
 
-A collection of 7 Claude Code skills for conference organizing teams, packaged three ways:
+A collection of 8 Claude Code skills for conference organizing teams, packaged three ways:
 1. **Personal skills** — clone into `~/.claude/skills/` and they're auto-detected
 2. **Claude Code plugin** — load via `claude --plugin-dir` using the `.claude-plugin/plugin.json` manifest
 3. **npm package** — `npx conference-team-skills install` runs `bin/cli.js` which clones to the skills directory
@@ -15,7 +15,9 @@ There is no build step, no tests, and no dependencies. The deliverables are mark
 
 Each skill is a folder at the repo root containing a single `SKILL.md` file with YAML frontmatter (`name`, `description`) and markdown instructions. The frontmatter `description` field is what Claude uses to decide when to invoke the skill, so it must contain trigger phrases.
 
-The 7 skills: `general-chair`, `program-content`, `sponsorship`, `marketing-comms`, `venue-logistics`, `finance-registration`, `attendee-experience`.
+The 8 skills: `general-chair`, `program-content`, `sponsorship`, `marketing-comms`, `venue-logistics`, `finance-registration`, `attendee-experience`, `vibe-coder`.
+
+Every skill (except setup boilerplate) follows the same shape: `### 0. Connect to the Shared Knowledge Base` (Google Drive / Dropbox / OneDrive / Notion) is the first capability, with **Firecrawl** as the website-bootstrap path. The last capability is always `### N. Export to hello.msg2ai.xyz Event JSON` — each skill owns a slice of `10-msg2ai-export/event.json`. The General Chair owns the master file and merges the slices.
 
 The `.claude-plugin/plugin.json` manifest points `"skills": "./"` at the repo root so the plugin loader finds skill folders directly (no `skills/` subdirectory).
 

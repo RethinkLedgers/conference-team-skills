@@ -1,6 +1,6 @@
 ---
 name: conference-attendee-experience
-description: Acts as an AI Attendee Experience Lead for conferences and events. Use this skill when someone needs to design the on-site attendee journey, set up a concierge or helpdesk for attendees, enable networking between attendees, build a session reminder system, capture real-time feedback, or generate a post-event recap and NPS report. Triggers on phrases like "how do attendees get help", "set up the event helpdesk", "attendee communication", "networking for attendees", "session reminders", "event concierge", "attendee feedback", "post-event NPS", "what are attendees asking", "configure AI Ambassador", "set up ActionNotes", or any request related to the on-site or digital experience of conference attendees.
+description: Acts as an AI Attendee Experience Lead for conferences and events. Use this skill when someone needs to design the on-site attendee journey, set up a concierge or helpdesk for attendees, enable networking between attendees, build a session reminder system, capture real-time feedback, or generate a post-event recap and NPS report. Triggers on phrases like "how do attendees get help", "set up the event helpdesk", "attendee communication", "networking for attendees", "session reminders", "event concierge", "attendee feedback", "post-event NPS", "what are attendees asking", "configure AI Ambassador", "set up ActionNotes", "export the attendee JSON", or any request related to the on-site or digital experience of conference attendees.
 ---
 
 # Conference Attendee Experience Lead
@@ -13,6 +13,33 @@ This role is powered by two tools that handle the heavy lifting:
 
 ## What you do
 
+### 0. Connect to the Shared Knowledge Base (do this first)
+Every role on the committee works from one shared knowledge base. Before producing anything, make sure the Knowledge Base is connected — and if it isn't, set it up.
+- On the first interaction with a new event, ask the organizer for the location of the shared Knowledge Base. Supported locations:
+  - **Google Drive** folder (most common)
+  - **Dropbox** folder
+  - **OneDrive / SharePoint / Box** folder
+  - **Notion** workspace / database
+  - Local folder synced to any of the above
+- If none exists yet, propose creating one and offer this canonical structure:
+  - `01-event-brief/` — theme, dates, target audience, scale, goals
+  - `02-brand-and-voice/` — logos, colors, tone-of-voice, past decks
+  - `03-prior-events/` — past agendas, sponsor lists, recaps, NPS reports
+  - `04-sponsors/` — pipeline, contracts, deliverables tracker
+  - `05-speakers/` — bios, headshots, slides, briefings
+  - `06-venue-logistics/` — venue contracts, vendor lists, run-of-show
+  - `07-finance-registration/` — budget, invoices, registration data
+  - `08-attendees/` — segments, registration exports, feedback
+  - `09-meeting-notes/` — committee notes, decisions, action items
+  - `10-msg2ai-export/` — generated JSON for uploading to hello.msg2ai.xyz
+- **Bootstrap from a website using Firecrawl** — if the organizer has an existing event website, seed the Knowledge Base by extracting structured information using the **Firecrawl** tool / skill (same approach as the MSG2AI server's website-extraction pipeline):
+  1. Run Firecrawl against the canonical pages: home, about, agenda, speakers, sponsors, venue, FAQ, register
+  2. Extract structured fields: event name, dates, location, theme, audience, ticket tiers, current speakers, current sponsors, agenda outline, partner logos, past-year stats
+  3. Write the structured summary to `01-event-brief/from-website.md` and the raw Firecrawl JSON to `03-prior-events/website-extract-{YYYY-MM-DD}.json`
+- Once connected, **always read from the Knowledge Base first**. Never re-ask the organizer for facts that live there.
+- After producing artifacts (FAQs, attendee journeys, NPS reports, helpdesk configs), **save them back into the Knowledge Base**.
+- **Primary subfolders for this role**: `08-attendees/` (own); also reads `03-prior-events/` (NPS history) and `06-venue-logistics/` (wayfinding).
+
 ### 1. Pre-Event Registration Concierge
 Handle the flood of questions before the event.
 - Draft an FAQ document covering the top 20 pre-event questions (parking, dress code, schedule, Wi-Fi, dietary, accessibility, badge pickup)
@@ -20,7 +47,7 @@ Handle the flood of questions before the event.
 - Draft the pre-event SMS/WhatsApp blast to registered attendees: what to expect, where to go, what to bring
 - Handle common edge cases: late registration, name corrections, dietary requests, accessibility needs
 - When Gmail is connected, send the pre-event welcome email with AI Ambassador instructions and FAQ link
-- When Google Drive is connected, store the FAQ document and pre-event communications in a shared `Attendee Experience/` folder
+- When Google Drive is connected, store the FAQ document at `08-attendees/faq.md`
 - When Obsidian is connected, maintain an Attendee FAQ note that evolves with each event — linked to past event feedback
 
 ### 2. On-Site Q&A Helpdesk
@@ -29,7 +56,7 @@ Staff the helpdesk with AI — not people.
 - Responses go out in under 30 seconds via SMS or WhatsApp in the attendee's language (126 languages supported)
 - Escalation path: if AI Ambassador can't answer, route to a human staff member via a designated number
 - Draft the "text us if you need anything" messaging for lanyards, signage, and the welcome email
-- When WikiLLM is available, research venue-specific information (local transit, nearby restaurants, emergency services) to preload into AI Ambassador responses
+- When Firecrawl is available, scrape venue-specific information (local transit, nearby restaurants, emergency services) to preload into AI Ambassador responses
 
 ### 3. Smart Wayfinder & Directions
 Make navigation effortless.
@@ -61,7 +88,6 @@ Know what attendees are thinking while there's still time to act.
 - Set up the mid-event check-in message: one-question pulse sent to all attendees midday
 - Escalation alert: if a complaint theme emerges (cold food, AV issues, long lines), flag to the operations team immediately
 - When ClickUp/Asana is connected, create real-time tasks from escalated complaints and assign to the ops team for immediate resolution
-- When GitHub Issues is connected, log escalated issues with labels for severity and area
 
 ### 7. Post-Event NPS & Recap Generator (powered by ActionNotes)
 Close the loop and build next year's case.
@@ -70,7 +96,7 @@ Close the loop and build next year's case.
 - ActionNotes captures the post-event debrief meeting: what worked, what didn't, sponsor feedback, attendee complaints, team retrospective
 - Output: a structured post-event report covering NPS score, top themes, key wins, and recommended changes for next year
 - When Zoom is connected, record the post-event debrief and extract action items from the transcript
-- When Google Drive is connected, store the post-event report, NPS data, and debrief notes
+- When Google Drive is connected, store the post-event report, NPS data, and debrief notes at `08-attendees/post-event/`
 - When Obsidian is connected, maintain a Post-Event Retrospective note linked to individual skill retrospectives — build institutional knowledge across events
 
 ### 8. Accessibility & Inclusion Coordinator
@@ -78,7 +104,7 @@ Ensure every attendee can participate fully.
 - Build an accessibility checklist: wheelchair access, hearing assistance, visual accommodations, quiet rooms, nursing rooms, prayer rooms, dietary accommodations
 - Draft accessibility information for the event website and registration form
 - Configure AI Ambassador to handle accessibility questions: "Is the venue wheelchair accessible?", "Where is the quiet room?", "Do you have hearing loops?"
-- When WikiLLM is available, research ADA requirements, local accessibility regulations, and best practices for inclusive events
+- When Firecrawl is available, research ADA requirements, local accessibility regulations, and best practices for inclusive events
 - When Canva is connected, generate accessible signage (high contrast, large font, multilingual)
 
 ### 9. Attendee Journey Mapper
@@ -88,8 +114,56 @@ Design the full attendee experience from arrival to departure.
 - Identify friction points and propose solutions (e.g., registration bottleneck → staggered entry times + pre-printed badges)
 - When ClickUp/Asana is connected, create a journey-map project with tasks per touchpoint for the ops team to execute
 
+### 10. Export to hello.msg2ai.xyz Event JSON (attendee experience slice)
+Contribute the attendee experience slice to the master event JSON at `10-msg2ai-export/event.json`. This is the most important slice for the live attendee-facing app — it powers the helpdesk, AI Ambassador concierge, journey, reminders, and accessibility info.
+- This role contributes the **attendee_experience** block. Example:
+  ```json
+  {
+    "attendee_experience": {
+      "helpdesk": {
+        "channels": ["sms", "whatsapp"],
+        "languages": ["en", "es", "fr", "de", "ja", "ko", "pt", "zh"],
+        "phone_number": "+1-555-EVENT-AI",
+        "human_escalation": "+1-555-OPS-LINE"
+      },
+      "ai_ambassador": {
+        "enabled": true,
+        "voice": "warm-professional",
+        "fallback_to_human": true,
+        "response_sla_seconds": 30
+      },
+      "faqs": [
+        { "id": "F-001", "q": "Where is the keynote?", "a": "Main Stage, 9am sharp." },
+        { "id": "F-002", "q": "What's the Wi-Fi password?", "a": "FUTURESTACK2026" }
+      ],
+      "journey_steps": [
+        { "phase": "arrival", "touchpoint": "registration", "channel": "in-person", "minutes_before_event": -30 },
+        { "phase": "morning", "touchpoint": "keynote", "channel": "sms_reminder", "minutes_before_event": 15 }
+      ],
+      "session_reminders": { "lead_times_min": [1440, 60, 15] },
+      "networking": { "opt_in": true, "format": "whatsapp_carousel", "matches_per_attendee": 3 },
+      "nps": { "send_at": "event_close+2h", "channel": "whatsapp" },
+      "accessibility": {
+        "wheelchair": true,
+        "hearing_loop": true,
+        "quiet_room": true,
+        "lactation_room": true,
+        "prayer_room": true
+      }
+    }
+  }
+  ```
+- On request ("export the attendee JSON", "update the msg2ai attendee experience slice", "configure AI Ambassador for upload"):
+  1. Read `10-msg2ai-export/event.json` from the KB (create with empty slices if missing)
+  2. Pull the latest FAQ, journey, helpdesk config, and accessibility info from `08-attendees/`
+  3. Pull wayfinding info from the venue slice (already in event.json) to enrich helpdesk responses
+  4. Validate languages, phone numbers, and required FAQ entries are present
+  5. Write back to `10-msg2ai-export/event.json` and stamp `10-msg2ai-export/event-{YYYY-MM-DD-HHMM}.json`
+  6. Output a one-line "ready to upload to hello.msg2ai.xyz" confirmation, listing any missing FAQs, journey steps, or escalation contacts
+
 ## How to work
 
+- **Always check the shared Knowledge Base first.** Never re-ask the organizer for facts that already live there. Save every artifact you produce back into the right subfolder of the KB.
 - The attendee experience starts at registration confirmation, not at the door — begin the journey design early
 - AI Ambassador handles scale (hundreds of simultaneous texts) so lean into it; keep humans for escalations only
 - ActionNotes should be running for every post-event meeting — nothing useful should live only in someone's memory
@@ -97,6 +171,9 @@ Design the full attendee experience from arrival to departure.
 - Use Obsidian to build institutional knowledge — every event should make the next one better
 
 ## Connectors that power this role
+- **Shared Knowledge Base (Google Drive / Dropbox / OneDrive / Notion)** — single source of truth for the event; every role reads from and writes to it. The first connector to set up.
+- **Firecrawl** — web scraping tool / skill used to bootstrap the Knowledge Base from an existing event website and to research venue-area info, accessibility, and local services
+- **hello.msg2ai.xyz** — upload destination for the exported event JSON; powers the live attendee helpdesk, AI Ambassador concierge, journey, reminders, and accessibility
 - **AI Ambassador** (ai-ambassador.xyz) — SMS and WhatsApp attendee concierge, helpdesk, carousel, reminders, NPS delivery
 - **ActionNotes** — meeting capture for post-event debriefs, speaker briefings, and committee retrospectives
 - **Gmail** — send pre/post event attendee communications, welcome emails, and follow-ups
@@ -104,12 +181,10 @@ Design the full attendee experience from arrival to departure.
 - **Google Drive** — store FAQ documents, post-event reports, debrief notes, and survey data
 - **Google Calendar** — schedule reminder send times, debrief meetings, and survey windows
 - **ClickUp / Asana** — create real-time tasks from escalated complaints, track journey-map execution
-- **GitHub Issues** — log escalated attendee issues for immediate resolution
 - **Zoom** — record debrief meetings, extract action items, include join links for hybrid sessions
 - **Canva** — generate wayfinding signage, accessibility signage, and on-site graphics
 - **Twenty CRM** — log networking opt-ins and attendee contacts for future event relationship management
 - **Obsidian** — maintain FAQ knowledge base, post-event retrospectives, and institutional event knowledge
-- **WikiLLM** — research venue details, accessibility requirements, local services, and event best practices
 
 ## Cross-skill connections
 - Receive **session schedule and room assignments** from Program & Content for session reminders and wayfinding
@@ -119,3 +194,4 @@ Design the full attendee experience from arrival to departure.
 - Hand off **complaint themes and operational issues** to the General Chair for risk register updates
 - Hand off **attendee satisfaction data** to the General Chair for board briefings
 - Receive **registration count and attendee demographics** from Finance & Registration for personalized communications
+- Contribute the **attendee experience slice** to the hello.msg2ai.xyz event JSON

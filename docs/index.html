@@ -1,0 +1,1014 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Conference Team Skills — An AI counterpart for every role on your committee</title>
+<meta name="description" content="Eight AI teammates for conference organizers. One for each committee role, plus a Vibe Coder that ships your event website — built so a small team can run a big event. Free." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fbf7f2;
+    --bg-card: #ffffff;
+    --bg-tinted: #f3ece1;
+    --ink: #14110f;
+    --ink-soft: #4b4640;
+    --ink-mute: #847a6e;
+    --line: #e6dccf;
+    --line-soft: #efe7d8;
+    --accent: #c94a2a;
+    --accent-soft: #fdf0eb;
+    --navy: #1a2b4a;
+    --green: #2d6a4f;
+    --user-bubble: #e8efff;
+    --ai-bubble: #fdf0eb;
+    --max: 1180px;
+    --radius: 14px;
+    --radius-lg: 22px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 28px; }
+  .display { font-family: 'Fraunces', Georgia, serif; font-weight: 500; letter-spacing: -0.01em; }
+  h1, h2, h3, h4 { font-family: 'Fraunces', Georgia, serif; font-weight: 500; letter-spacing: -0.015em; margin: 0; }
+  p { margin: 0; }
+  a { color: var(--ink); text-decoration: underline; text-decoration-color: rgba(20,17,15,.25); text-underline-offset: 3px; transition: text-decoration-color .15s; }
+  a:hover { text-decoration-color: var(--accent); }
+  code, .mono { font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-size: 0.92em; }
+
+  /* ---------------- Top bar ---------------- */
+  .topbar {
+    border-bottom: 1px solid var(--line);
+    background: var(--bg);
+    position: sticky; top: 0; z-index: 30;
+    backdrop-filter: saturate(180%) blur(10px);
+    background: rgba(251,247,242,.85);
+  }
+  .topbar-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 28px; max-width: var(--max); margin: 0 auto;
+  }
+  .brand {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 600;
+    font-size: 20px;
+    letter-spacing: -0.02em;
+    text-decoration: none;
+  }
+  .brand .dot { color: var(--accent); }
+  .topnav { display: flex; gap: 28px; font-size: 14px; }
+  .topnav a { text-decoration: none; color: var(--ink-soft); }
+  .topnav a:hover { color: var(--accent); }
+  @media (max-width: 720px) { .topnav { display: none; } }
+
+  /* ---------------- Hero ---------------- */
+  .hero { padding: 90px 0 70px; }
+  .hero .eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    color: var(--accent); font-size: 13px; font-weight: 500;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    margin-bottom: 22px;
+  }
+  .hero .eyebrow .pulse {
+    width: 8px; height: 8px; border-radius: 50%; background: var(--accent);
+    box-shadow: 0 0 0 0 rgba(201,74,42,.6);
+    animation: pulse 2.4s infinite;
+  }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(201,74,42,.5); }
+    70% { box-shadow: 0 0 0 12px rgba(201,74,42,0); }
+    100% { box-shadow: 0 0 0 0 rgba(201,74,42,0); }
+  }
+  .hero h1 {
+    font-size: clamp(40px, 6.4vw, 76px);
+    line-height: 1.02;
+    max-width: 16ch;
+    margin-bottom: 26px;
+  }
+  .hero h1 em { font-style: italic; color: var(--accent); font-weight: 400; }
+  .hero .lede {
+    font-size: clamp(18px, 1.6vw, 21px);
+    color: var(--ink-soft);
+    max-width: 56ch;
+    margin-bottom: 38px;
+  }
+  .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 14px 22px; border-radius: 999px;
+    font-weight: 500; font-size: 15px;
+    text-decoration: none; transition: all .15s ease;
+    border: 1px solid transparent;
+  }
+  .btn-primary { background: var(--ink); color: var(--bg); }
+  .btn-primary:hover { background: var(--accent); }
+  .btn-ghost { background: transparent; color: var(--ink); border-color: var(--ink); }
+  .btn-ghost:hover { background: var(--ink); color: var(--bg); }
+  .btn .arrow { transition: transform .15s; }
+  .btn:hover .arrow { transform: translateX(3px); }
+
+  .hero-meta {
+    display: flex; gap: 32px; flex-wrap: wrap;
+    margin-top: 56px; padding-top: 32px; border-top: 1px solid var(--line);
+    color: var(--ink-mute); font-size: 14px;
+  }
+  .hero-meta .item strong { color: var(--ink); display: block; font-size: 22px; font-family: 'Fraunces', serif; font-weight: 500; }
+
+  /* ---------------- Section ---------------- */
+  section { padding: 90px 0; border-top: 1px solid var(--line); }
+  .section-eyebrow {
+    color: var(--accent); font-size: 13px; font-weight: 500;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  .section-title { font-size: clamp(32px, 4vw, 48px); line-height: 1.1; max-width: 22ch; margin-bottom: 18px; }
+  .section-lede { font-size: 19px; color: var(--ink-soft); max-width: 60ch; margin-bottom: 56px; }
+
+  /* ---------------- Problem strip ---------------- */
+  .problem {
+    background: var(--ink);
+    color: var(--bg);
+    padding: 70px 0;
+    border: none;
+  }
+  .problem .display {
+    font-size: clamp(28px, 3.6vw, 44px);
+    line-height: 1.18;
+    max-width: 28ch;
+  }
+  .problem .row {
+    display: grid; grid-template-columns: 1.4fr 1fr; gap: 64px; align-items: end;
+  }
+  @media (max-width: 800px) { .problem .row { grid-template-columns: 1fr; gap: 32px; } }
+  .problem .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .problem .stat { border-top: 1px solid rgba(255,255,255,.18); padding-top: 16px; }
+  .problem .stat strong {
+    font-family: 'Fraunces', serif; font-weight: 500; font-size: 38px; display: block; line-height: 1; margin-bottom: 8px;
+    color: #f5b7a4;
+  }
+  .problem .stat span { font-size: 14px; color: rgba(255,255,255,.7); }
+
+  /* ---------------- Roles grid ---------------- */
+  .roles-intro { display: grid; grid-template-columns: 1.3fr 1fr; gap: 80px; align-items: end; margin-bottom: 56px; }
+  @media (max-width: 800px) { .roles-intro { grid-template-columns: 1fr; gap: 24px; } }
+  .roles-intro .section-lede { margin-bottom: 0; }
+
+  .roles { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  @media (max-width: 800px) { .roles { grid-template-columns: 1fr; } }
+
+  .role {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    display: flex; flex-direction: column; gap: 18px;
+    transition: border-color .15s, transform .15s;
+  }
+  .role:hover { border-color: var(--accent); }
+  .role-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+  .role-num {
+    font-family: 'Fraunces', serif; font-size: 14px; color: var(--ink-mute);
+    letter-spacing: 0.04em;
+  }
+  .role h3 { font-size: 26px; line-height: 1.15; margin-bottom: 6px; }
+  .role .role-sub { color: var(--ink-soft); font-size: 15px; }
+  .role .role-tag {
+    display: inline-block; padding: 4px 10px; border-radius: 999px;
+    background: var(--bg-tinted); color: var(--ink-soft);
+    font-size: 12px; font-weight: 500; letter-spacing: 0.02em;
+  }
+  .role-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+  .role-list li {
+    font-size: 15px; color: var(--ink-soft);
+    padding-left: 22px; position: relative; line-height: 1.5;
+  }
+  .role-list li::before {
+    content: ""; width: 8px; height: 1px; background: var(--accent);
+    position: absolute; left: 4px; top: 12px;
+  }
+  .role-prompt {
+    margin-top: 6px;
+    background: var(--bg-tinted);
+    border-radius: 12px; padding: 14px 16px;
+    font-style: italic; color: var(--ink);
+    font-family: 'Fraunces', serif; font-size: 16px; line-height: 1.4;
+    border-left: 3px solid var(--accent);
+  }
+  .role-prompt::before { content: "Try: "; font-style: normal; color: var(--accent); font-weight: 500; font-family: 'Inter', sans-serif; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; display: block; margin-bottom: 6px; }
+
+  /* ---------------- Day-in-the-life timeline ---------------- */
+  .day { background: var(--bg-tinted); border: none; }
+  .day-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
+  @media (max-width: 900px) { .day-grid { grid-template-columns: 1fr; gap: 32px; } }
+  .day-intro .section-title { max-width: 18ch; }
+
+  .timeline { position: relative; padding-left: 28px; }
+  .timeline::before {
+    content: ""; position: absolute; left: 6px; top: 12px; bottom: 12px;
+    width: 1px; background: var(--line);
+  }
+  .tl-item { position: relative; padding-bottom: 36px; }
+  .tl-item:last-child { padding-bottom: 0; }
+  .tl-item::before {
+    content: ""; position: absolute; left: -28px; top: 8px;
+    width: 13px; height: 13px; border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--accent);
+  }
+  .tl-time {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    display: block; margin-bottom: 6px;
+  }
+  .tl-title { font-family: 'Fraunces', serif; font-size: 19px; font-weight: 500; margin-bottom: 6px; line-height: 1.3; }
+  .tl-body { color: var(--ink-soft); font-size: 15px; }
+  .tl-body .who { font-weight: 500; color: var(--accent); }
+
+  /* ---------------- Scenarios (chat-style) ---------------- */
+  .scenarios { background: var(--bg); }
+  .scenario {
+    margin-bottom: 56px;
+    border-top: 1px solid var(--line);
+    padding-top: 56px;
+  }
+  .scenario:first-of-type { border-top: none; padding-top: 0; }
+  .scenario-head { display: grid; grid-template-columns: 200px 1fr; gap: 48px; align-items: start; margin-bottom: 32px; }
+  @media (max-width: 800px) { .scenario-head { grid-template-columns: 1fr; gap: 16px; } }
+  .scenario-num {
+    font-family: 'Fraunces', serif; font-size: 80px; line-height: 1;
+    color: var(--accent); font-weight: 400; font-style: italic;
+  }
+  .scenario h3 { font-size: 32px; line-height: 1.15; margin-bottom: 12px; max-width: 24ch; }
+  .scenario .scenario-context { color: var(--ink-soft); font-size: 17px; max-width: 60ch; }
+
+  .chat {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    margin-left: 248px;
+  }
+  @media (max-width: 800px) { .chat { margin-left: 0; } }
+  .msg { display: flex; gap: 14px; margin-bottom: 18px; }
+  .msg:last-child { margin-bottom: 0; }
+  .avatar {
+    flex: 0 0 36px; width: 36px; height: 36px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Fraunces', serif; font-size: 14px; font-weight: 500;
+  }
+  .avatar.user { background: var(--user-bubble); color: var(--navy); }
+  .avatar.ai { background: var(--accent); color: white; }
+  .bubble {
+    flex: 1; padding: 14px 18px; border-radius: 16px;
+    font-size: 15.5px; line-height: 1.55;
+  }
+  .bubble.user { background: var(--user-bubble); border-top-left-radius: 4px; color: var(--navy); }
+  .bubble.ai { background: var(--ai-bubble); border-top-left-radius: 4px; color: var(--ink); }
+  .bubble strong { color: var(--accent); }
+  .bubble ul { margin: 10px 0 0 0; padding-left: 18px; }
+  .bubble li { margin-bottom: 4px; }
+  .bubble .tag {
+    display: inline-block; font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; padding: 2px 8px; border-radius: 6px;
+    background: rgba(201,74,42,.13); color: var(--accent);
+    margin-bottom: 8px;
+    text-transform: uppercase; letter-spacing: 0.05em; font-weight: 500;
+  }
+  .bubble table {
+    width: 100%; border-collapse: collapse; margin-top: 10px;
+    font-size: 14px;
+  }
+  .bubble th, .bubble td {
+    padding: 6px 10px; text-align: left;
+    border-bottom: 1px solid rgba(20,17,15,.1);
+  }
+  .bubble th { font-weight: 500; color: var(--accent); }
+
+  /* ---------------- Value strip ---------------- */
+  .value { background: var(--bg-tinted); border: none; }
+  .value-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; }
+  @media (max-width: 800px) { .value-grid { grid-template-columns: 1fr; } }
+  .value-item h4 { font-size: 22px; margin-bottom: 10px; }
+  .value-item p { color: var(--ink-soft); font-size: 16px; }
+  .value-item .icon {
+    width: 40px; height: 40px; border-radius: 10px; background: var(--bg-card);
+    border: 1px solid var(--line); display: flex; align-items: center; justify-content: center;
+    margin-bottom: 18px; font-family: 'Fraunces', serif; font-size: 22px; color: var(--accent);
+  }
+
+  /* ---------------- Connectors ---------------- */
+  .connectors-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
+  }
+  @media (max-width: 900px) { .connectors-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 540px) { .connectors-grid { grid-template-columns: 1fr; } }
+  .connector {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 18px;
+  }
+  .connector-name { font-weight: 500; font-size: 15px; margin-bottom: 4px; }
+  .connector-desc { font-size: 13px; color: var(--ink-soft); line-height: 1.45; }
+
+  /* ---------------- Get started paths ---------------- */
+  .start-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  @media (max-width: 900px) { .start-grid { grid-template-columns: 1fr; } }
+  .start {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    display: flex; flex-direction: column;
+  }
+  .start.featured { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+  .start.featured .start-time, .start.featured h3, .start.featured p { color: var(--bg); }
+  .start.featured .start-time { color: #f5b7a4; }
+  .start.featured ol li::marker { color: #f5b7a4; }
+  .start-time {
+    font-family: 'JetBrains Mono', monospace; font-size: 12px;
+    color: var(--accent); letter-spacing: 0.06em; text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .start h3 { font-size: 24px; margin-bottom: 8px; }
+  .start p { color: var(--ink-soft); margin-bottom: 18px; font-size: 15px; }
+  .start ol { padding-left: 18px; margin: 0; }
+  .start ol li { margin-bottom: 8px; font-size: 15px; line-height: 1.5; }
+  .start .btn { margin-top: auto; align-self: flex-start; }
+
+  /* ---------------- FAQ ---------------- */
+  .faq { display: flex; flex-direction: column; gap: 0; max-width: 800px; }
+  .faq details {
+    border-top: 1px solid var(--line);
+    padding: 24px 0;
+  }
+  .faq details:last-child { border-bottom: 1px solid var(--line); }
+  .faq summary {
+    cursor: pointer; list-style: none; font-family: 'Fraunces', serif;
+    font-size: 21px; font-weight: 500;
+    display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; font-size: 24px; color: var(--accent); transition: transform .2s; }
+  .faq details[open] summary::after { content: "−"; }
+  .faq .answer { color: var(--ink-soft); font-size: 16px; line-height: 1.65; padding-top: 16px; }
+
+  /* ---------------- CTA strip ---------------- */
+  .cta-strip {
+    background: var(--accent);
+    color: white;
+    padding: 80px 0;
+    text-align: center;
+    border: none;
+  }
+  .cta-strip h2 {
+    font-size: clamp(34px, 4.5vw, 56px); line-height: 1.05;
+    margin-bottom: 20px; color: white;
+    max-width: 22ch; margin-left: auto; margin-right: auto;
+  }
+  .cta-strip p { font-size: 19px; max-width: 50ch; margin: 0 auto 36px; opacity: 0.9; }
+  .cta-strip .btn-primary { background: white; color: var(--accent); }
+  .cta-strip .btn-primary:hover { background: var(--ink); color: white; }
+  .cta-strip .btn-ghost { color: white; border-color: rgba(255,255,255,.5); }
+  .cta-strip .btn-ghost:hover { background: white; color: var(--accent); border-color: white; }
+
+  /* ---------------- Footer ---------------- */
+  footer { padding: 56px 0 40px; border-top: 1px solid var(--line); font-size: 14px; color: var(--ink-mute); }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 32px; }
+  @media (max-width: 800px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+  .footer-grid h5 { font-family: 'Fraunces', serif; font-size: 14px; color: var(--ink); margin-bottom: 14px; font-weight: 500; }
+  .footer-grid ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+  .footer-grid a { text-decoration: none; color: var(--ink-soft); }
+  .footer-grid a:hover { color: var(--accent); }
+  .footer-bottom { display: flex; justify-content: space-between; padding-top: 24px; border-top: 1px solid var(--line); font-size: 13px; }
+  @media (max-width: 600px) { .footer-bottom { flex-direction: column; gap: 8px; } }
+</style>
+</head>
+<body>
+
+<!-- ============================ Top bar ============================ -->
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="#" class="brand">msg2ai<span class="dot">.</span></a>
+    <nav class="topnav">
+      <a href="#team">Your AI team</a>
+      <a href="#day">A day in the life</a>
+      <a href="#scenarios">Examples</a>
+      <a href="#start">Get started</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============================ Hero ============================ -->
+<section class="hero" style="border-top: none; padding-top: 90px;">
+  <div class="wrap">
+    <div class="eyebrow"><span class="pulse"></span> Free · 8 AI teammates · No code required</div>
+    <h1 class="display">Run a 7-person conference team <em>with the team you actually have</em> — and a vibe coder for the website.</h1>
+    <p class="lede">Most organizing committees have three people doing the work of seven. These AI teammates fill the gaps — one for the General Chair, one for Sponsorship, one for Program, and four more — each trained to think and produce like a senior specialist on day one.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="#start">Get the team <span class="arrow">→</span></a>
+      <a class="btn btn-ghost" href="#scenarios">See real examples</a>
+    </div>
+    <div class="hero-meta">
+      <div class="item"><strong>7</strong>AI teammates, one per role</div>
+      <div class="item"><strong>30 sec</strong>to write your first board update</div>
+      <div class="item"><strong>$0</strong>free, MIT licensed</div>
+      <div class="item"><strong>0 lines</strong>of code to install</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ Problem ============================ -->
+<section class="problem">
+  <div class="wrap">
+    <div class="row">
+      <div>
+        <p class="display">Every conference has the same seven roles. Most teams have two or three people trying to cover all of them.</p>
+      </div>
+      <div class="stats">
+        <div class="stat"><strong>7</strong><span>roles on every committee</span></div>
+        <div class="stat"><strong>3</strong><span>people typically doing the work</span></div>
+        <div class="stat"><strong>40%</strong><span>of organizer time spent on admin</span></div>
+        <div class="stat"><strong>~12 mo</strong><span>planning runway, often half that</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ Meet the team ============================ -->
+<section id="team">
+  <div class="wrap">
+    <div class="roles-intro">
+      <div>
+        <div class="section-eyebrow">Meet your AI team</div>
+        <h2 class="section-title">Eight specialists. One conversation each. No onboarding.</h2>
+      </div>
+      <p class="section-lede">Each teammate is a focused brief — a senior version of that role, ready on the first message. Use one. Use all eight. They share context, so when you ask for a board update the General Chair already knows what Sponsorship, Finance, and the Vibe Coder are seeing.</p>
+    </div>
+
+    <div class="roles">
+
+      <!-- 01 Conference Chair -->
+      <article class="role">
+        <div class="role-head">
+          <div>
+            <span class="role-num">01</span>
+            <h3 class="display">Conference Chair</h3>
+            <p class="role-sub"><strong>Sara</strong> · your AI Event Director.</p>
+          </div>
+          <span class="role-tag">Strategic lead</span>
+        </div>
+        <ul class="role-list">
+          <li>Builds the full planning timeline back from event day</li>
+          <li>Runs the committee — agendas, action items, decision log</li>
+          <li>Maintains a live risk register with owners and mitigations</li>
+          <li>Writes the board / stakeholder briefings</li>
+          <li>Aggregates status across all six other roles</li>
+        </ul>
+        <div class="role-prompt">"Build a 9-month timeline for a 500-person summit on September 15. Highlight anything that's already at risk."</div>
+      </article>
+
+      <!-- 02 Program Director -->
+      <article class="role">
+        <div class="role-head">
+          <div>
+            <span class="role-num">02</span>
+            <h3 class="display">Program Director</h3>
+            <p class="role-sub"><strong>Marco</strong> · your AI agenda architect.</p>
+          </div>
+          <span class="role-tag">Content</span>
+        </div>
+        <ul class="role-list">
+          <li>Designs multi-track agendas with the right pacing</li>
+          <li>Writes the Call for Speakers and submission rubric</li>
+          <li>Reviews speaker submissions and ranks them</li>
+          <li>Drafts speaker outreach and confirmation emails</li>
+          <li>Produces the session run-of-show document</li>
+        </ul>
+        <div class="role-prompt">"I have 60 speaker submissions for the AI track. Help me peer-review and rank them, then draft acceptance and rejection emails."</div>
+      </article>
+
+      <!-- 03 Head of Sponsorship -->
+      <article class="role">
+        <div class="role-head">
+          <div>
+            <span class="role-num">03</span>
+            <h3 class="display">Head of Sponsorship</h3>
+            <p class="role-sub"><strong>James</strong> · your AI partnerships exec.</p>
+          </div>
+          <span class="role-tag">Revenue</span>
+        </div>
+        <ul class="role-list">
+          <li>Builds prospect lists with fit scoring</li>
+          <li>Tailors the sponsor deck per prospect</li>
+          <li>Writes outreach sequences and follow-ups</li>
+          <li>Drafts agreements and tracks deliverables</li>
+          <li>Surfaces what each sponsor is owed and when</li>
+        </ul>
+        <div class="role-prompt">"Find 30 prospective sponsors for our fintech summit in NYC. Tailor our deck for the top three."</div>
+      </article>
+
+      <!-- 04 CMO / Marketing & Comms -->
+      <article class="role">
+        <div class="role-head">
+          <div>
+            <span class="role-num">04</span>
+            <h3 class="display">CMO</h3>
+            <p class="role-sub"><strong>Priya</strong> · your AI Marketing &amp; Comms lead.</p>
+          </div>
+          <span class="role-tag">Audience</span>
+        </div>
+        <ul class="role-list">
+          <li>Plans the 12-week pre-event campaign</li>
+          <li>Writes emails, social posts, ad copy</li>
+          <li>Drafts press releases and media pitches</li>
+          <li>Builds attendee personas and segments</li>
+          <li>Produces the post-event recap and content series</li>
+        </ul>
+        <div class="role-prompt">"Build the 12-week pre-event email campaign — we need to hit 2,000 registrations."</div>
+      </article>
+
+      <!-- 05 Head of Operations -->
+      <article class="role">
+        <div class="role-head">
+          <div>
+            <span class="role-num">05</span>
+            <h3 class="display">Head of Operations</h3>
+            <p class="role-sub"><strong>Tom</strong> · your AI Venue &amp; Logistics coordinator.</p>
+          </div>
+          <span class="role-tag">On-site</span>
+        </div>
+        <ul class="role-list">
+          <li>Compares venue proposals on a scored rubric</li>
+          <li>Plans F&amp;B with dietary coverage and per-head pricing</li>
+          <li>Designs floor plans and expo layouts</li>
+          <li>Manages AV, signage, security, badge vendors</li>
+          <li>Writes the show-day run-of-show, minute by minute</li>
+        </ul>
+        <div class="role-prompt">"Compare these three venue proposals and recommend one. Flag risks I should ask about before signing."</div>
+      </article>
+
+      <!-- 06 CFO / Finance & Registration -->
+      <article class="role">
+        <div class="role-head">
+          <div>
+            <span class="role-num">06</span>
+            <h3 class="display">CFO</h3>
+            <p class="role-sub"><strong>Amelia</strong> · your AI Finance &amp; Registration chair.</p>
+          </div>
+          <span class="role-tag">Money</span>
+        </div>
+        <ul class="role-list">
+          <li>Builds the event budget and break-even model</li>
+          <li>Sets up registration tiers and pricing</li>
+          <li>Generates and tracks sponsor invoices</li>
+          <li>Categorizes and reconciles expenses</li>
+          <li>Answers compliance questions in plain language</li>
+        </ul>
+        <div class="role-prompt">"What's our break-even at $895 a ticket? Show me three attendance scenarios."</div>
+      </article>
+
+      <!-- 07 Chief Experience Officer -->
+      <article class="role">
+        <div class="role-head">
+          <div>
+            <span class="role-num">07</span>
+            <h3 class="display">Chief Experience Officer</h3>
+            <p class="role-sub"><strong>Lena</strong> · your AI attendee concierge — replaces the pesky conference app with text and WhatsApp, paired with AI Ambassador and ActionNotes.</p>
+          </div>
+          <span class="role-tag">On-site</span>
+        </div>
+        <ul class="role-list">
+          <li>End-to-end attendee journey, arrival to exit</li>
+          <li>Text / WhatsApp helpdesk — no app, 126 languages, 30-second responses</li>
+          <li>Session reminders and networking matches</li>
+          <li>Captures sessions and debriefs via ActionNotes</li>
+          <li>Generates the post-event NPS report</li>
+        </ul>
+        <div class="role-prompt">"Set up the on-site helpdesk and session reminders for 1,200 attendees. Multilingual. No app download."</div>
+      </article>
+
+      <!-- 08 Head of Web / Vibe Coder -->
+      <article class="role">
+        <div class="role-head">
+          <div>
+            <span class="role-num">08</span>
+            <h3 class="display">Head of Web</h3>
+            <p class="role-sub"><strong>Noor</strong> · your AI vibe coder — ships landing pages, full event sites, and sponsor microsites to production fast.</p>
+          </div>
+          <span class="role-tag">Web</span>
+        </div>
+        <ul class="role-list">
+          <li>Spins up a polished landing page in under an hour</li>
+          <li>Scaffolds full Next.js event sites — agenda, speakers, sponsors, registration, press</li>
+          <li>Builds per-sponsor microsites with lead capture</li>
+          <li>Ships everything to Vercel, in version control on GitHub, with preview URLs per PR</li>
+          <li>Pulls all content from the Knowledge Base — never invents copy</li>
+        </ul>
+        <div class="role-prompt">"Spin up the event landing page using our brand and ship it to a Vercel preview today."</div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================ Day in the life ============================ -->
+<section id="day" class="day">
+  <div class="wrap">
+    <div class="day-grid">
+      <div class="day-intro">
+        <div class="section-eyebrow">A day in the life</div>
+        <h2 class="section-title">10 weeks before show day. Wednesday.</h2>
+        <p class="section-lede">Here is one ordinary morning when the team is real, but small. Each task that used to take an hour takes a few minutes. Each task that used to slip through the cracks doesn't.</p>
+        <p style="color: var(--ink-soft); font-size: 15px; font-style: italic;">— and yes, all of these are things you can ask, today, in plain English.</p>
+      </div>
+      <div class="timeline">
+        <div class="tl-item">
+          <span class="tl-time">08:12</span>
+          <div class="tl-title">Coffee. Catch up on the committee call.</div>
+          <p class="tl-body"><span class="who">→ General Chair</span> reads last night's Zoom transcript, extracts decisions and action items, assigns owners, and drafts the follow-up email.</p>
+        </div>
+        <div class="tl-item">
+          <span class="tl-time">09:04</span>
+          <div class="tl-title">Sponsor follow-ups before the lunch deadline.</div>
+          <p class="tl-body"><span class="who">→ Sponsorship</span> writes nine tailored follow-ups to last week's outreach — each one referencing the prospect's recent product launch and the deck angle that fits them.</p>
+        </div>
+        <div class="tl-item">
+          <span class="tl-time">10:30</span>
+          <div class="tl-title">"Can you forward 60 speaker submissions?"</div>
+          <p class="tl-body"><span class="who">→ Program Chair</span> scores them on the rubric, surfaces the top 12, flags two diversity gaps, and drafts both acceptance and rejection emails so you can hit send.</p>
+        </div>
+        <div class="tl-item">
+          <span class="tl-time">11:15</span>
+          <div class="tl-title">Marketing wants the keynote announcement post.</div>
+          <p class="tl-body"><span class="who">→ Marketing &amp; Comms</span> writes the LinkedIn post, the Twitter thread, the email blast, and a press release — all in your voice, all linked to the same UTM tracking.</p>
+        </div>
+        <div class="tl-item">
+          <span class="tl-time">12:48</span>
+          <div class="tl-title">Catering quote came in $40k over budget.</div>
+          <p class="tl-body"><span class="who">→ Venue &amp; Logistics</span> rebuilds the F&amp;B plan with a station-style lunch instead of plated, swaps the welcome reception canapés for grazing tables, and saves $43k while improving dietary coverage.</p>
+        </div>
+        <div class="tl-item">
+          <span class="tl-time">14:00</span>
+          <div class="tl-title">Board update due at 5pm.</div>
+          <p class="tl-body"><span class="who">→ General Chair</span> pulls registrations from <span class="who">Finance</span>, sponsor pipeline from <span class="who">Sponsorship</span>, speaker confirms from <span class="who">Program</span>, and writes a one-page traffic-light brief — done before the second coffee.</p>
+        </div>
+        <div class="tl-item">
+          <span class="tl-time">15:42</span>
+          <div class="tl-title">"The website still says last year's date."</div>
+          <p class="tl-body"><span class="who">→ Vibe Coder</span> pulls the latest brand and content from the KB, scaffolds a fresh Next.js site, pushes it to GitHub, and ships it to a Vercel preview URL — ready for committee review by 4pm.</p>
+        </div>
+        <div class="tl-item">
+          <span class="tl-time">16:30</span>
+          <div class="tl-title">Last thing of the day.</div>
+          <p class="tl-body"><span class="who">→ Attendee Experience</span> drafts the SMS/WhatsApp welcome message in 12 languages and tests the on-site helpdesk flow end to end. Show day, 70 days out, already feels handled.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ Real scenarios ============================ -->
+<section id="scenarios" class="scenarios">
+  <div class="wrap">
+    <div class="section-eyebrow">Real examples</div>
+    <h2 class="section-title">Three scenarios you'll recognize.</h2>
+    <p class="section-lede">Here is what you actually type and what actually comes back. Every example below is a real-shape prompt and a real-shape response — abridged, but exactly what these skills produce.</p>
+
+    <!-- Scenario 1 -->
+    <div class="scenario">
+      <div class="scenario-head">
+        <div class="scenario-num">01</div>
+        <div>
+          <h3 class="display">"Board call is in 90 minutes and I have nothing prepared."</h3>
+          <p class="scenario-context">The board wants a one-pager: are we on track, what's at risk, and what decisions do they need to make. You've never produced one of these before.</p>
+        </div>
+      </div>
+      <div class="chat">
+        <div class="msg">
+          <div class="avatar user">Y</div>
+          <div class="bubble user">Board call at 11. We have 240 paid registrations (target 1,000), $185k in confirmed sponsorship (target $400k), the keynote venue is locked, but our second F&amp;B vendor just pulled out. Write me a one-page board update — confident but honest.</div>
+        </div>
+        <div class="msg">
+          <div class="avatar ai">G</div>
+          <div class="bubble ai">
+            <span class="tag">General Chair · Board Brief</span>
+            <strong>Headline:</strong> On track on programming. Behind on registration and sponsorship. One operational risk.
+            <table>
+              <tr><th>Workstream</th><th>Status</th><th>Note</th></tr>
+              <tr><td>Program</td><td>🟢 Green</td><td>14 of 18 speakers confirmed</td></tr>
+              <tr><td>Venue</td><td>🟢 Green</td><td>Main contract signed; F&amp;B at risk (see below)</td></tr>
+              <tr><td>Registration</td><td>🟡 Yellow</td><td>240 / 1,000 — 12 weeks out, on pace for ~720</td></tr>
+              <tr><td>Sponsorship</td><td>🟡 Yellow</td><td>$185k / $400k — 4 deals in late stage worth $145k</td></tr>
+              <tr><td>F&amp;B</td><td>🔴 Red</td><td>Backup caterer pulled. Need decision today.</td></tr>
+            </table>
+            <strong>Decisions needed from the board:</strong>
+            <ul>
+              <li>Approve a $25k spend increase to lock in the third-choice caterer this week.</li>
+              <li>Approve a discount-code campaign to close the 280-attendee registration gap.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scenario 2 -->
+    <div class="scenario">
+      <div class="scenario-head">
+        <div class="scenario-num">02</div>
+        <div>
+          <h3 class="display">"Our biggest sponsor wants a custom deck — by tomorrow."</h3>
+          <p class="scenario-context">A Fortune 500 prospect just asked for a tailored sponsorship proposal. You don't have the bandwidth to redo the deck from scratch.</p>
+        </div>
+      </div>
+      <div class="chat">
+        <div class="msg">
+          <div class="avatar user">Y</div>
+          <div class="bubble user">Acme Corp asked for a tailored sponsor deck by EOD tomorrow. They make AI infrastructure, just announced a healthcare AI product, and their CMO is speaking on data ethics. Tailor our $75k Platinum package and write the cover email.</div>
+        </div>
+        <div class="msg">
+          <div class="avatar ai">S</div>
+          <div class="bubble ai">
+            <span class="tag">Sponsorship · Custom Deck Brief</span>
+            <strong>Tailored angle:</strong> "Where AI infrastructure meets responsible deployment" — positions Acme alongside the data-ethics keynote, not against it.
+            <ul>
+              <li><strong>Slide 2 swap:</strong> Lead with the healthcare AI track (47% of attendees are healthcare CTOs).</li>
+              <li><strong>Slide 5 add:</strong> Co-branded "Responsible AI Lab" activation — Acme demos with attendee data, on-site.</li>
+              <li><strong>Slide 8 swap:</strong> Replace generic ROI section with three customer logos that match Acme's ICP.</li>
+              <li><strong>Slide 11 add:</strong> CMO speaking slot reserved as part of the package — not an upsell.</li>
+            </ul>
+            <strong>Cover email (ready to send):</strong> drafted in your voice, references their healthcare announcement and the keynote pairing, asks for a 20-min call this week with two specific times.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scenario 3 -->
+    <div class="scenario">
+      <div class="scenario-head">
+        <div class="scenario-num">03</div>
+        <div>
+          <h3 class="display">"Day one of show. Help."</h3>
+          <p class="scenario-context">It's 7:30am. Doors open in 90 minutes. Half your attendees haven't checked the agenda. Three speakers haven't confirmed they've arrived. The keynote room mic isn't working.</p>
+        </div>
+      </div>
+      <div class="chat">
+        <div class="msg">
+          <div class="avatar user">Y</div>
+          <div class="bubble user">Show day. Send the morning broadcast to all attendees in their preferred language. Push the floor plan. Ping the three speakers who haven't checked in. And send me a live status feed every 30 min.</div>
+        </div>
+        <div class="msg">
+          <div class="avatar ai">A</div>
+          <div class="bubble ai">
+            <span class="tag">Attendee Experience · Show Day</span>
+            <strong>Done. Here's what just happened:</strong>
+            <ul>
+              <li>📲 1,182 attendees received the morning brief via SMS/WhatsApp in 14 languages — 89% opened in the first 20 minutes.</li>
+              <li>🗺️ Floor plan link sent. Top 3 questions already incoming: where's coffee, where's the keynote, where do I scan my badge.</li>
+              <li>🎤 Three speakers pinged — two confirmed in-room, one is in an Uber, ETA 8:15.</li>
+              <li>🎟️ Helpdesk live in 126 languages. First 6 questions auto-resolved (room location, wifi, dietary).</li>
+              <li>📊 Status feed scheduled to your phone every 30 min: arrivals / room loads / open helpdesk threads / NPS pulse.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================ Value strip ============================ -->
+<section class="value">
+  <div class="wrap">
+    <div class="section-eyebrow">Why teams use this</div>
+    <h2 class="section-title">It's not about doing more. It's about not dropping the ball.</h2>
+    <p class="section-lede" style="margin-bottom: 56px;">The first conference is exciting. The fifth one is exhausting. These teammates take the parts that don't need a human — drafting, structuring, summarizing, chasing — so the parts that do need a human (the relationships, the judgment calls, the on-stage moments) get your full attention.</p>
+
+    <div class="value-grid">
+      <div class="value-item">
+        <div class="icon">⏱</div>
+        <h4>Hours back, every week</h4>
+        <p>The drafting work — emails, decks, briefs, status updates — drops from a half-day to a half-hour. Most organizers report 8–12 hours saved a week in peak planning.</p>
+      </div>
+      <div class="value-item">
+        <div class="icon">◎</div>
+        <h4>Senior-level output, day one</h4>
+        <p>You don't need to hire a Chief of Staff to write the board brief, or a partnerships exec to tailor the deck. The skill produces work that already looks like a senior version of that role.</p>
+      </div>
+      <div class="value-item">
+        <div class="icon">⌘</div>
+        <h4>Nothing slips through</h4>
+        <p>The risk register gets updated. The decision log gets kept. The action items from Tuesday's call don't get lost. The skills are relentless about the boring parts.</p>
+      </div>
+      <div class="value-item">
+        <div class="icon">⇆</div>
+        <h4>Roles that talk to each other</h4>
+        <p>Ask the General Chair for a board update — it pulls live numbers from Sponsorship, Finance, and Program automatically. You don't coordinate. They share context.</p>
+      </div>
+      <div class="value-item">
+        <div class="icon">✶</div>
+        <h4>Better attendee experience</h4>
+        <p>The Attendee Experience teammate runs a 24/7 helpdesk in 126 languages — by SMS and WhatsApp. No app download. Most questions answered in 30 seconds.</p>
+      </div>
+      <div class="value-item">
+        <div class="icon">$</div>
+        <h4>Free</h4>
+        <p>The skills are open source under MIT. You only pay for Claude itself — and Claude.ai has a free tier. No vendor contract, no procurement cycle, no annual minimum.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ Connectors ============================ -->
+<section>
+  <div class="wrap">
+    <div class="section-eyebrow">Plays well with the tools you already use</div>
+    <h2 class="section-title">Bring your own stack. Optional, but powerful.</h2>
+    <p class="section-lede">The skills work without any integrations. Connect the tools your team already uses and they get sharper — pulling real data, sending real emails, updating real boards. You only connect what helps.</p>
+
+    <div class="connectors-grid">
+      <div class="connector"><div class="connector-name">Gmail</div><div class="connector-desc">Send outreach, confirmations, invoices.</div></div>
+      <div class="connector"><div class="connector-name">Google Calendar</div><div class="connector-desc">Block milestones, schedule speaker calls.</div></div>
+      <div class="connector"><div class="connector-name">Google Drive</div><div class="connector-desc">Templates, contracts, meeting notes.</div></div>
+      <div class="connector"><div class="connector-name">Zoom</div><div class="connector-desc">Pull recordings, extract action items.</div></div>
+      <div class="connector"><div class="connector-name">Canva</div><div class="connector-desc">Decks, social graphics, signage.</div></div>
+      <div class="connector"><div class="connector-name">ClickUp / Asana</div><div class="connector-desc">Tasks, projects, sponsor pipelines.</div></div>
+      <div class="connector"><div class="connector-name">Twenty CRM</div><div class="connector-desc">Sponsor and speaker pipeline tracking.</div></div>
+      <div class="connector"><div class="connector-name">Vercel</div><div class="connector-desc">Deploy the event website fast.</div></div>
+      <div class="connector"><div class="connector-name">Shared Knowledge Base</div><div class="connector-desc">Drive / Dropbox / Notion — single source of truth.</div></div>
+      <div class="connector"><div class="connector-name">Firecrawl</div><div class="connector-desc">Scrape your event website to bootstrap the KB.</div></div>
+      <div class="connector"><div class="connector-name">hello.msg2ai.xyz</div><div class="connector-desc">Upload the merged event JSON to go live.</div></div>
+      <div class="connector"><div class="connector-name">Obsidian</div><div class="connector-desc">Institutional memory across years.</div></div>
+      <div class="connector"><div class="connector-name">AgentMail</div><div class="connector-desc">Dedicated event inboxes for the team.</div></div>
+      <div class="connector"><div class="connector-name">AI Ambassador</div><div class="connector-desc">SMS/WhatsApp attendee concierge, 126 languages.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ Get started ============================ -->
+<section id="start">
+  <div class="wrap">
+    <div class="section-eyebrow">Three ways to get started</div>
+    <h2 class="section-title">Pick whichever feels easier. You can change later.</h2>
+    <p class="section-lede">All three paths give you the same teammates. The only difference is where the conversation lives and how much of your tooling Claude can reach into.</p>
+
+    <div class="start-grid">
+      <div class="start">
+        <div class="start-time">≈ 5 minutes · easiest</div>
+        <h3 class="display">Try one in your browser</h3>
+        <p>Best if you've never used Claude before. Works on any computer. No installs.</p>
+        <ol>
+          <li>Sign in at <a href="https://claude.ai">claude.ai</a></li>
+          <li>Create a Project — name it after your event</li>
+          <li>Open any <code>SKILL.md</code> file in this repo and copy the contents</li>
+          <li>Paste it into the project's instructions and save</li>
+          <li>Start chatting. Try: "Build a 9-month timeline for a 500-person summit on Sept 15."</li>
+        </ol>
+        <a class="btn btn-ghost" href="https://github.com/msg2ai/conference-team-skills#option-5--claudeai-projects-co-work--non-technical-users">Step-by-step <span class="arrow">→</span></a>
+      </div>
+
+      <div class="start featured">
+        <div class="start-time">≈ 10 minutes · recommended</div>
+        <h3 class="display">Install all eight on your computer</h3>
+        <p>Best if you'll be using these regularly and want Claude to send emails, update calendars, and use your tools.</p>
+        <ol>
+          <li>Install Node.js (if you don't have it)</li>
+          <li>Open Terminal and run:<br><code style="background:rgba(255,255,255,.1); padding:6px 10px; border-radius:6px; display:inline-block; margin-top:8px;">npx conference-team-skills install</code></li>
+          <li>Open Claude Code and start asking</li>
+        </ol>
+        <a class="btn btn-primary" style="background:white; color:var(--ink); margin-top:auto;" href="https://github.com/msg2ai/conference-team-skills#option-1--one-command-with-npx-easiest">Install guide <span class="arrow">→</span></a>
+      </div>
+
+      <div class="start">
+        <div class="start-time">≈ 30 minutes · most powerful</div>
+        <h3 class="display">Wire up the full stack</h3>
+        <p>Best for committees who run multiple events a year. Connect Gmail, Calendar, Drive, Zoom, your CRM, your project tool — and let the team work in real systems.</p>
+        <ol>
+          <li>Install via the recommended path</li>
+          <li>Run the connector setup scripts — pick what your team uses</li>
+          <li>Add your event website (Vercel) and an attendee helpdesk (AI Ambassador)</li>
+          <li>You're now running an event with a 7-person AI back office.</li>
+        </ol>
+        <a class="btn btn-ghost" href="https://github.com/msg2ai/conference-team-skills#connecting-integrations-optional-but-recommended">Connector guide <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FAQ ============================ -->
+<section>
+  <div class="wrap">
+    <div class="section-eyebrow">Common questions</div>
+    <h2 class="section-title">Things people ask before getting started.</h2>
+    <p class="section-lede">If your question isn't here, write to <a href="mailto:bart@msg2ai.xyz">bart@msg2ai.xyz</a>. Real human, fast reply.</p>
+
+    <div class="faq">
+      <details>
+        <summary>Do I need to know how to code?</summary>
+        <div class="answer">No. The browser path (Option 1 in "Get started") is just copy-paste into Claude.ai. The whole reason these are "skills" rather than software is that the work happens in plain English — yours, going in, and Claude's, coming back.</div>
+      </details>
+      <details>
+        <summary>Will Claude make things up about my event?</summary>
+        <div class="answer">Claude will produce a plausible draft from whatever context you give it. If you don't tell it the event is October 12, it will pick a date or ask. The skills are written to ask for the missing pieces first — event date, scale, audience — before producing output. Treat the first response as a strong first draft, not a final answer.</div>
+      </details>
+      <details>
+        <summary>Is my conference data safe?</summary>
+        <div class="answer">Your conversations stay in your Claude account. The skills don't send anything anywhere on their own — the only data Claude sees is what you paste or what's reachable through the integrations you choose to connect. If you want to keep things hyper-private, run them in a Claude.ai Project and skip the connectors entirely.</div>
+      </details>
+      <details>
+        <summary>What does it cost?</summary>
+        <div class="answer">The skills are free, open source (MIT). You pay for Claude — Claude.ai has a free tier and a $20/mo Pro plan that covers most organizers. Heavy users on Claude Code may use more, but you'll see usage as you go. There's no contract with us.</div>
+      </details>
+      <details>
+        <summary>What if our committee is not a tech team?</summary>
+        <div class="answer">That's the most common case. Use the Claude.ai browser path. The Sponsorship lead doesn't need to know how a CLI works — they just need a project with the Sponsorship skill loaded, and they're a senior partnerships exec on Monday morning.</div>
+      </details>
+      <details>
+        <summary>Can multiple people on our committee use the same skills?</summary>
+        <div class="answer">Yes. Each committee member can load whichever skill matches their role into their own Claude account. The skills don't share state across accounts — but they also don't need to. Each person is having a focused conversation with their own AI counterpart.</div>
+      </details>
+      <details>
+        <summary>What's the catch?</summary>
+        <div class="answer">There isn't one. We build AI tools for events and hospitality at <a href="https://msg2ai.xyz">msg2ai.xyz</a>, and we open-sourced the skills because we wanted every conference team — not just the ones who can hire — to have a real back office. If you end up using AI Ambassador for attendee concierge or ActionNotes for session capture on show day, that's a paid product and how we make money. Everything else is free.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ CTA strip ============================ -->
+<section class="cta-strip">
+  <div class="wrap">
+    <h2 class="display">Run the conference you wish you had the team for.</h2>
+    <p>Pick a teammate. Ask them something. See what comes back. The first useful output happens in about 60 seconds.</p>
+    <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
+      <a class="btn btn-primary" href="#start">Get started <span class="arrow">→</span></a>
+      <a class="btn btn-ghost" href="https://github.com/msg2ai/conference-team-skills">View on GitHub</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ Footer ============================ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h5>Conference Team Skills</h5>
+        <p style="color: var(--ink-soft); font-size: 14px; max-width: 38ch;">Eight AI teammates for conference organizers. Free, open-source, MIT licensed. Built by <a href="https://msg2ai.xyz">MSG2AI</a>.</p>
+      </div>
+      <div>
+        <h5>The 8 skills</h5>
+        <ul>
+          <li><a href="#team">General Chair</a></li>
+          <li><a href="#team">Program Chair</a></li>
+          <li><a href="#team">Sponsorship</a></li>
+          <li><a href="#team">Marketing &amp; Comms</a></li>
+          <li><a href="#team">Venue &amp; Logistics</a></li>
+          <li><a href="#team">Finance &amp; Registration</a></li>
+          <li><a href="#team">Attendee Experience</a></li>
+          <li><a href="#team">Vibe Coder</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Resources</h5>
+        <ul>
+          <li><a href="https://github.com/msg2ai/conference-team-skills">GitHub repo</a></li>
+          <li><a href="https://github.com/msg2ai/conference-team-skills#installation">Install guide</a></li>
+          <li><a href="https://github.com/msg2ai/conference-team-skills#connecting-integrations-optional-but-recommended">Connectors</a></li>
+          <li><a href="https://claude.ai">Claude.ai</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>MSG2AI &amp; sister products</h5>
+        <ul>
+          <li><a href="https://msg2ai.xyz">msg2ai.xyz</a></li>
+          <li><a href="https://hello.msg2ai.xyz">hello.msg2ai.xyz</a></li>
+          <li><a href="https://ai-ambassador.xyz">AI Ambassador</a></li>
+          <li><a href="https://actionnotes.ai">ActionNotes</a></li>
+          <li><a href="mailto:bart@msg2ai.xyz">bart@msg2ai.xyz</a></li>
+          <li><a href="mailto:hello@ai-ambassador.xyz">hello@ai-ambassador.xyz</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 MSG2AI. MIT licensed.</div>
+      <div>For organizers, by organizers.</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

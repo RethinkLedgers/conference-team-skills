@@ -1,7 +1,7 @@
 {
   "name": "conference-team-skills",
   "version": "1.0.0",
-  "description": "7 free Claude skills for conference organizing teams — one for every seat on your org chart. Built by MSG2AI.",
+  "description": "8 free Claude skills for conference organizing teams — one for every seat on your org chart, plus a Vibe Coder for shipping the website. Built by MSG2AI.",
   "keywords": [
     "claude",
     "claude-code",
@@ -12,10 +12,10 @@
     "claude-skills",
     "event-planning"
   ],
-  "homepage": "https://github.com/RethinkLedgers/conference-team-skills",
+  "homepage": "https://github.com/msg2ai/conference-team-skills",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/RethinkLedgers/conference-team-skills.git"
+    "url": "git+https://github.com/msg2ai/conference-team-skills.git"
   },
   "author": {
     "name": "MSG2AI",
@@ -35,6 +35,7 @@
     "venue-logistics/",
     "finance-registration/",
     "attendee-experience/",
+    "vibe-coder/",
     ".claude-plugin/",
     "setup/",
     "LICENSE",

@@ -1,6 +1,6 @@
 # FutureStack 2026 — Mock Conference Definition
 
-This is a fictional conference used to demonstrate all 7 conference team skills working together.
+This is a fictional conference used to demonstrate all 8 conference team skills working together.
 
 ## Event Details
 
