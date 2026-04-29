@@ -9,7 +9,7 @@ Built by [MSG2AI](https://msg2ai.xyz) · AI Ambassador for attendees · ActionNo
     <img src="./docs/campaign-visual.png" alt="The 8 Claude Skills for conference teams: Conference Chair, Program Director, Head of Sponsorship, CMO, Head of Operations, CFO, Chief Experience Officer, and Head of Web — each shown as a cartoon character with a real persona. Reply SKILLS to get them, free." width="720" />
   </a>
   <br/>
-  <em>The 8 AI teammates · <a href="./docs/campaign-visual.html">view the animated visual</a> · <a href="./docs/index.html">non-technical landing page</a></em>
+  <em>The 8 AI teammates · <a href="./docs/campaign-visual.html">view the animated visual</a> · <a href="https://conference-team-skills-website.vercel.app">non-technical landing page</a></em>
 </p>
 
 ---
@@ -22,7 +22,7 @@ Install one skill or all eight. Each is self-contained.
 
 > **Heads up — you'll need a GitHub account to pull these skills onto your machine.** Whether you install via `npx` or clone manually, the install runs `git clone` against this public repository, so you need (a) Git installed locally and (b) a free [github.com](https://github.com) account so the clone can authenticate when needed (HTTPS works without auth on public repos, but a GitHub account avoids rate limits and lets you contribute back). If you don't want to use GitHub at all, see [Option 5 — Claude.ai Projects](#option-5--claudeai-projects-co-work--non-technical-users) for a no-Git, browser-only path.
 
-> **Looking for the non-technical overview?** See the [landing page](./docs/index.html) — examples, scenarios, and value for conference organizers without any setup talk.
+> **Looking for the non-technical overview?** See the [landing page](https://conference-team-skills-website.vercel.app) — examples, scenarios, and value for conference organizers without any setup talk.
 
 ---
 
