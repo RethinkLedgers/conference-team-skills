@@ -1,0 +1,9 @@
+{
+  "buildCommand": null,
+  "outputDirectory": "docs",
+  "framework": null,
+  "installCommand": null,
+  "rewrites": [
+    { "source": "/", "destination": "/campaign-visual.html" }
+  ]
+}
